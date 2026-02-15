@@ -1,7 +1,16 @@
+import Image from 'next/image'
 import { Star } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { AnimateOnScroll } from '@/components/ui/motion'
 import { testimonials } from '@/data/testimonials'
+
+function getInitials(name: string): string {
+  const parts = name.split(' ').filter(Boolean)
+  if (parts.length >= 2) {
+    return `${parts[0][0]}${parts[1][0]}`
+  }
+  return parts[0]?.[0] ?? ''
+}
 
 export function AboutTestimonial() {
   const testimonial = testimonials.find((t) => t.id === '3') ?? testimonials[0]
@@ -30,10 +39,25 @@ export function AboutTestimonial() {
               ))}
             </div>
 
-            <footer className="mt-4 text-sm text-text-muted">
-              <span className="font-semibold text-text-primary">{testimonial.name}</span>
-              <span className="mx-2">—</span>
-              <span>{testimonial.role}</span>
+            <footer className="mt-4 flex flex-col items-center gap-3">
+              {testimonial.image ? (
+                <Image
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  width={56}
+                  height={56}
+                  className="size-14 rounded-full ring-2 ring-gold/30 object-cover"
+                />
+              ) : (
+                <div className="size-14 rounded-full ring-2 ring-gold/30 bg-bg-surface flex items-center justify-center">
+                  <span className="text-lg font-bold text-primary select-none">{getInitials(testimonial.name)}</span>
+                </div>
+              )}
+              <div className="text-sm text-text-muted">
+                <span className="font-semibold text-text-primary">{testimonial.name}</span>
+                <span className="mx-2">—</span>
+                <span>{testimonial.role}</span>
+              </div>
             </footer>
           </div>
         </AnimateOnScroll>

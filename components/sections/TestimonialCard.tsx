@@ -1,9 +1,18 @@
+import Image from 'next/image'
 import { Star } from 'lucide-react'
 import { Card } from '@/components/ui/Card'
 import type { Testimonial } from '@/types/testimonial'
 
 interface TestimonialCardProps {
   testimonial: Testimonial
+}
+
+function getInitials(name: string): string {
+  const parts = name.split(' ').filter(Boolean)
+  if (parts.length >= 2) {
+    return `${parts[0][0]}${parts[1][0]}`
+  }
+  return parts[0]?.[0] ?? ''
 }
 
 export function TestimonialCard({ testimonial }: TestimonialCardProps) {
@@ -25,9 +34,24 @@ export function TestimonialCard({ testimonial }: TestimonialCardProps) {
       <blockquote className="flex-1 text-text-muted leading-relaxed mb-4 relative">
         {testimonial.content}
       </blockquote>
-      <div className="border-t border-white/10 pt-4">
-        <p className="font-semibold text-text-primary">{testimonial.name}</p>
-        <p className="text-sm text-text-muted/60">{testimonial.role}</p>
+      <div className="border-t border-white/10 pt-4 flex items-center gap-3">
+        {testimonial.image ? (
+          <Image
+            src={testimonial.image}
+            alt={testimonial.name}
+            width={48}
+            height={48}
+            className="size-12 rounded-full ring-2 ring-primary/20 object-cover"
+          />
+        ) : (
+          <div className="size-12 rounded-full ring-2 ring-primary/20 bg-bg-surface flex items-center justify-center">
+            <span className="text-sm font-bold text-primary select-none">{getInitials(testimonial.name)}</span>
+          </div>
+        )}
+        <div>
+          <p className="font-semibold text-text-primary">{testimonial.name}</p>
+          <p className="text-sm text-text-muted/60">{testimonial.role}</p>
+        </div>
       </div>
     </Card>
   )

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight, Calendar, User, Share2 } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { Badge } from '@/components/ui/Badge'
@@ -32,6 +33,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       locale: 'he_IL',
       publishedTime: post.date,
       authors: [post.author],
+      ...(post.image && { images: [{ url: post.image, width: 1200, height: 630, alt: post.title }] }),
     },
   }
 }
@@ -91,6 +93,25 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
         </Container>
       </div>
+
+      {/* Hero image */}
+      {post.image && (
+        <Container>
+          <div className="max-w-3xl mx-auto -mt-2 mb-8">
+            <div className="relative aspect-[2/1] rounded-2xl border border-white/10 overflow-hidden">
+              <Image
+                src={post.image}
+                alt={post.title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 768px"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-bg-main/40 via-transparent to-navy-900/20" />
+            </div>
+          </div>
+        </Container>
+      )}
 
       <article className="py-12 sm:py-16">
         <Container>

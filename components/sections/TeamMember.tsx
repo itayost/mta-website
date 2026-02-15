@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { Card } from '@/components/ui/Card'
 import { Badge } from '@/components/ui/Badge'
 import type { TeamMember as TeamMemberType } from '@/types/team'
@@ -19,8 +20,18 @@ export function TeamMember({ member }: TeamMemberProps) {
 
   return (
     <Card className="text-center">
-      <div className="mx-auto mb-4 flex size-28 items-center justify-center rounded-full bg-bg-surface ring-4 ring-primary/20">
-        <span className="text-4xl font-black text-primary select-none">{initials}</span>
+      <div className="mx-auto mb-4 relative flex size-28 items-center justify-center rounded-full bg-bg-surface ring-4 ring-primary/20 overflow-hidden">
+        {member.image ? (
+          <Image
+            src={member.image}
+            alt={member.name}
+            fill
+            className="object-cover object-top"
+            sizes="112px"
+          />
+        ) : (
+          <span className="text-4xl font-black text-primary select-none">{initials}</span>
+        )}
       </div>
       <h3 className="text-xl font-bold text-text-primary">{member.name}</h3>
       <p className="text-primary font-semibold mt-1">{member.role}</p>

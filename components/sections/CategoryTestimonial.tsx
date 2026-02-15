@@ -1,8 +1,17 @@
+import Image from 'next/image'
 import { Quote, Star } from 'lucide-react'
 import type { Testimonial } from '@/types/testimonial'
 
 interface CategoryTestimonialProps {
   testimonial: Testimonial
+}
+
+function getInitials(name: string): string {
+  const parts = name.split(' ').filter(Boolean)
+  if (parts.length >= 2) {
+    return `${parts[0][0]}${parts[1][0]}`
+  }
+  return parts[0]?.[0] ?? ''
 }
 
 export function CategoryTestimonial({ testimonial }: CategoryTestimonialProps) {
@@ -20,9 +29,24 @@ export function CategoryTestimonial({ testimonial }: CategoryTestimonialProps) {
         &ldquo;{testimonial.content}&rdquo;
       </blockquote>
 
-      <footer className="text-sm">
-        <span className="font-semibold text-text-primary">{testimonial.name}</span>
-        <span className="text-text-muted/60"> — {testimonial.role}</span>
+      <footer className="flex items-center gap-3 text-sm">
+        {testimonial.image ? (
+          <Image
+            src={testimonial.image}
+            alt={testimonial.name}
+            width={40}
+            height={40}
+            className="size-10 rounded-full ring-2 ring-primary/20 object-cover"
+          />
+        ) : (
+          <div className="size-10 rounded-full ring-2 ring-primary/20 bg-bg-surface flex items-center justify-center">
+            <span className="text-xs font-bold text-primary select-none">{getInitials(testimonial.name)}</span>
+          </div>
+        )}
+        <div>
+          <span className="font-semibold text-text-primary">{testimonial.name}</span>
+          <span className="text-text-muted/60 block">{testimonial.role}</span>
+        </div>
       </footer>
     </div>
   )

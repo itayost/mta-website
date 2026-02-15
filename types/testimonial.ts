@@ -4,5 +4,6 @@ export interface Testimonial {
   role: string
   content: string
   rating: number
+  image?: string
   serviceCategoryId?: string
 }

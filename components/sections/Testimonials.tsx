@@ -1,8 +1,17 @@
+import Image from 'next/image'
 import { Container } from '@/components/ui/Container'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { AnimateOnScroll } from '@/components/ui/motion'
 import { TestimonialCarousel } from './TestimonialCarousel'
 import { testimonials } from '@/data/testimonials'
+
+function getInitials(name: string): string {
+  const parts = name.split(' ').filter(Boolean)
+  if (parts.length >= 2) {
+    return `${parts[0][0]}${parts[1][0]}`
+  }
+  return parts[0]?.[0] ?? ''
+}
 
 export function Testimonials() {
   const pullQuote = testimonials[0]
@@ -30,10 +39,25 @@ export function Testimonials() {
               <p className="text-xl sm:text-2xl italic text-text-primary/90 leading-relaxed">
                 {pullQuote.content}
               </p>
-              <footer className="mt-4 text-sm text-text-muted">
-                <span className="font-semibold text-text-primary">{pullQuote.name}</span>
-                <span className="mx-2">—</span>
-                <span>{pullQuote.role}</span>
+              <footer className="mt-4 flex flex-col items-center gap-3">
+                {pullQuote.image ? (
+                  <Image
+                    src={pullQuote.image}
+                    alt={pullQuote.name}
+                    width={56}
+                    height={56}
+                    className="size-14 rounded-full ring-2 ring-gold/30 object-cover"
+                  />
+                ) : (
+                  <div className="size-14 rounded-full ring-2 ring-gold/30 bg-bg-surface flex items-center justify-center">
+                    <span className="text-lg font-bold text-primary select-none">{getInitials(pullQuote.name)}</span>
+                  </div>
+                )}
+                <div className="text-sm text-text-muted">
+                  <span className="font-semibold text-text-primary">{pullQuote.name}</span>
+                  <span className="mx-2">—</span>
+                  <span>{pullQuote.role}</span>
+                </div>
               </footer>
             </blockquote>
           </AnimateOnScroll>

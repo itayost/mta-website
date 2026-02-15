@@ -11,6 +11,7 @@ export const blogPosts: BlogPost[] = [
     author: 'סמי מזון',
     tags: ['דוח שנתי', 'מס הכנסה', 'מדריכים'],
     readTime: 8,
+    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&h=630&fit=crop',
   },
   {
     slug: 'freelancer-tax-tips',
@@ -22,6 +23,7 @@ export const blogPosts: BlogPost[] = [
     author: 'יוסי מזון',
     tags: ['עצמאים', 'ייעוץ מס', 'חיסכון'],
     readTime: 6,
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
   },
   {
     slug: 'company-vs-freelancer',
@@ -33,5 +35,6 @@ export const blogPosts: BlogPost[] = [
     author: 'סמי מזון',
     tags: ['חברות', 'עצמאים', 'הקמת עסק'],
     readTime: 10,
+    image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200&h=630&fit=crop',
   },
 ]
