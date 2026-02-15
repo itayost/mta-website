@@ -7,6 +7,8 @@ export interface Service {
   icon: string
   audiences: Audience[]
   featured: boolean
+  problem: string
+  benefits: string[]
 }
 
 export interface ServiceCategory {

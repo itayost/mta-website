@@ -1,9 +1,15 @@
 import type { Metadata } from 'next'
 import { Container } from '@/components/ui/Container'
 import { SectionHeading } from '@/components/ui/SectionHeading'
+import { GlowDivider } from '@/components/ui/GlowDivider'
 import { PageHero } from '@/components/sections/PageHero'
+import { TrustBar } from '@/components/sections/TrustBar'
+import { StatsCounter } from '@/components/sections/StatsCounter'
+import { ValuesGrid } from '@/components/sections/ValuesGrid'
 import { TeamMember } from '@/components/sections/TeamMember'
-import { CtaBanner } from '@/components/sections/CtaBanner'
+import { AboutTestimonial } from '@/components/sections/AboutTestimonial'
+import { ProcessSteps } from '@/components/sections/ProcessSteps'
+import { AboutCta } from '@/components/sections/AboutCta'
 import { PageTransition, AnimateOnScroll, StaggerChildren, StaggerItem } from '@/components/ui/motion'
 import { teamMembers } from '@/data/team'
 import { generatePageMetadata, buildLocalBusinessJsonLd } from '@/lib/seo'
@@ -23,9 +29,19 @@ const timelineItems = [
     description: 'רו"ח סמי מזון מקים את המשרד ומתחיל לשרת לקוחות פרטיים ועסקיים באזור חיפה והצפון.',
   },
   {
-    year: '2000+',
+    year: '1995',
+    title: 'התרחבות תחומי המיסוי',
+    description: 'המשרד מוסיף שירותי מיסוי מקרקעין, מיסוי בינלאומי וייעוץ עסקי לצד שירותי הליבה.',
+  },
+  {
+    year: '2005',
     title: 'יוסי מזון מצטרף כשותף',
-    description: 'עם הצטרפותו של יוסי מזון כשותף, המשרד מתרחב ומגוון את השירותים המקצועיים שלו.',
+    description: 'עם הצטרפותו של יוסי מזון כשותף, המשרד מתרחב ל-17 שירותים מקצועיים ומגוון את קהל הלקוחות.',
+  },
+  {
+    year: '2015',
+    title: 'מעל 500 לקוחות פעילים',
+    description: 'המשרד חוצה את רף 500 הלקוחות הפעילים ומטמיע מערכות דיגיטליות לשירות מהיר ומדויק יותר.',
   },
   {
     year: '2024',
@@ -37,24 +53,6 @@ const timelineItems = [
 export default function AboutPage() {
   const jsonLd = buildLocalBusinessJsonLd()
 
-  const processSteps = [
-    {
-      step: '01',
-      title: 'פגישת היכרות',
-      desc: 'פגישה ראשונית ללא עלות להבנת הצרכים שלכם ולבניית תוכנית עבודה מותאמת.',
-    },
-    {
-      step: '02',
-      title: 'ליווי שוטף',
-      desc: 'טיפול מקצועי ושוטף בכל ענייני החשבונאות והמיסוי, עם זמינות מלאה.',
-    },
-    {
-      step: '03',
-      title: 'אופטימיזציה',
-      desc: 'בחינה מתמדת של הזדמנויות לחיסכון במס ושיפור התנהלות פיננסית.',
-    },
-  ]
-
   return (
     <PageTransition>
       <script
@@ -64,9 +62,13 @@ export default function AboutPage() {
 
       <PageHero
         title="אודות משרד מזון"
-        subtitle="מעל 40 שנות מקצוענות, אמינות ושירות אישי"
+        subtitle="מעל 40 שנה של ליווי לקוחות לתוצאות פיננסיות טובות יותר"
         variant="about"
       />
+
+      <TrustBar />
+
+      <StatsCounter />
 
       {/* Timeline Story */}
       <section className="py-20 sm:py-28">
@@ -121,6 +123,12 @@ export default function AboutPage() {
         </Container>
       </section>
 
+      <GlowDivider />
+
+      <ValuesGrid />
+
+      <GlowDivider />
+
       <section className="py-20 sm:py-28 bg-bg-surface">
         <Container>
           <SectionHeading
@@ -137,33 +145,11 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="py-20 sm:py-28">
-        <Container>
-          <SectionHeading
-            title="הגישה שלנו"
-            subtitle="איך אנחנו עובדים"
-          />
-          <div className="relative max-w-4xl mx-auto">
-            {/* Visual connecting line */}
-            <div className="hidden sm:block absolute top-7 inset-x-[15%] h-0.5 bg-white/10" aria-hidden="true" />
-            <StaggerChildren staggerDelay={0.15} className="grid grid-cols-1 gap-8 sm:grid-cols-3">
-              {processSteps.map((item) => (
-                <StaggerItem key={item.step}>
-                  <div className="text-center relative">
-                    <span className="inline-flex size-14 items-center justify-center rounded-full bg-primary text-xl font-bold text-bg-main mb-4 relative z-10">
-                      {item.step}
-                    </span>
-                    <h3 className="text-lg font-extrabold text-text-primary mb-2">{item.title}</h3>
-                    <p className="text-text-muted">{item.desc}</p>
-                  </div>
-                </StaggerItem>
-              ))}
-            </StaggerChildren>
-          </div>
-        </Container>
-      </section>
+      <AboutTestimonial />
 
-      <CtaBanner />
+      <ProcessSteps />
+
+      <AboutCta />
     </PageTransition>
   )
 }

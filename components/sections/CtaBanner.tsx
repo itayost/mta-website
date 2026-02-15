@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowLeft, Phone } from 'lucide-react'
+import { ArrowLeft, Phone, Sparkles } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { AnimateOnScroll } from '@/components/ui/motion'
 import { contactInfo } from '@/data/contact'
@@ -16,22 +16,36 @@ export function CtaBanner() {
               backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
               backgroundSize: '20px 20px',
             }}
+            aria-hidden="true"
           />
 
           <AnimateOnScroll preset="fade-in">
             <div className="relative">
-              <h2 className="text-4xl font-extrabold text-white sm:text-5xl">
+              <div className="mx-auto mb-6 flex size-16 items-center justify-center rounded-full bg-primary/10">
+                <Sparkles className="size-8 text-primary" />
+              </div>
+
+              <h2 className="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">
                 רוצים לדעת כמה אתם יכולים לחסוך?
               </h2>
               <p className="mt-4 font-light text-lg text-text-muted max-w-xl mx-auto">
                 פגישת ייעוץ ראשונית ללא עלות. נשמח ללוות אתכם בכל צורך חשבונאי או מיסויי.
               </p>
+
+              <div className="mt-6 flex justify-center gap-6 text-sm text-text-muted/60">
+                <span>ללא התחייבות</span>
+                <span className="text-white/20">|</span>
+                <span>תוך שעתיים</span>
+                <span className="text-white/20">|</span>
+                <span>חינם לחלוטין</span>
+              </div>
+
               <div className="mt-8 flex flex-wrap justify-center gap-4">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-base font-semibold text-bg-main shadow-lg shadow-primary/25 hover:bg-primary-dark hover:text-white transition-all active:scale-[0.98] backdrop-blur-sm"
+                  className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-base font-semibold text-bg-main shadow-lg shadow-primary/25 hover:bg-primary-dark hover:text-white transition-all active:scale-[0.98] btn-shimmer"
                 >
-                  <span>צרו קשר</span>
+                  <span>פגישת ייעוץ חינם</span>
                   <ArrowLeft className="size-5" />
                 </Link>
                 <a

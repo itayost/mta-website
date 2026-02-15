@@ -58,7 +58,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               className="inline-flex items-center gap-1 text-sm text-primary hover:text-primary-dark transition-colors mb-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ring-offset-bg-main rounded-sm"
             >
               <ArrowRight className="size-4" />
-              <span>חזרה לבלוג</span>
+              <span>חזרה למרכז הידע</span>
             </Link>
 
             <h1 className="text-3xl font-extrabold text-text-primary sm:text-4xl">
@@ -75,6 +75,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <div className="flex items-center gap-1.5">
                 <User className="size-4" />
                 <span>{post.author}</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span>{post.readTime} דק׳ קריאה</span>
               </div>
             </div>
 

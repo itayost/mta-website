@@ -1,8 +1,11 @@
 import type { Metadata } from 'next'
 import { Container } from '@/components/ui/Container'
 import { PageHero } from '@/components/sections/PageHero'
+import { TrustBar } from '@/components/sections/TrustBar'
 import { ServicesFilteredList } from '@/components/sections/ServicesFilteredList'
-import { CtaBanner } from '@/components/sections/CtaBanner'
+import { ProcessSteps } from '@/components/sections/ProcessSteps'
+import { ServicesNotSureCta } from '@/components/sections/ServicesNotSureCta'
+import { GlowDivider } from '@/components/ui/GlowDivider'
 import { PageTransition } from '@/components/ui/motion'
 import { serviceCategories } from '@/data/services'
 import { generatePageMetadata, buildLocalBusinessJsonLd } from '@/lib/seo'
@@ -30,13 +33,19 @@ export default function ServicesPage() {
         subtitle="17 שירותים מקצועיים לעצמאים, שכירים וחברות"
       />
 
+      <TrustBar />
+
       <section className="py-20 sm:py-28">
         <Container>
           <ServicesFilteredList categories={serviceCategories} />
         </Container>
       </section>
 
-      <CtaBanner />
+      <GlowDivider />
+      <ProcessSteps />
+      <GlowDivider />
+
+      <ServicesNotSureCta />
     </PageTransition>
   )
 }

@@ -6,5 +6,6 @@ export interface BlogPost {
   date: string
   author: string
   tags: string[]
+  readTime: number
   image?: string
 }

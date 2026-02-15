@@ -1,9 +1,17 @@
 import Link from 'next/link'
-import { Phone, ArrowLeft } from 'lucide-react'
+import { Phone, ArrowLeft, Star } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { AnimateOnScroll, StaggerChildren, StaggerItem } from '@/components/ui/motion'
 import { Parallax } from '@/components/ui/motion/Parallax'
+import { RotatingText } from './RotatingText'
 import { contactInfo } from '@/data/contact'
+
+const rotatingPhrases = [
+  'חיסכון במס לעצמאים',
+  'דוחות שנתיים לשכירים',
+  'ביקורת חשבונות לחברות',
+  'ייעוץ מס אישי ומקצועי',
+]
 
 export function Hero() {
   return (
@@ -43,8 +51,19 @@ export function Hero() {
             </p>
           </AnimateOnScroll>
 
+          {/* Rotating text — audience-specific benefits */}
+          <AnimateOnScroll preset="fade-in" delay={0.25}>
+            <div className="mt-4 h-8 flex items-center">
+              <span className="text-text-muted/60 text-sm me-2">|</span>
+              <RotatingText
+                phrases={rotatingPhrases}
+                className="text-sm font-medium text-gold"
+              />
+            </div>
+          </AnimateOnScroll>
+
           {/* Trust badges */}
-          <StaggerChildren className="mt-8 flex flex-wrap gap-3">
+          <StaggerChildren className="mt-6 flex flex-wrap gap-3">
             {['40+ שנות ניסיון', '1,000+ לקוחות', 'מומחי מיסוי'].map((badge) => (
               <StaggerItem key={badge}>
                 <span className="inline-flex items-center rounded-full bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 text-sm font-medium text-white">
@@ -54,12 +73,24 @@ export function Hero() {
             ))}
           </StaggerChildren>
 
-          <AnimateOnScroll preset="fade-in-up" delay={0.3} className="mt-10 flex flex-wrap gap-4">
+          {/* Social proof micro-bar */}
+          <AnimateOnScroll preset="fade-in" delay={0.3}>
+            <div className="mt-4 flex items-center gap-1.5 text-text-muted/50 text-sm">
+              <div className="flex gap-0.5">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} className="size-3.5 fill-accent text-accent" />
+                ))}
+              </div>
+              <span>מדורג 5/5 על ידי לקוחותינו</span>
+            </div>
+          </AnimateOnScroll>
+
+          <AnimateOnScroll preset="fade-in-up" delay={0.35} className="mt-8 flex flex-wrap gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-base font-semibold text-bg-main shadow-lg shadow-primary/25 hover:bg-primary-dark hover:text-white hover:shadow-xl transition-all active:scale-[0.98]"
+              className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-base font-semibold text-bg-main shadow-lg shadow-primary/25 hover:bg-primary-dark hover:text-white hover:shadow-xl transition-all active:scale-[0.98] btn-shimmer"
             >
-              <span>קבעו פגישת ייעוץ</span>
+              <span>פגישת ייעוץ חינם</span>
               <ArrowLeft className="size-5" />
             </Link>
             <a

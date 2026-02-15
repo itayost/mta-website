@@ -10,6 +10,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-12-15',
     author: 'סמי מזון',
     tags: ['דוח שנתי', 'מס הכנסה', 'מדריכים'],
+    readTime: 8,
   },
   {
     slug: 'freelancer-tax-tips',
@@ -20,6 +21,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-11-20',
     author: 'יוסי מזון',
     tags: ['עצמאים', 'ייעוץ מס', 'חיסכון'],
+    readTime: 6,
   },
   {
     slug: 'company-vs-freelancer',
@@ -30,5 +32,6 @@ export const blogPosts: BlogPost[] = [
     date: '2025-10-08',
     author: 'סמי מזון',
     tags: ['חברות', 'עצמאים', 'הקמת עסק'],
+    readTime: 10,
   },
 ]

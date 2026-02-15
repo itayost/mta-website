@@ -4,9 +4,14 @@ import { Container } from '@/components/ui/Container'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { AnimateOnScroll, StaggerChildren, StaggerItem } from '@/components/ui/motion'
 import { ServiceCard } from './ServiceCard'
-import { featuredServices } from '@/data/services'
+import { featuredServices, services } from '@/data/services'
 
 export function ServicesOverview() {
+  const primaryServices = featuredServices.slice(0, 3)
+  const remainingServices = services.filter(
+    (s) => !primaryServices.some((p) => p.id === s.id)
+  )
+
   return (
     <section className="py-16 sm:py-24">
       <Container>
@@ -16,20 +21,37 @@ export function ServicesOverview() {
             subtitle="מגוון רחב של שירותי חשבונאות, מיסוי וייעוץ פיננסי"
           />
         </AnimateOnScroll>
-        <StaggerChildren className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {featuredServices.map((service) => (
+
+        {/* Primary 3 services — large cards */}
+        <StaggerChildren className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-10">
+          {primaryServices.map((service) => (
             <StaggerItem key={service.id}>
               <ServiceCard service={service} />
             </StaggerItem>
           ))}
         </StaggerChildren>
+
+        {/* Remaining services as compact pills */}
         <AnimateOnScroll preset="fade-in">
-          <div className="mt-12 text-center">
+          <div className="flex flex-wrap justify-center gap-2 mb-10">
+            {remainingServices.map((service) => (
+              <span
+                key={service.id}
+                className="inline-flex items-center rounded-full bg-white/5 border border-white/10 px-3.5 py-1.5 text-sm text-text-muted hover:bg-white/10 hover:text-text-primary transition-colors"
+              >
+                {service.title}
+              </span>
+            ))}
+          </div>
+        </AnimateOnScroll>
+
+        <AnimateOnScroll preset="fade-in">
+          <div className="text-center">
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 text-primary font-semibold hover:text-primary-dark transition-colors"
+              className="inline-flex items-center gap-2 rounded-xl bg-white/5 border border-white/10 px-6 py-3 text-base font-semibold text-text-primary hover:bg-white/10 transition-all"
             >
-              <span>לכל השירותים</span>
+              <span>לכל 17 השירותים</span>
               <ArrowLeft className="size-5" />
             </Link>
           </div>

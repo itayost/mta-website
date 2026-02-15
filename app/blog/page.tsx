@@ -1,21 +1,24 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowLeft, Calendar } from 'lucide-react'
+import { ArrowLeft, Calendar, Clock, User } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { PageHero } from '@/components/sections/PageHero'
+import { TrustBar } from '@/components/sections/TrustBar'
 import { BlogCard } from '@/components/sections/BlogCard'
+import { BlogNewsletter } from '@/components/sections/BlogNewsletter'
+import { BlogCalculatorCrosslink } from '@/components/sections/BlogCalculatorCrosslink'
+import { BlogCta } from '@/components/sections/BlogCta'
 import { Badge } from '@/components/ui/Badge'
-import { CtaBanner } from '@/components/sections/CtaBanner'
 import { PageTransition, AnimateOnScroll, StaggerChildren, StaggerItem } from '@/components/ui/motion'
 import { blogPosts } from '@/data/blog'
 import { generatePageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = generatePageMetadata({
-  title: 'בלוג',
+  title: 'מרכז הידע',
   description:
     'מאמרים ומדריכים בנושאי מס, חשבונאות ופיננסים. טיפים לעצמאים, שכירים וחברות מצוות משרד מזון.',
   path: '/blog',
-  keywords: ['מאמרי מס', 'בלוג חשבונאות', 'טיפים מס'],
+  keywords: ['מאמרי מס', 'בלוג חשבונאות', 'טיפים מס', 'מדריכי מיסוי'],
 })
 
 export default function BlogPage() {
@@ -24,12 +27,14 @@ export default function BlogPage() {
   return (
     <PageTransition>
       <PageHero
-        title="הבלוג שלנו"
-        subtitle="מאמרים, מדריכים וטיפים בנושאי מס וחשבונאות"
+        title="מרכז הידע"
+        subtitle="מאמרים, מדריכים וטיפים מקצועיים בנושאי מס וחשבונאות"
         variant="editorial"
       />
 
-      <section className="py-20 sm:py-28">
+      <TrustBar />
+
+      <section className="py-16 sm:py-24">
         <Container>
           {blogPosts.length > 0 ? (
             <div className="space-y-12">
@@ -37,14 +42,24 @@ export default function BlogPage() {
               {featuredPost && (
                 <AnimateOnScroll preset="fade-in-up">
                   <article className="rounded-2xl border border-white/5 bg-bg-card p-6 sm:p-8 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:border-white/10">
-                    <div className="flex items-center gap-2 text-sm text-text-muted/60 mb-3">
-                      <Calendar className="size-4" />
-                      <time dateTime={featuredPost.date}>
-                        {new Date(featuredPost.date).toLocaleDateString('he-IL')}
-                      </time>
-                      <span className="ms-2 text-xs font-medium text-primary bg-primary/10 rounded-full px-2.5 py-0.5">
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-text-muted/60 mb-4">
+                      <span className="text-xs font-medium text-primary bg-primary/10 rounded-full px-2.5 py-0.5">
                         מאמר מומלץ
                       </span>
+                      <div className="flex items-center gap-1.5">
+                        <Calendar className="size-3.5" />
+                        <time dateTime={featuredPost.date}>
+                          {new Date(featuredPost.date).toLocaleDateString('he-IL')}
+                        </time>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <Clock className="size-3.5" />
+                        <span>{featuredPost.readTime} דק׳ קריאה</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <User className="size-3.5" />
+                        <span>{featuredPost.author}</span>
+                      </div>
                     </div>
                     <h2 className="text-2xl font-extrabold text-text-primary mb-3">
                       {featuredPost.title}
@@ -91,7 +106,11 @@ export default function BlogPage() {
         </Container>
       </section>
 
-      <CtaBanner />
+      <BlogNewsletter />
+
+      <BlogCalculatorCrosslink />
+
+      <BlogCta />
     </PageTransition>
   )
 }

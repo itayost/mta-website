@@ -1,12 +1,17 @@
 import type { Metadata } from 'next'
-import { Phone } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
+import { SectionHeading } from '@/components/ui/SectionHeading'
+import { GlowDivider } from '@/components/ui/GlowDivider'
 import { PageHero } from '@/components/sections/PageHero'
+import { TrustBar } from '@/components/sections/TrustBar'
+import { ContactChannels } from '@/components/sections/ContactChannels'
 import { LeadForm } from '@/components/sections/LeadForm'
+import { ContactTestimonial } from '@/components/sections/ContactTestimonial'
+import { ContactResponseTimeline } from '@/components/sections/ContactResponseTimeline'
 import { ContactInfo } from '@/components/sections/ContactInfo'
 import { GoogleMap } from '@/components/sections/GoogleMap'
+import { ContactFaq } from '@/components/sections/ContactFaq'
 import { PageTransition, AnimateOnScroll } from '@/components/ui/motion'
-import { contactInfo } from '@/data/contact'
 import { generatePageMetadata, buildLocalBusinessJsonLd } from '@/lib/seo'
 
 export const metadata: Metadata = generatePageMetadata({
@@ -28,39 +33,25 @@ export default function ContactPage() {
       />
 
       <PageHero
-        title="צרו קשר"
-        subtitle="נשמח לשמוע מכם. השאירו פרטים ונחזור אליכם בהקדם."
-        variant="minimal"
+        title="דברו איתנו"
+        subtitle="הפגישה הראשונה חינם — בואו נכיר ונבין מה אתם צריכים"
+        variant="default"
       />
 
-      {/* Prominent phone CTA */}
-      <section className="py-10 sm:py-14 bg-bg-surface">
-        <Container>
-          <AnimateOnScroll preset="fade-in-up">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-center">
-              <div className="flex items-center gap-3">
-                <div className="flex size-12 items-center justify-center rounded-full bg-primary/10">
-                  <Phone className="size-6 text-primary" />
-                </div>
-                <div className="text-start">
-                  <p className="text-sm text-text-muted">מעדיפים לדבר?</p>
-                  <p className="text-2xl font-bold text-text-primary" dir="ltr">{contactInfo.phone}</p>
-                </div>
-              </div>
-              <a
-                href={`tel:${contactInfo.phone}`}
-                className="inline-flex items-center rounded-xl bg-primary px-6 py-3 text-base font-semibold text-bg-main shadow-md shadow-primary/20 hover:bg-primary-dark hover:text-white hover:shadow-lg transition-all active:scale-[0.98] btn-shimmer"
-              >
-                התקשרו עכשיו
-              </a>
-            </div>
-          </AnimateOnScroll>
-        </Container>
-      </section>
+      <TrustBar />
 
+      <ContactChannels />
+
+      <GlowDivider />
+
+      {/* Form + Testimonial side by side */}
       <section className="py-20 sm:py-28">
         <Container>
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
+          <SectionHeading
+            title="השאירו פרטים"
+            subtitle="נחזור אליכם תוך שעתיים בשעות הפעילות"
+          />
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 max-w-5xl mx-auto">
             <AnimateOnScroll preset="fade-in-up">
               <div className="relative">
                 {/* Form spotlight glow */}
@@ -70,19 +61,35 @@ export default function ContactPage() {
                 />
                 <div className="relative">
                   <LeadForm />
-                  <p className="text-sm text-text-muted/60 mt-4 text-center">
-                    נחזור אליכם תוך שעתיים בשעות הפעילות
-                  </p>
                 </div>
               </div>
             </AnimateOnScroll>
             <AnimateOnScroll preset="fade-in-up" delay={0.15}>
-              <div className="space-y-8">
+              <div className="space-y-6">
+                <ContactTestimonial />
                 <ContactInfo />
-                <GoogleMap />
               </div>
             </AnimateOnScroll>
           </div>
+        </Container>
+      </section>
+
+      <ContactResponseTimeline />
+
+      <ContactFaq />
+
+      {/* Map */}
+      <section className="py-16 sm:py-20">
+        <Container>
+          <SectionHeading
+            title="איפה אנחנו?"
+            subtitle="שדרות המגינים 18, חיפה — בלב העיר"
+          />
+          <AnimateOnScroll preset="fade-in-up">
+            <div className="max-w-4xl mx-auto">
+              <GoogleMap />
+            </div>
+          </AnimateOnScroll>
         </Container>
       </section>
     </PageTransition>

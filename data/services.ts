@@ -8,6 +8,12 @@ export const services: Service[] = [
     icon: 'BookOpen',
     audiences: ['freelancers', 'companies'],
     featured: true,
+    problem: 'ניהול ספרים לבד גוזל זמן ועלול לגרום לטעויות יקרות',
+    benefits: [
+      'דיווחים שוטפים ומדויקים למע"מ, ביטוח לאומי ומס הכנסה',
+      'התראות לפני מועדי הגשה למניעת קנסות',
+      'גישה למערכת מקוונת לצפייה בנתונים בזמן אמת',
+    ],
   },
   {
     id: 'tax-consulting',
@@ -16,6 +22,12 @@ export const services: Service[] = [
     icon: 'Calculator',
     audiences: ['freelancers', 'employees', 'companies'],
     featured: true,
+    problem: 'משלמים יותר מס ממה שצריך בלי לדעת על הטבות ופטורים',
+    benefits: [
+      'מיפוי מלא של הטבות מס, ניכויים וזיכויים רלוונטיים',
+      'תכנון מס שנתי מותאם אישית לחיסכון מקסימלי',
+      'ליווי בהחלטות פיננסיות משמעותיות כמו רכישת נכס או מכירת עסק',
+    ],
   },
   {
     id: 'audit',
@@ -24,6 +36,12 @@ export const services: Service[] = [
     icon: 'ClipboardCheck',
     audiences: ['companies'],
     featured: true,
+    problem: 'דוחות כספיים ללא ביקורת עלולים לעכב גיוס הון או קבלת אשראי',
+    benefits: [
+      'חוות דעת רואה חשבון מבקר בהתאם לתקנים בינלאומיים',
+      'זיהוי חולשות בבקרה פנימית והמלצות לשיפור',
+      'דוחות מבוקרים מוכנים להצגה לבנקים ומשקיעים',
+    ],
   },
   {
     id: 'annual-reports',
@@ -32,6 +50,12 @@ export const services: Service[] = [
     icon: 'FileText',
     audiences: ['freelancers', 'employees', 'companies'],
     featured: true,
+    problem: 'הגשה באיחור או עם שגיאות עלולה לגרור קנסות ועיכוב בהחזרי מס',
+    benefits: [
+      'הכנה מדויקת ומלאה של דוח שנתי למס הכנסה',
+      'מיצוי מלא של זיכויים וניכויים להחזר מס מקסימלי',
+      'הגשה בזמן עם מעקב סטטוס מול רשות המסים',
+    ],
   },
   {
     id: 'payroll',
@@ -40,6 +64,12 @@ export const services: Service[] = [
     icon: 'Users',
     audiences: ['companies'],
     featured: true,
+    problem: 'טעויות בתלושי שכר עלולות לגרור תביעות עובדים וקנסות מרשויות',
+    benefits: [
+      'חישוב שכר מדויק והפקת תלושים בהתאם לחוק',
+      'דיווחים חודשיים אוטומטיים לביטוח לאומי ומס הכנסה',
+      'ניהול זכויות עובדים — חופשה, מחלה, פנסיה וביטוח',
+    ],
   },
   {
     id: 'business-consulting',
@@ -48,6 +78,12 @@ export const services: Service[] = [
     icon: 'TrendingUp',
     audiences: ['freelancers', 'companies'],
     featured: true,
+    problem: 'החלטות עסקיות בלי ייעוץ מקצועי עלולות לעלות ביוקר',
+    benefits: [
+      'ליווי מהקמת העסק ועד לבחירת מבנה משפטי מיטבי',
+      'תכנון פיננסי ותזרימי לצמיחה בת-קיימא',
+      'אסטרטגיה עסקית מבוססת נתונים עם יעדים מדידים',
+    ],
   },
   {
     id: 'vat-reports',
@@ -56,6 +92,12 @@ export const services: Service[] = [
     icon: 'Receipt',
     audiences: ['freelancers', 'companies'],
     featured: false,
+    problem: 'דיווח מע"מ לא מדויק או באיחור גורר קנסות והצמדה',
+    benefits: [
+      'הגשת דוחות מע"מ תקופתיים במועד ובדיוק מלא',
+      'טיפול בהחזרי מע"מ תשומות למקסום תזרים המזומנים',
+      'ייצוג מקצועי מול רשות המסים במקרה של ביקורת',
+    ],
   },
   {
     id: 'tax-representation',
@@ -64,6 +106,12 @@ export const services: Service[] = [
     icon: 'Shield',
     audiences: ['freelancers', 'employees', 'companies'],
     featured: false,
+    problem: 'התמודדות לבד מול רשויות המס עלולה להוביל לתוצאות שליליות',
+    benefits: [
+      'ייצוג מקצועי בשומות, השגות וערעורים',
+      'ניסיון רב שנים מול פקידי שומה ורשויות מע"מ',
+      'הגנה על הזכויות שלכם תוך מיצוי כל אפשרות חוקית',
+    ],
   },
   {
     id: 'company-formation',
@@ -72,6 +120,12 @@ export const services: Service[] = [
     icon: 'Building',
     audiences: ['companies'],
     featured: false,
+    problem: 'הקמת חברה בלי ייעוץ נכון עלולה לגרום לבעיות מיסוי ומשפט בעתיד',
+    benefits: [
+      'בחירת מבנה משפטי מותאם — חברה, שותפות או עמותה',
+      'רישום מלא ברשם החברות, מע"מ, מס הכנסה וביטוח לאומי',
+      'ליווי משלב התכנון ועד לקבלת אישורי פעילות',
+    ],
   },
   {
     id: 'financial-statements',
@@ -80,6 +134,12 @@ export const services: Service[] = [
     icon: 'BarChart3',
     audiences: ['companies'],
     featured: false,
+    problem: 'דוחות כספיים לא מדויקים פוגעים בקבלת החלטות ובאמינות החברה',
+    benefits: [
+      'דוחות כספיים מדויקים בהתאם לתקני חשבונאות ישראליים ובינלאומיים',
+      'ניתוח מגמות פיננסיות ואינדיקטורים עסקיים מרכזיים',
+      'דוחות מותאמים לצרכי בנקים, משקיעים ורשויות',
+    ],
   },
   {
     id: 'tax-planning',
@@ -88,6 +148,12 @@ export const services: Service[] = [
     icon: 'Target',
     audiences: ['freelancers', 'employees', 'companies'],
     featured: false,
+    problem: 'ללא תכנון מס פרואקטיבי, נטל המס גדל משנה לשנה',
+    benefits: [
+      'אסטרטגיית מס ארוכת טווח המותאמת למצב האישי או העסקי',
+      'ניצול הטבות מס, הפקדות מוטבות ומכשירי חיסכון מוכרים',
+      'עדכונים שוטפים על שינויי חקיקה שמשפיעים עליכם',
+    ],
   },
   {
     id: 'real-estate-tax',
@@ -96,6 +162,12 @@ export const services: Service[] = [
     icon: 'Home',
     audiences: ['employees', 'companies'],
     featured: false,
+    problem: 'עסקאות נדל"ן ללא ייעוץ מס עלולות להוביל לתשלום מס מיותר',
+    benefits: [
+      'חישוב מס שבח ומס רכישה מדויק לפני ביצוע עסקה',
+      'תכנון מס מקרקעין למקסום פטורים והקלות',
+      'ליווי מקצועי מתחילת העסקה ועד להגשת הדיווח',
+    ],
   },
   {
     id: 'international-tax',
@@ -104,6 +176,12 @@ export const services: Service[] = [
     icon: 'Globe',
     audiences: ['freelancers', 'companies'],
     featured: false,
+    problem: 'פעילות בינלאומית ללא ייעוץ מס עלולה לגרום לכפל מס',
+    benefits: [
+      'ניצול אמנות מס למניעת כפל מס בין מדינות',
+      'ייעוץ לעולים חדשים ותושבים חוזרים על הטבות מס ייחודיות',
+      'דיווח נכון על הכנסות מחו"ל בהתאם לדין הישראלי',
+    ],
   },
   {
     id: 'estate-planning',
@@ -112,6 +190,12 @@ export const services: Service[] = [
     icon: 'Landmark',
     audiences: ['employees'],
     featured: false,
+    problem: 'העברת נכסים ללא תכנון מס עלולה לגרום להפסדים משמעותיים ליורשים',
+    benefits: [
+      'תכנון העברת נכסים בין-דורית בצורה מיטבית מבחינת מס',
+      'ייעוץ בנושא מתנות, ירושות וצוואות מהיבט מיסויי',
+      'מבנה משפטי מותאם לשמירה על הרכוש המשפחתי',
+    ],
   },
   {
     id: 'nonprofit',
@@ -120,6 +204,12 @@ export const services: Service[] = [
     icon: 'Heart',
     audiences: ['companies'],
     featured: false,
+    problem: 'עמותות מחויבות בדיווחים מורכבים ובביקורת שנתית לרשם העמותות',
+    benefits: [
+      'ביקורת שנתית ודוחות כספיים בהתאם לדרישות רשם העמותות',
+      'ייעוץ בנושא ניהול תקין וסעיף 46 לפקודת מס הכנסה',
+      'ליווי בהגשת בקשות למענקים ותמיכות ממשלתיות',
+    ],
   },
   {
     id: 'due-diligence',
@@ -128,6 +218,12 @@ export const services: Service[] = [
     icon: 'Search',
     audiences: ['companies'],
     featured: false,
+    problem: 'רכישת עסק בלי בדיקת נאותות חושפת אתכם לסיכונים נסתרים',
+    benefits: [
+      'בדיקה פיננסית מקיפה של חברת יעד לפני רכישה או מיזוג',
+      'זיהוי סיכונים מיסויים, חשבונאיים ומשפטיים נסתרים',
+      'דוח נאותות מפורט עם המלצות לנקודות למשא ומתן',
+    ],
   },
   {
     id: 'capital-market',
@@ -136,6 +232,12 @@ export const services: Service[] = [
     icon: 'LineChart',
     audiences: ['employees', 'companies'],
     featured: false,
+    problem: 'רווחים מהשקעות ללא דיווח נכון עלולים לגרור שומות מס גבוהות',
+    benefits: [
+      'ייעוץ מס מותאם לתיק ההשקעות שלכם',
+      'אופטימיזציה של מועדי מכירה לחיסכון במס רווח הון',
+      'דיווח שנתי מלא על הכנסות משוק ההון ורווחי הון',
+    ],
   },
 ]
 

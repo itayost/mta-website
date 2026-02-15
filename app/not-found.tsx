@@ -7,7 +7,7 @@ const helpfulLinks = [
   { href: '/services', label: 'שירותים' },
   { href: '/contact', label: 'צור קשר' },
   { href: '/about', label: 'אודות' },
-  { href: '/blog', label: 'בלוג' },
+  { href: '/blog', label: 'מרכז הידע' },
 ]
 
 export default function NotFound() {

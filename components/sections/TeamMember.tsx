@@ -32,6 +32,15 @@ export function TeamMember({ member }: TeamMemberProps) {
           </Badge>
         ))}
       </div>
+      {member.specializations.length > 0 && (
+        <div className="mt-3 flex flex-wrap justify-center gap-2">
+          {member.specializations.map((spec) => (
+            <Badge key={spec} variant="accent">
+              {spec}
+            </Badge>
+          ))}
+        </div>
+      )}
     </Card>
   )
 }
