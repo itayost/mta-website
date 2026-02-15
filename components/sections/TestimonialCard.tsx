@@ -8,9 +8,12 @@ interface TestimonialCardProps {
 
 export function TestimonialCard({ testimonial }: TestimonialCardProps) {
   return (
-    <Card className="flex flex-col min-w-[300px] sm:min-w-0 relative">
+    <Card className="flex flex-col min-w-[300px] sm:min-w-0 relative overflow-hidden">
+      {/* Top accent bar */}
+      <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-l from-transparent via-accent/50 to-transparent" />
+
       {/* Decorative quote mark */}
-      <span className="absolute top-4 end-4 text-6xl leading-none text-primary/10 font-serif select-none" aria-hidden="true">
+      <span className="absolute top-4 end-4 text-7xl leading-none bg-gradient-to-b from-primary/20 to-transparent bg-clip-text text-transparent font-serif select-none" aria-hidden="true">
         &ldquo;
       </span>
 

@@ -32,7 +32,7 @@ export function Hero() {
           </AnimateOnScroll>
           <AnimateOnScroll preset="fade-in-up" delay={0.1}>
             <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-6xl lg:text-7xl">
-              רואי חשבון ויועצי מס
+              <span className="text-gradient-hero">רואי חשבון ויועצי מס</span>
               <span className="block text-accent mt-2">בחיפה</span>
             </h1>
           </AnimateOnScroll>

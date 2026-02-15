@@ -8,6 +8,7 @@ import { Container } from '@/components/ui/Container'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { PageTransition, AnimateOnScroll } from '@/components/ui/motion'
 import { WaveDivider } from '@/components/ui/WaveDivider'
+import { GlowDivider } from '@/components/ui/GlowDivider'
 import { buildLocalBusinessJsonLd } from '@/lib/seo'
 
 export default function HomePage() {
@@ -22,13 +23,15 @@ export default function HomePage() {
       <Hero />
       <WaveDivider />
       <ServicesOverview />
+      <GlowDivider />
       <StatsCounter />
       <Testimonials />
+      <GlowDivider />
       <WaveDivider color="fill-bg-surface" flipped />
       <section className="py-20 sm:py-28 bg-bg-surface">
         <Container>
           <div className="mx-auto max-w-xl">
-            <AnimateOnScroll preset="fade-in-up">
+            <AnimateOnScroll preset="blur-in" ease="gentle">
               <SectionHeading
                 title="השאירו פרטים"
                 subtitle="מלאו את הטופס ונחזור אליכם בהקדם"

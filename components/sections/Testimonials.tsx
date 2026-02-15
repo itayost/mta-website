@@ -14,7 +14,7 @@ export function Testimonials() {
             subtitle="אלפי לקוחות מרוצים לאורך עשרות שנים"
           />
         </AnimateOnScroll>
-        <AnimateOnScroll>
+        <AnimateOnScroll preset="scale-in" ease="gentle">
           <TestimonialCarousel testimonials={testimonials} />
         </AnimateOnScroll>
       </Container>

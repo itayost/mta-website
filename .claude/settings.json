@@ -3,13 +3,23 @@
     "PreToolUse": [
       {
         "matcher": "Edit|Write",
-        "command": "echo \"$CLAUDE_FILE_PATH\" | grep -qE '(package-lock\\.json|yarn\\.lock|\\.env)' && echo 'BLOCK: This file should not be edited directly' && exit 1 || true"
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"$CLAUDE_FILE_PATH\" | grep -qE '(package-lock\\.json|yarn\\.lock|\\.env)' && echo 'BLOCK: This file should not be edited directly' && exit 1 || true"
+          }
+        ]
       }
     ],
     "PostToolUse": [
       {
         "matcher": "Edit|Write",
-        "command": "file=\"$CLAUDE_FILE_PATH\"; [[ \"$file\" == *.ts || \"$file\" == *.tsx ]] && npx next lint --fix --file \"$file\" 2>/dev/null || true"
+        "hooks": [
+          {
+            "type": "command",
+            "command": "file=\"$CLAUDE_FILE_PATH\"; [[ \"$file\" == *.ts || \"$file\" == *.tsx ]] && npx next lint --fix --file \"$file\" 2>/dev/null || true"
+          }
+        ]
       }
     ],
     "Notification": [
