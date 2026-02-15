@@ -18,13 +18,14 @@ export function TestimonialCarousel({ testimonials }: TestimonialCarouselProps) 
     const container = scrollRef.current
     if (!container) return
     const cards = container.querySelectorAll<HTMLDivElement>('[data-carousel-card]')
-    if (cards[index]) {
-      cards[index].scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-        inline: 'start',
-      })
-    }
+    if (!cards[index]) return
+    // Use scrollTo on the container to avoid scrolling the entire page
+    const isRtl = getComputedStyle(container).direction === 'rtl'
+    const cardOffset = cards[index].offsetLeft
+    const scrollTarget = isRtl
+      ? -(container.scrollWidth - container.clientWidth - cardOffset)
+      : cardOffset
+    container.scrollTo({ left: scrollTarget, behavior: 'smooth' })
   }, [])
 
   // Track active card via scroll position
