@@ -11,14 +11,14 @@ interface BlogCardProps {
 export function BlogCard({ post }: BlogCardProps) {
   return (
     <Card hover>
-      <div className="flex items-center gap-2 text-sm text-neutral-500 mb-3">
+      <div className="flex items-center gap-2 text-sm text-text-muted/60 mb-3">
         <Calendar className="size-4" />
         <time dateTime={post.date}>
           {new Date(post.date).toLocaleDateString('he-IL')}
         </time>
       </div>
-      <h3 className="text-lg font-bold text-neutral-900 mb-2">{post.title}</h3>
-      <p className="text-neutral-600 text-sm leading-relaxed mb-4">{post.excerpt}</p>
+      <h3 className="text-lg font-extrabold text-text-primary mb-2">{post.title}</h3>
+      <p className="text-text-muted text-sm leading-relaxed mb-4">{post.excerpt}</p>
       <div className="flex items-center justify-between">
         <div className="flex flex-wrap gap-2">
           {post.tags.slice(0, 2).map((tag) => (
@@ -29,7 +29,7 @@ export function BlogCard({ post }: BlogCardProps) {
         </div>
         <Link
           href={`/blog/${post.slug}`}
-          className="inline-flex items-center gap-1 text-sm font-semibold text-primary-600 hover:text-primary-700 transition-colors"
+          className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:text-primary-dark transition-colors"
         >
           <span>קרא עוד</span>
           <ArrowLeft className="size-4" />

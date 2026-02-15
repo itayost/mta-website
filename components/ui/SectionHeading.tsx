@@ -19,13 +19,13 @@ export function SectionHeading({
     <div className={cn(centered && 'text-center', 'mb-12', className)}>
       <h2
         id={id}
-        className="text-4xl font-extrabold text-neutral-900 sm:text-5xl"
+        className="text-4xl font-extrabold text-text-primary sm:text-5xl"
       >
         {title}
       </h2>
-      <div className={cn('w-12 h-1 bg-accent-500 rounded-full mt-4', centered && 'mx-auto')} />
+      <div className={cn('w-12 h-1 bg-primary rounded-full mt-4', centered && 'mx-auto')} />
       {subtitle && (
-        <p className="mt-4 font-light text-xl text-neutral-600 max-w-2xl mx-auto">{subtitle}</p>
+        <p className="mt-4 font-light text-xl text-text-muted max-w-2xl mx-auto">{subtitle}</p>
       )}
     </div>
   )

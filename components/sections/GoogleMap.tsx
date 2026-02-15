@@ -5,7 +5,7 @@ export function GoogleMap() {
   const query = encodeURIComponent(contactInfo.address.full)
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-neutral-200">
+    <div className="overflow-hidden rounded-2xl border border-white/10">
       <iframe
         title="מיקום משרד מזון על המפה"
         src={`https://www.google.com/maps?q=${lat},${lng}&z=16&output=embed`}

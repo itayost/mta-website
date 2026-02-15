@@ -7,11 +7,11 @@ interface BadgeProps {
 }
 
 const variantStyles = {
-  primary: 'bg-primary-100 text-primary-700',
-  accent: 'bg-accent-100 text-accent-600',
-  neutral: 'bg-neutral-100 text-neutral-600',
-  success: 'bg-green-100 text-green-700',
-  error: 'bg-red-100 text-red-700',
+  primary: 'bg-primary/10 text-primary',
+  accent: 'bg-accent/10 text-accent',
+  neutral: 'bg-white/5 text-text-muted',
+  success: 'bg-success/10 text-success',
+  error: 'bg-error/10 text-error',
 }
 
 export function Badge({ children, variant = 'primary', className }: BadgeProps) {

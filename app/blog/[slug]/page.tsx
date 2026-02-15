@@ -6,6 +6,7 @@ import { Container } from '@/components/ui/Container'
 import { Badge } from '@/components/ui/Badge'
 import { PageHero } from '@/components/sections/PageHero'
 import { CtaBanner } from '@/components/sections/CtaBanner'
+import { PageTransition } from '@/components/ui/motion'
 import { blogPosts } from '@/data/blog'
 
 interface BlogPostPageProps {
@@ -44,7 +45,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   return (
-    <>
+    <PageTransition>
       <PageHero title={post.title} />
 
       <article className="py-20 sm:py-28">
@@ -52,13 +53,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <div className="max-w-3xl mx-auto">
             <Link
               href="/blog"
-              className="inline-flex items-center gap-1 text-sm text-primary-600 hover:text-primary-700 transition-colors mb-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 rounded-sm"
+              className="inline-flex items-center gap-1 text-sm text-primary hover:text-primary-dark transition-colors mb-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ring-offset-bg-main rounded-sm"
             >
               <ArrowRight className="size-4" />
               <span>חזרה לבלוג</span>
             </Link>
 
-            <div className="flex flex-wrap items-center gap-4 text-sm text-neutral-500 mb-8">
+            <div className="flex flex-wrap items-center gap-4 text-sm text-text-muted/60 mb-8">
               <div className="flex items-center gap-1.5">
                 <Calendar className="size-4" />
                 <time dateTime={post.date}>
@@ -79,7 +80,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               ))}
             </div>
 
-            <div className="prose prose-lg max-w-none text-neutral-700 leading-relaxed">
+            <div className="prose prose-lg max-w-none text-text-muted leading-relaxed">
               <p>{post.content}</p>
             </div>
           </div>
@@ -87,6 +88,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       </article>
 
       <CtaBanner />
-    </>
+    </PageTransition>
   )
 }

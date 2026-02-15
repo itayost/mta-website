@@ -15,7 +15,7 @@ npm run lint         # ESLint
 ```
 app/                 # Next.js App Router pages (7 pages + API + 404)
 components/
-  ui/                # Primitives: Button, Card, Input, Textarea, Badge, Accordion, SectionHeading, Container
+  ui/                # Primitives: Button, Card, Input, Textarea, Badge, Accordion, SectionHeading, Container, WaveDivider
   layout/            # Header, Footer, MobileNav, WhatsAppButton
   sections/          # Page sections: Hero, PageHero, LeadForm, StatsCounter, etc.
 data/                # Static data (services, team, blog, FAQ, contact, navigation)
@@ -23,20 +23,83 @@ lib/                 # Utilities: fonts, schemas (Zod), SEO helpers, send-lead
 types/               # TypeScript interfaces
 ```
 
+## Design System — All-Dark Premium
+
+Single dark theme. No light mode, no `next-themes`, no `dark:` classes.
+
+### Color Tokens (`globals.css` @theme)
+
+| Token | Hex | Usage |
+|-------|-----|-------|
+| `primary` | `#4AAFE0` | Buttons, links, accents, focus rings |
+| `primary-dark` | `#1B6FAA` | Hover states |
+| `primary-deep` | `#0D4F7A` | Gradient midpoints |
+| `accent` | `#5CC8D9` | Secondary CTAs, stars, highlights |
+| `bg-main` | `#071A2E` | Page background |
+| `bg-surface` | `#0C2440` | Alternating sections, footer, drawer |
+| `bg-card` | `#122E4D` | Card backgrounds |
+| `text-primary` | `#F2F6FA` | Headlines, primary text |
+| `text-muted` | `#8AABC4` | Body text, descriptions |
+| `success` | `#34D399` | Form success states |
+| `error` | `#F87171` | Form errors, validation |
+| `navy-700..950` | `#0D4F7A..#041320` | Hero/CTA gradients |
+
+### Typography
+
+- **Font**: Heebo variable (100–900) via `lib/fonts.ts`
+- **Headlines**: `font-extrabold` or `font-black`, `text-text-primary`
+- **Body**: `font-light` or default, `text-text-muted`
+- **Small/labels**: `text-text-muted/60`
+
+### Button Variants
+
+| Variant | Classes |
+|---------|---------|
+| Primary | `bg-primary text-bg-main shadow-primary/20 hover:bg-primary-dark hover:text-white` |
+| Secondary | `bg-accent text-bg-main` |
+| Outline | `border-2 border-white/30 text-text-primary hover:bg-white/10` |
+| Ghost | `bg-white/5 backdrop-blur-sm text-text-primary border-white/10 hover:bg-white/10` |
+
+All buttons use `rounded-xl font-semibold`.
+
+### Card System
+
+- Base: `bg-bg-card rounded-2xl p-6 border border-white/5`
+- Hover: `hover:shadow-lg hover:-translate-y-1 transition-all duration-300`
+- Glass: `bg-white/5 backdrop-blur-sm border-white/10 hover:bg-white/10`
+
+### Form Inputs
+
+- `bg-bg-surface border-white/10 text-text-primary`
+- Focus: `focus:border-primary focus:ring-primary/20`
+- Labels: `text-text-muted`
+
+### Gradients
+
+- Hero/PageHero: `from-navy-900 via-navy-800 to-navy-950`
+- StatsCounter: `from-navy-800 via-primary-deep to-navy-900`
+- CtaBanner: `from-navy-700 via-navy-800 to-navy-900`
+- Header bar: animated gradient (primary → accent → primary) via `.gradient-bar`
+- Footer top: `from-primary via-accent to-primary`
+
+### Glass/Transparency Patterns
+
+- Trust badges: `bg-white/10 backdrop-blur-sm border-white/20`
+- Scrolled header: `bg-bg-main/92 backdrop-blur-xl border-white/5`
+- Borders: `border-white/5` (subtle), `border-white/10` (visible)
+
 ## Key Conventions
 
-- **Tailwind v4** with `@theme` block in `globals.css` — all custom colors use oklch
-- **Design tokens**: `primary-50..950`, `accent-50..950`, `success-500/600`, `error-500/600`, `neutral-50..900`
-- **Variable font**: Heebo 100–900 via `weight: 'variable'` in `lib/fonts.ts`
-- **Animations**: `animate-fade-in`, `animate-fade-in-up`, `animate-pulse-soft`, `animate-float` registered in @theme
+- **Tailwind v4** with `@theme` block in `globals.css` — hex color tokens
 - **`cn()` utility** (`lib/utils.ts`): Always use for conditional classNames — wraps clsx + tailwind-merge
 - **Component API**: Card accepts `hover` and `glass` props; SectionHeading accepts `id` for aria-labelledby
+- **Animations**: `animate-fade-in`, `animate-fade-in-up`, `animate-pulse-soft`, `animate-float`, `animate-gradient-shift`
 
 ## RTL / Hebrew
 
 - `dir="rtl"` and `lang="he"` set on `<html>` in layout.tsx
 - Use `start-*`/`end-*`/`inset-inline-*` — never `left-*`/`right-*`
-- MobileNav slide direction: `ltr:translate-x-full rtl:-translate-x-full` (not bare `rtl:-translate-x-full`)
+- MobileNav slide direction: `ltr:translate-x-full rtl:-translate-x-full`
 
 ## Accessibility
 
@@ -46,6 +109,7 @@ types/               # TypeScript interfaces
 - Forms: Input/Textarea wire `aria-describedby` to error IDs, `aria-invalid` on error
 - LeadForm success: `role="status"` + `aria-live="polite"`
 - All focusable elements get `:focus-visible` ring via globals.css base layer
+- Focus ring offset uses `ring-offset-bg-main` (dark background)
 
 ## Gotchas
 
@@ -54,3 +118,5 @@ types/               # TypeScript interfaces
 - `data/` files are static (no CMS) — all content changes are code changes
 - Tailwind v4 uses `@theme` (not `tailwind.config.ts`) for custom tokens
 - `next-env.d.ts` is gitignored — auto-generated by Next.js
+- **No `dark:` classes** — single dark theme only, no theme switching
+- **No `next-themes`** — removed from dependencies

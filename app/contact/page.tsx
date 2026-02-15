@@ -4,6 +4,7 @@ import { PageHero } from '@/components/sections/PageHero'
 import { LeadForm } from '@/components/sections/LeadForm'
 import { ContactInfo } from '@/components/sections/ContactInfo'
 import { GoogleMap } from '@/components/sections/GoogleMap'
+import { PageTransition, AnimateOnScroll } from '@/components/ui/motion'
 import { generatePageMetadata, buildLocalBusinessJsonLd } from '@/lib/seo'
 
 export const metadata: Metadata = generatePageMetadata({
@@ -18,7 +19,7 @@ export default function ContactPage() {
   const jsonLd = buildLocalBusinessJsonLd()
 
   return (
-    <>
+    <PageTransition>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -32,16 +33,20 @@ export default function ContactPage() {
       <section className="py-20 sm:py-28">
         <Container>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
-            <div>
-              <LeadForm />
-            </div>
-            <div className="space-y-8">
-              <ContactInfo />
-              <GoogleMap />
-            </div>
+            <AnimateOnScroll preset="fade-in-up">
+              <div>
+                <LeadForm />
+              </div>
+            </AnimateOnScroll>
+            <AnimateOnScroll preset="fade-in-up" delay={0.15}>
+              <div className="space-y-8">
+                <ContactInfo />
+                <GoogleMap />
+              </div>
+            </AnimateOnScroll>
           </div>
         </Container>
       </section>
-    </>
+    </PageTransition>
   )
 }

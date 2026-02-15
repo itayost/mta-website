@@ -3,6 +3,7 @@ import { Container } from '@/components/ui/Container'
 import { PageHero } from '@/components/sections/PageHero'
 import { ServiceCategory } from '@/components/sections/ServiceCategory'
 import { CtaBanner } from '@/components/sections/CtaBanner'
+import { PageTransition, AnimateOnScroll } from '@/components/ui/motion'
 import { serviceCategories } from '@/data/services'
 import { generatePageMetadata, buildLocalBusinessJsonLd } from '@/lib/seo'
 
@@ -18,7 +19,7 @@ export default function ServicesPage() {
   const jsonLd = buildLocalBusinessJsonLd()
 
   return (
-    <>
+    <PageTransition>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -33,13 +34,15 @@ export default function ServicesPage() {
         <Container>
           <div className="space-y-16">
             {serviceCategories.map((category) => (
-              <ServiceCategory key={category.id} category={category} />
+              <AnimateOnScroll preset="fade-in-up" key={category.id}>
+                <ServiceCategory category={category} />
+              </AnimateOnScroll>
             ))}
           </div>
         </Container>
       </section>
 
       <CtaBanner />
-    </>
+    </PageTransition>
   )
 }

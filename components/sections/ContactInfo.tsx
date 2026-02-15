@@ -6,41 +6,41 @@ export function ContactInfo() {
   return (
     <div className="space-y-6">
       <Card>
-        <h3 className="text-lg font-bold text-neutral-900 mb-4">פרטי התקשרות</h3>
+        <h3 className="text-lg font-bold text-text-primary mb-4">פרטי התקשרות</h3>
         <div className="space-y-4">
           <a
             href={`tel:${contactInfo.phone}`}
-            className="flex items-center gap-3 text-neutral-700 hover:text-primary-600 transition-colors"
+            className="flex items-center gap-3 text-text-muted hover:text-primary transition-colors"
           >
-            <div className="flex size-10 items-center justify-center rounded-lg bg-gradient-to-br from-primary-50 to-primary-100">
-              <Phone className="size-5 text-primary-600" />
+            <div className="flex size-10 items-center justify-center rounded-lg bg-bg-surface text-primary">
+              <Phone className="size-5" />
             </div>
             <div>
-              <p className="text-sm text-neutral-500">טלפון</p>
-              <p className="font-medium">{contactInfo.phone}</p>
+              <p className="text-sm text-text-muted/60">טלפון</p>
+              <p className="font-medium text-text-primary">{contactInfo.phone}</p>
             </div>
           </a>
 
           <a
             href={`mailto:${contactInfo.email}`}
-            className="flex items-center gap-3 text-neutral-700 hover:text-primary-600 transition-colors"
+            className="flex items-center gap-3 text-text-muted hover:text-primary transition-colors"
           >
-            <div className="flex size-10 items-center justify-center rounded-lg bg-gradient-to-br from-primary-50 to-primary-100">
-              <Mail className="size-5 text-primary-600" />
+            <div className="flex size-10 items-center justify-center rounded-lg bg-bg-surface text-primary">
+              <Mail className="size-5" />
             </div>
             <div>
-              <p className="text-sm text-neutral-500">אימייל</p>
-              <p className="font-medium">{contactInfo.email}</p>
+              <p className="text-sm text-text-muted/60">אימייל</p>
+              <p className="font-medium text-text-primary">{contactInfo.email}</p>
             </div>
           </a>
 
-          <div className="flex items-start gap-3 text-neutral-700">
-            <div className="flex size-10 items-center justify-center rounded-lg bg-gradient-to-br from-primary-50 to-primary-100 shrink-0">
-              <MapPin className="size-5 text-primary-600" />
+          <div className="flex items-start gap-3 text-text-muted">
+            <div className="flex size-10 items-center justify-center rounded-lg bg-bg-surface text-primary shrink-0">
+              <MapPin className="size-5" />
             </div>
             <div>
-              <p className="text-sm text-neutral-500">כתובת</p>
-              <p className="font-medium">{contactInfo.address.full}</p>
+              <p className="text-sm text-text-muted/60">כתובת</p>
+              <p className="font-medium text-text-primary">{contactInfo.address.full}</p>
             </div>
           </div>
         </div>
@@ -48,12 +48,12 @@ export function ContactInfo() {
 
       <Card>
         <div className="flex items-center gap-2 mb-3">
-          <div className="flex size-10 items-center justify-center rounded-lg bg-gradient-to-br from-primary-50 to-primary-100">
-            <Clock className="size-5 text-primary-600" />
+          <div className="flex size-10 items-center justify-center rounded-lg bg-bg-surface text-primary">
+            <Clock className="size-5" />
           </div>
-          <h3 className="text-lg font-bold text-neutral-900">שעות פעילות</h3>
+          <h3 className="text-lg font-bold text-text-primary">שעות פעילות</h3>
         </div>
-        <div className="space-y-1 text-neutral-700">
+        <div className="space-y-1 text-text-muted">
           {contactInfo.hours.map((h) => (
             <p key={h.label}>
               <span className="font-medium">{h.label}:</span> {h.display}

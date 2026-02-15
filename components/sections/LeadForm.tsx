@@ -44,14 +44,14 @@ export function LeadForm() {
 
   if (status === 'success') {
     return (
-      <div role="status" aria-live="polite" className="rounded-2xl border border-green-200 bg-green-50 p-8 text-center animate-fade-in">
-        <CheckCircle className="size-12 mx-auto text-green-500 mb-4" />
-        <h3 className="text-xl font-bold text-green-800 mb-2">הפנייה נשלחה בהצלחה!</h3>
-        <p className="text-green-700">ניצור אתכם קשר בהקדם האפשרי.</p>
+      <div role="status" aria-live="polite" className="rounded-2xl border border-success/20 bg-success/10 p-8 text-center animate-fade-in">
+        <CheckCircle className="size-12 mx-auto text-success mb-4" />
+        <h3 className="text-xl font-bold text-text-primary mb-2">הפנייה נשלחה בהצלחה!</h3>
+        <p className="text-success/80">ניצור אתכם קשר בהקדם האפשרי.</p>
         <button
           type="button"
           onClick={() => setStatus('idle')}
-          className="mt-4 text-sm text-green-600 underline hover:text-green-800"
+          className="mt-4 text-sm text-success underline hover:text-success/80"
         >
           שלחו פנייה נוספת
         </button>
@@ -63,7 +63,7 @@ export function LeadForm() {
     <Card>
       {/* Trust indicator */}
       <div className="flex items-center justify-center gap-2 mb-6">
-        <span className="inline-flex items-center rounded-full bg-accent-100 px-3 py-1 text-xs font-medium text-accent-700">
+        <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
           ייעוץ ראשוני ללא עלות
         </span>
       </div>
@@ -107,7 +107,7 @@ export function LeadForm() {
         />
 
         {status === 'error' && (
-          <p className="text-sm text-error-600" role="alert">
+          <p className="text-sm text-error" role="alert">
             אירעה שגיאה בשליחת הפנייה. אנא נסו שוב או התקשרו אלינו.
           </p>
         )}
@@ -126,7 +126,7 @@ export function LeadForm() {
           )}
         </Button>
 
-        <p className="flex items-center justify-center gap-1.5 text-xs text-neutral-500">
+        <p className="flex items-center justify-center gap-1.5 text-xs text-text-muted/60">
           <Shield className="size-3.5" />
           <span>המידע שלכם מאובטח</span>
         </p>

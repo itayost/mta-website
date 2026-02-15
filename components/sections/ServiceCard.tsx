@@ -4,6 +4,7 @@ import {
   Heart, Search, LineChart, type LucideIcon,
 } from 'lucide-react'
 import { Card } from '@/components/ui/Card'
+import { HoverScale } from '@/components/ui/motion/HoverScale'
 import type { Service } from '@/types/service'
 
 const iconMap: Record<string, LucideIcon> = {
@@ -21,11 +22,13 @@ export function ServiceCard({ service }: ServiceCardProps) {
 
   return (
     <Card hover>
-      <div className="flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary-50 to-primary-100 text-primary-600 mb-4">
-        <Icon className="size-6" />
-      </div>
-      <h3 className="text-lg font-bold text-neutral-900 mb-2">{service.title}</h3>
-      <p className="text-neutral-600 leading-relaxed text-sm">{service.description}</p>
+      <HoverScale>
+        <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary mb-4">
+          <Icon className="size-6" />
+        </div>
+      </HoverScale>
+      <h3 className="text-lg font-extrabold text-text-primary mb-2">{service.title}</h3>
+      <p className="text-text-muted leading-relaxed text-sm">{service.description}</p>
     </Card>
   )
 }

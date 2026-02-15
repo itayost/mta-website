@@ -6,33 +6,39 @@ import { CtaBanner } from '@/components/sections/CtaBanner'
 import { LeadForm } from '@/components/sections/LeadForm'
 import { Container } from '@/components/ui/Container'
 import { SectionHeading } from '@/components/ui/SectionHeading'
+import { PageTransition, AnimateOnScroll } from '@/components/ui/motion'
+import { WaveDivider } from '@/components/ui/WaveDivider'
 import { buildLocalBusinessJsonLd } from '@/lib/seo'
 
 export default function HomePage() {
   const jsonLd = buildLocalBusinessJsonLd()
 
   return (
-    <>
+    <PageTransition>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Hero />
+      <WaveDivider />
       <ServicesOverview />
       <StatsCounter />
       <Testimonials />
-      <section className="py-20 sm:py-28 bg-neutral-50">
+      <WaveDivider color="fill-bg-surface" flipped />
+      <section className="py-20 sm:py-28 bg-bg-surface">
         <Container>
           <div className="mx-auto max-w-xl">
-            <SectionHeading
-              title="השאירו פרטים"
-              subtitle="מלאו את הטופס ונחזור אליכם בהקדם"
-            />
-            <LeadForm />
+            <AnimateOnScroll preset="fade-in-up">
+              <SectionHeading
+                title="השאירו פרטים"
+                subtitle="מלאו את הטופס ונחזור אליכם בהקדם"
+              />
+              <LeadForm />
+            </AnimateOnScroll>
           </div>
         </Container>
       </section>
       <CtaBanner />
-    </>
+    </PageTransition>
   )
 }

@@ -3,6 +3,7 @@ import { Container } from '@/components/ui/Container'
 import { PageHero } from '@/components/sections/PageHero'
 import { BlogCard } from '@/components/sections/BlogCard'
 import { CtaBanner } from '@/components/sections/CtaBanner'
+import { PageTransition, StaggerChildren, StaggerItem } from '@/components/ui/motion'
 import { blogPosts } from '@/data/blog'
 import { generatePageMetadata } from '@/lib/seo'
 
@@ -16,7 +17,7 @@ export const metadata: Metadata = generatePageMetadata({
 
 export default function BlogPage() {
   return (
-    <>
+    <PageTransition>
       <PageHero
         title="הבלוג שלנו"
         subtitle="מאמרים, מדריכים וטיפים בנושאי מס וחשבונאות"
@@ -25,13 +26,15 @@ export default function BlogPage() {
       <section className="py-20 sm:py-28">
         <Container>
           {blogPosts.length > 0 ? (
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <StaggerChildren className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {blogPosts.map((post) => (
-                <BlogCard key={post.slug} post={post} />
+                <StaggerItem key={post.slug}>
+                  <BlogCard post={post} />
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerChildren>
           ) : (
-            <p className="text-center text-neutral-500 text-lg">
+            <p className="text-center text-text-muted text-lg">
               מאמרים חדשים יתפרסמו בקרוב. הישארו מעודכנים!
             </p>
           )}
@@ -39,6 +42,6 @@ export default function BlogPage() {
       </section>
 
       <CtaBanner />
-    </>
+    </PageTransition>
   )
 }

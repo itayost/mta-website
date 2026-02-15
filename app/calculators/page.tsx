@@ -4,6 +4,7 @@ import { Container } from '@/components/ui/Container'
 import { PageHero } from '@/components/sections/PageHero'
 import { Card } from '@/components/ui/Card'
 import { CtaBanner } from '@/components/sections/CtaBanner'
+import { PageTransition, StaggerChildren, StaggerItem } from '@/components/ui/motion'
 import { generatePageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = generatePageMetadata({
@@ -35,7 +36,7 @@ const upcomingCalculators = [
 
 export default function CalculatorsPage() {
   return (
-    <>
+    <PageTransition>
       <PageHero
         title="מחשבונים"
         subtitle="כלים חינמיים לחישובי מס ופיננסים"
@@ -43,24 +44,26 @@ export default function CalculatorsPage() {
 
       <section className="py-20 sm:py-28">
         <Container>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 max-w-3xl mx-auto">
+          <StaggerChildren className="grid grid-cols-1 gap-6 sm:grid-cols-2 max-w-3xl mx-auto">
             {upcomingCalculators.map((calc) => (
-              <Card key={calc.title} glass className="relative overflow-hidden">
-                <div className="absolute top-3 end-3">
-                  <span className="inline-flex items-center rounded-full bg-accent-100 px-3 py-1 text-xs font-medium text-accent-600">
-                    בקרוב
-                  </span>
-                </div>
-                <div className="flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary-50 to-primary-100 text-primary-600 mb-4">
-                  <Calculator className="size-6" />
-                </div>
-                <h3 className="text-lg font-bold text-neutral-900 mb-2">{calc.title}</h3>
-                <p className="text-neutral-600 text-sm">{calc.description}</p>
-              </Card>
+              <StaggerItem key={calc.title}>
+                <Card glass className="relative overflow-hidden">
+                  <div className="absolute top-3 end-3">
+                    <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+                      בקרוב
+                    </span>
+                  </div>
+                  <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary mb-4">
+                    <Calculator className="size-6" />
+                  </div>
+                  <h3 className="text-lg font-bold text-text-primary mb-2">{calc.title}</h3>
+                  <p className="text-text-muted text-sm">{calc.description}</p>
+                </Card>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerChildren>
 
-          <p className="text-center text-neutral-500 mt-12">
+          <p className="text-center text-text-muted/60 mt-12">
             המחשבונים בפיתוח ויהיו זמינים בקרוב. בינתיים, אתם מוזמנים לפנות אלינו
             לייעוץ אישי.
           </p>
@@ -68,6 +71,6 @@ export default function CalculatorsPage() {
       </section>
 
       <CtaBanner />
-    </>
+    </PageTransition>
   )
 }

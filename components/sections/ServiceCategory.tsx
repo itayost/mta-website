@@ -11,13 +11,15 @@ export function ServiceCategory({ category }: ServiceCategoryProps) {
   return (
     <section aria-labelledby={headingId}>
       <div className="flex items-center gap-3 mb-2">
-        <div className="w-8 h-1 bg-accent-500 rounded-full" />
-        <h3 id={headingId} className="text-2xl font-bold text-neutral-900">{category.title}</h3>
+        <div className="w-8 h-1 bg-primary rounded-full" />
+        <h3 id={headingId} className="text-2xl font-extrabold text-text-primary">{category.title}</h3>
       </div>
-      <p className="text-neutral-600 mb-6">{category.description}</p>
+      <p className="text-text-muted mb-6">{category.description}</p>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {category.services.map((service) => (
-          <ServiceCard key={service.id} service={service} />
+        {category.services.map((service, index) => (
+          <div key={service.id} className={index === 0 ? 'sm:col-span-2' : ''}>
+            <ServiceCard service={service} />
+          </div>
         ))}
       </div>
     </section>
