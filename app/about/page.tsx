@@ -3,7 +3,6 @@ import { Container } from '@/components/ui/Container'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { PageHero } from '@/components/sections/PageHero'
 import { TeamMember } from '@/components/sections/TeamMember'
-import { StatsCounter } from '@/components/sections/StatsCounter'
 import { CtaBanner } from '@/components/sections/CtaBanner'
 import { PageTransition, AnimateOnScroll, StaggerChildren, StaggerItem } from '@/components/ui/motion'
 import { teamMembers } from '@/data/team'
@@ -16,6 +15,24 @@ export const metadata: Metadata = generatePageMetadata({
   path: '/about',
   keywords: ['אודות משרד מזון', 'רואה חשבון ותיק חיפה'],
 })
+
+const timelineItems = [
+  {
+    year: '1980',
+    title: 'המשרד נוסד בחיפה',
+    description: 'רו"ח סמי מזון מקים את המשרד ומתחיל לשרת לקוחות פרטיים ועסקיים באזור חיפה והצפון.',
+  },
+  {
+    year: '2000+',
+    title: 'יוסי מזון מצטרף כשותף',
+    description: 'עם הצטרפותו של יוסי מזון כשותף, המשרד מתרחב ומגוון את השירותים המקצועיים שלו.',
+  },
+  {
+    year: '2024',
+    title: 'מעל 1,000 לקוחות מרוצים',
+    description: '17 שירותים מקצועיים, צוות מנוסה ומסור, ומעל ארבעה עשורים של מצוינות בתחום.',
+  },
+]
 
 export default function AboutPage() {
   const jsonLd = buildLocalBusinessJsonLd()
@@ -48,31 +65,58 @@ export default function AboutPage() {
       <PageHero
         title="אודות משרד מזון"
         subtitle="מעל 40 שנות מקצוענות, אמינות ושירות אישי"
+        variant="about"
       />
 
+      {/* Timeline Story */}
       <section className="py-20 sm:py-28">
         <Container>
-          <div className="max-w-3xl mx-auto space-y-6 text-text-muted leading-relaxed text-lg">
-            <AnimateOnScroll preset="fade-in-up">
-              <p>
-                משרד מזון הוקם בשנות ה-80 של המאה הקודמת על ידי רואה החשבון סמי מזון,
-                ומאז משמש ככתובת מקצועית ואמינה לשירותי חשבונאות, ביקורת וייעוץ מס בחיפה
-                והצפון.
-              </p>
-            </AnimateOnScroll>
-            <AnimateOnScroll preset="fade-in-up" delay={0.1}>
-              <p>
-                לאורך למעלה מארבעה עשורים, המשרד ליווה אלפי לקוחות – עצמאים, שכירים,
-                חברות ועמותות – בכל תחומי המיסוי והחשבונאות. הניסיון הרב והידע המעמיק
-                מאפשרים לנו לתת מענה מקצועי ומותאם אישית לכל לקוח.
-              </p>
-            </AnimateOnScroll>
-            <AnimateOnScroll preset="fade-in-up" delay={0.2}>
-              <p>
-                כיום המשרד מנוהל בשותפות מלאה של סמי ויוסי מזון, ומעסיק צוות מקצועי
-                ומנוסה. אנו מאמינים ביחס אישי, זמינות מלאה ושקיפות מול הלקוח.
-              </p>
-            </AnimateOnScroll>
+          <SectionHeading
+            title="הסיפור שלנו"
+            subtitle="למעלה מארבעה עשורים של מקצוענות"
+          />
+          <div className="relative max-w-3xl mx-auto">
+            {/* Vertical line */}
+            <div
+              className="absolute start-6 sm:start-1/2 top-0 bottom-0 w-0.5 bg-white/10 -translate-x-1/2"
+              aria-hidden="true"
+            />
+
+            <div className="space-y-12">
+              {timelineItems.map((item, index) => (
+                <AnimateOnScroll key={item.year} preset="fade-in-up" delay={index * 0.15}>
+                  <div className="relative grid grid-cols-[3rem_1fr] sm:grid-cols-2 gap-6 sm:gap-12 items-start">
+                    {/* Year marker */}
+                    <div
+                      className={`sm:text-end ${index % 2 === 0 ? 'sm:order-1' : 'sm:order-2 sm:text-start'}`}
+                    >
+                      <span className="hidden sm:inline-block text-3xl font-black text-primary">
+                        {item.year}
+                      </span>
+                    </div>
+
+                    {/* Content */}
+                    <div className={index % 2 === 0 ? 'sm:order-2' : 'sm:order-1 sm:text-end'}>
+                      <span className="sm:hidden text-lg font-black text-primary">
+                        {item.year}
+                      </span>
+                      <h3 className="text-lg font-extrabold text-text-primary mt-1 sm:mt-0">
+                        {item.title}
+                      </h3>
+                      <p className="text-text-muted mt-1 leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+
+                    {/* Dot on the line */}
+                    <div
+                      className="absolute start-6 sm:start-1/2 top-1 -translate-x-1/2 size-3 rounded-full bg-primary ring-4 ring-bg-main"
+                      aria-hidden="true"
+                    />
+                  </div>
+                </AnimateOnScroll>
+              ))}
+            </div>
           </div>
         </Container>
       </section>
@@ -92,8 +136,6 @@ export default function AboutPage() {
           </StaggerChildren>
         </Container>
       </section>
-
-      <StatsCounter />
 
       <section className="py-20 sm:py-28">
         <Container>

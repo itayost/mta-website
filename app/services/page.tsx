@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import { Container } from '@/components/ui/Container'
 import { PageHero } from '@/components/sections/PageHero'
-import { ServiceCategory } from '@/components/sections/ServiceCategory'
+import { ServicesFilteredList } from '@/components/sections/ServicesFilteredList'
 import { CtaBanner } from '@/components/sections/CtaBanner'
-import { PageTransition, AnimateOnScroll } from '@/components/ui/motion'
+import { PageTransition } from '@/components/ui/motion'
 import { serviceCategories } from '@/data/services'
 import { generatePageMetadata, buildLocalBusinessJsonLd } from '@/lib/seo'
 
@@ -32,13 +32,7 @@ export default function ServicesPage() {
 
       <section className="py-20 sm:py-28">
         <Container>
-          <div className="space-y-16">
-            {serviceCategories.map((category) => (
-              <AnimateOnScroll preset="fade-in-up" key={category.id}>
-                <ServiceCategory category={category} />
-              </AnimateOnScroll>
-            ))}
-          </div>
+          <ServicesFilteredList categories={serviceCategories} />
         </Container>
       </section>
 

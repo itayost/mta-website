@@ -15,6 +15,9 @@
   --color-success: #34D399;
   --color-error: #F87171;
 
+  --color-gold: #C9A84C;
+  --color-gold-dark: #A8873A;
+
   --color-navy-700: #0D4F7A;
   --color-navy-800: #0C2440;
   --color-navy-900: #071A2E;
@@ -87,6 +90,18 @@ body::before {
   button:focus-visible,
   [role="button"]:focus-visible {
     @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-bg-main rounded-sm;
+  }
+
+  .prose-dark {
+    --tw-prose-body: var(--color-text-muted);
+    --tw-prose-headings: var(--color-text-primary);
+    --tw-prose-links: var(--color-primary);
+    --tw-prose-bold: var(--color-text-primary);
+    --tw-prose-quotes: var(--color-text-muted);
+    --tw-prose-quote-borders: var(--color-primary-deep);
+    --tw-prose-bullets: var(--color-primary);
+    --tw-prose-counters: var(--color-primary);
+    --tw-prose-code: var(--color-accent);
   }
 }
 

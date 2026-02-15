@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { ArrowRight, Calendar, User } from 'lucide-react'
+import { ArrowRight, Calendar, User, Share2 } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { Badge } from '@/components/ui/Badge'
-import { PageHero } from '@/components/sections/PageHero'
-import { CtaBanner } from '@/components/sections/CtaBanner'
-import { PageTransition } from '@/components/ui/motion'
+import { BlogCard } from '@/components/sections/BlogCard'
+import { CopyLinkButton } from '@/components/sections/CopyLinkButton'
+import { PageTransition, StaggerChildren, StaggerItem } from '@/components/ui/motion'
 import { blogPosts } from '@/data/blog'
 
 interface BlogPostPageProps {
@@ -44,22 +44,28 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound()
   }
 
+  const relatedPosts = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 2)
+  const whatsappShareUrl = `https://wa.me/?text=${encodeURIComponent(post.title)}`
+
   return (
     <PageTransition>
-      <PageHero title={post.title} />
-
-      <article className="py-20 sm:py-28">
+      {/* Inline gradient header instead of PageHero */}
+      <div className="bg-gradient-to-b from-navy-800 to-bg-main pt-12 pb-8">
         <Container>
           <div className="max-w-3xl mx-auto">
             <Link
               href="/blog"
-              className="inline-flex items-center gap-1 text-sm text-primary hover:text-primary-dark transition-colors mb-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ring-offset-bg-main rounded-sm"
+              className="inline-flex items-center gap-1 text-sm text-primary hover:text-primary-dark transition-colors mb-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ring-offset-bg-main rounded-sm"
             >
               <ArrowRight className="size-4" />
               <span>חזרה לבלוג</span>
             </Link>
 
-            <div className="flex flex-wrap items-center gap-4 text-sm text-text-muted/60 mb-8">
+            <h1 className="text-3xl font-extrabold text-text-primary sm:text-4xl">
+              {post.title}
+            </h1>
+
+            <div className="flex flex-wrap items-center gap-4 text-sm text-text-muted/60 mt-4">
               <div className="flex items-center gap-1.5">
                 <Calendar className="size-4" />
                 <time dateTime={post.date}>
@@ -72,22 +78,61 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-2 mb-8">
+            <div className="flex flex-wrap gap-2 mt-4">
               {post.tags.map((tag) => (
                 <Badge key={tag} variant="neutral">
                   {tag}
                 </Badge>
               ))}
             </div>
+          </div>
+        </Container>
+      </div>
 
-            <div className="prose prose-lg max-w-none text-text-muted leading-relaxed">
+      <article className="py-12 sm:py-16">
+        <Container>
+          <div className="max-w-3xl mx-auto">
+            <div className="prose prose-lg prose-dark max-w-none leading-relaxed">
               <p>{post.content}</p>
+            </div>
+
+            {/* Share buttons */}
+            <div className="mt-12 pt-8 border-t border-white/10">
+              <p className="text-sm font-medium text-text-muted mb-3">שתפו את המאמר:</p>
+              <div className="flex gap-3">
+                <a
+                  href={whatsappShareUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-xl bg-white/5 border border-white/10 px-4 py-2 text-sm font-semibold text-text-primary hover:bg-white/10 transition-all"
+                >
+                  <Share2 className="size-4" />
+                  <span>WhatsApp</span>
+                </a>
+                <CopyLinkButton />
+              </div>
             </div>
           </div>
         </Container>
       </article>
 
-      <CtaBanner />
+      {/* Related posts */}
+      {relatedPosts.length > 0 && (
+        <section className="py-16 sm:py-20 bg-bg-surface">
+          <Container>
+            <h2 className="text-2xl font-extrabold text-text-primary mb-8 text-center">
+              מאמרים נוספים
+            </h2>
+            <StaggerChildren className="grid grid-cols-1 gap-6 sm:grid-cols-2 max-w-3xl mx-auto">
+              {relatedPosts.map((relPost) => (
+                <StaggerItem key={relPost.slug}>
+                  <BlogCard post={relPost} />
+                </StaggerItem>
+              ))}
+            </StaggerChildren>
+          </Container>
+        </section>
+      )}
     </PageTransition>
   )
 }

@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
-import { Calculator } from 'lucide-react'
+import { Percent, Banknote, ShieldCheck } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { PageHero } from '@/components/sections/PageHero'
+import { VatCalculator } from '@/components/sections/VatCalculator'
 import { Card } from '@/components/ui/Card'
-import { CtaBanner } from '@/components/sections/CtaBanner'
-import { PageTransition, StaggerChildren, StaggerItem } from '@/components/ui/motion'
+import { PageTransition, AnimateOnScroll, StaggerChildren, StaggerItem } from '@/components/ui/motion'
 import { generatePageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = generatePageMetadata({
@@ -19,18 +19,17 @@ const upcomingCalculators = [
   {
     title: 'מחשבון מס הכנסה',
     description: 'חשבו את המס השנתי הצפוי על בסיס הכנסה שנתית ומדרגות המס העדכניות.',
+    icon: Percent,
   },
   {
     title: 'מחשבון שכר נטו-ברוטו',
     description: 'המירו בין שכר ברוטו לנטו עם חישוב מדויק של כל הניכויים.',
-  },
-  {
-    title: 'מחשבון מע"מ',
-    description: 'חשבו סכומים כולל ולא כולל מע"מ בקלות.',
+    icon: Banknote,
   },
   {
     title: 'מחשבון פיצויי פיטורין',
     description: 'חשבו את סכום פיצויי הפיטורין המגיעים לכם על פי חוק.',
+    icon: ShieldCheck,
   },
 ]
 
@@ -42,9 +41,22 @@ export default function CalculatorsPage() {
         subtitle="כלים חינמיים לחישובי מס ופיננסים"
       />
 
+      {/* Live VAT Calculator */}
       <section className="py-20 sm:py-28">
         <Container>
-          <StaggerChildren className="grid grid-cols-1 gap-6 sm:grid-cols-2 max-w-3xl mx-auto">
+          <AnimateOnScroll preset="fade-in-up">
+            <VatCalculator />
+          </AnimateOnScroll>
+        </Container>
+      </section>
+
+      {/* Upcoming calculators */}
+      <section className="py-16 sm:py-20 bg-bg-surface">
+        <Container>
+          <h2 className="text-2xl font-extrabold text-text-primary mb-8 text-center">
+            מחשבונים נוספים בקרוב
+          </h2>
+          <StaggerChildren className="grid grid-cols-1 gap-6 sm:grid-cols-3 max-w-4xl mx-auto">
             {upcomingCalculators.map((calc) => (
               <StaggerItem key={calc.title}>
                 <Card glass className="relative overflow-hidden">
@@ -54,7 +66,7 @@ export default function CalculatorsPage() {
                     </span>
                   </div>
                   <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary mb-4">
-                    <Calculator className="size-6" />
+                    <calc.icon className="size-6" />
                   </div>
                   <h3 className="text-lg font-bold text-text-primary mb-2">{calc.title}</h3>
                   <p className="text-text-muted text-sm">{calc.description}</p>
@@ -62,15 +74,8 @@ export default function CalculatorsPage() {
               </StaggerItem>
             ))}
           </StaggerChildren>
-
-          <p className="text-center text-text-muted/60 mt-12">
-            המחשבונים בפיתוח ויהיו זמינים בקרוב. בינתיים, אתם מוזמנים לפנות אלינו
-            לייעוץ אישי.
-          </p>
         </Container>
       </section>
-
-      <CtaBanner />
     </PageTransition>
   )
 }
