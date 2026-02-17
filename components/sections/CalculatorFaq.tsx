@@ -1,7 +1,4 @@
-import { Container } from '@/components/ui/Container'
-import { SectionHeading } from '@/components/ui/SectionHeading'
-import { AccordionItem } from '@/components/ui/Accordion'
-import { AnimateOnScroll } from '@/components/ui/motion'
+import { FaqSection } from './FaqSection'
 
 const faqItems = [
   {
@@ -32,25 +29,10 @@ const faqItems = [
 
 export function CalculatorFaq() {
   return (
-    <section className="py-16 sm:py-20">
-      <Container>
-        <SectionHeading
-          title="שאלות נפוצות על מיסוי"
-          subtitle="מושגים בסיסיים שכדאי להכיר"
-        />
-        <AnimateOnScroll preset="fade-in-up">
-          <div className="max-w-3xl mx-auto rounded-2xl bg-bg-card overflow-hidden">
-            {faqItems.map((item, index) => (
-              <AccordionItem
-                key={index}
-                question={item.question}
-                answer={item.answer}
-                className="px-6"
-              />
-            ))}
-          </div>
-        </AnimateOnScroll>
-      </Container>
-    </section>
+    <FaqSection
+      title="שאלות נפוצות על מיסוי"
+      subtitle="מושגים בסיסיים שכדאי להכיר"
+      items={faqItems}
+    />
   )
 }

@@ -1,32 +1,28 @@
 'use client'
 
-import { useState, useMemo, useEffect, useRef, useCallback } from 'react'
-import { ServiceCategory } from './ServiceCategory'
+import { useState, useEffect, useRef, useCallback } from 'react'
+import { ServiceCategorySection } from './ServiceCategorySection'
 import { ServicesStickyNav } from './ServicesStickyNav'
-import { getTestimonialForCategory } from '@/data/testimonials'
-import type { ServiceCategory as ServiceCategoryType, Audience } from '@/types/service'
+import { RoundedTransition, RoundedTransitionUp } from '@/components/ui/RoundedTransition'
+import type { ServiceCategory } from '@/types/service'
 
 interface ServicesFilteredListProps {
-  categories: ServiceCategoryType[]
+  categories: ServiceCategory[]
 }
 
-type FilterKey = 'all' | Audience
+const categoryStyles: Record<string, { bg: string; bgToken: string; dark: boolean }> = {
+  accounting: { bg: '', bgToken: 'bg-bg-main', dark: false },
+  tax: { bg: 'bg-bg-dark', bgToken: 'bg-bg-dark', dark: true },
+  'audit-consulting': { bg: 'bg-bg-surface', bgToken: 'bg-bg-surface', dark: false },
+}
+
+function getStyle(id: string) {
+  return categoryStyles[id] ?? { bg: '', bgToken: 'bg-bg-main', dark: false }
+}
 
 export function ServicesFilteredList({ categories }: ServicesFilteredListProps) {
-  const [activeFilter, setActiveFilter] = useState<FilterKey>('all')
   const [activeCategoryId, setActiveCategoryId] = useState<string | null>(null)
   const observerRef = useRef<IntersectionObserver | null>(null)
-
-  const filteredCategories = useMemo(() => {
-    if (activeFilter === 'all') return categories
-
-    return categories
-      .map((cat) => ({
-        ...cat,
-        services: cat.services.filter((s) => s.audiences.includes(activeFilter)),
-      }))
-      .filter((cat) => cat.services.length > 0)
-  }, [categories, activeFilter])
 
   const setupObserver = useCallback(() => {
     observerRef.current?.disconnect()
@@ -40,53 +36,50 @@ export function ServicesFilteredList({ categories }: ServicesFilteredListProps) 
           }
         }
       },
-      { rootMargin: '-160px 0px -60% 0px' }
+      { rootMargin: '-160px 0px -60% 0px' },
     )
 
-    for (const cat of filteredCategories) {
+    for (const cat of categories) {
       const el = document.getElementById(`category-${cat.id}`)
       if (el) observer.observe(el)
     }
 
     observerRef.current = observer
-  }, [filteredCategories])
+  }, [categories])
 
   useEffect(() => {
     setupObserver()
     return () => observerRef.current?.disconnect()
   }, [setupObserver])
 
-  const testimonialMap = useMemo(() => {
-    const map = new Map<string, ReturnType<typeof getTestimonialForCategory>>()
-    for (const cat of categories) {
-      map.set(cat.id, getTestimonialForCategory(cat.id))
-    }
-    return map
-  }, [categories])
-
   return (
     <div>
       <ServicesStickyNav
-        categories={filteredCategories}
-        activeFilter={activeFilter}
-        onFilterChange={setActiveFilter}
+        categories={categories}
         activeCategoryId={activeCategoryId}
       />
 
-      <div className="space-y-16 pt-8" role="tabpanel">
-        {filteredCategories.map((category) => (
-          <ServiceCategory
-            key={category.id}
-            category={category}
-            testimonial={testimonialMap.get(category.id)}
-          />
-        ))}
-        {filteredCategories.length === 0 && (
-          <p className="text-center text-text-muted text-lg">
-            לא נמצאו שירותים עבור הקטגוריה שנבחרה.
-          </p>
-        )}
-      </div>
+      {categories.map((category, i) => {
+        const style = getStyle(category.id)
+        const prevBgToken = i > 0 ? getStyle(categories[i - 1].id).bgToken : 'bg-bg-main'
+
+        return (
+          <div key={category.id}>
+            {i > 0 &&
+              (style.dark ? (
+                <RoundedTransition from={prevBgToken} to={style.bgToken} />
+              ) : (
+                <RoundedTransitionUp from={prevBgToken} to={style.bgToken} />
+              ))}
+
+            <ServiceCategorySection
+              category={category}
+              bg={style.bg}
+              dark={style.dark}
+            />
+          </div>
+        )
+      })}
     </div>
   )
 }

@@ -1,61 +1,15 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import { cn } from '@/lib/utils'
+import { formatILS } from '@/lib/formatters'
+import {
+  CREDIT_POINT_VALUE,
+  CREDIT_POINTS,
+  calcProgressiveTaxDetailed,
+} from '@/lib/tax-constants'
 import { Card } from '@/components/ui/Card'
 import { Input } from '@/components/ui/Input'
-
-// 2025 Israeli monthly tax brackets
-const TAX_BRACKETS = [
-  { upTo: 7_010, rate: 0.10 },
-  { upTo: 10_060, rate: 0.14 },
-  { upTo: 16_150, rate: 0.20 },
-  { upTo: 22_440, rate: 0.31 },
-  { upTo: 46_690, rate: 0.35 },
-  { upTo: 60_130, rate: 0.47 },
-  { upTo: Infinity, rate: 0.50 }, // 47% + 3% surcharge
-]
-
-// Credit point value per month (2025)
-const CREDIT_POINT_VALUE = 242
-
-// Default credit points
-const CREDIT_POINTS: Record<'male' | 'female', number> = {
-  male: 2.25,
-  female: 2.75,
-}
-
-const formatter = new Intl.NumberFormat('he-IL', {
-  minimumFractionDigits: 0,
-  maximumFractionDigits: 0,
-})
-
-function calculateTax(monthlyIncome: number): { tax: number; brackets: { range: string; rate: number; amount: number }[] } {
-  let remaining = monthlyIncome
-  let totalTax = 0
-  let prevLimit = 0
-  const brackets: { range: string; rate: number; amount: number }[] = []
-
-  for (const bracket of TAX_BRACKETS) {
-    if (remaining <= 0) break
-    const taxable = Math.min(remaining, bracket.upTo - prevLimit)
-    const amount = taxable * bracket.rate
-    totalTax += amount
-    if (taxable > 0) {
-      brackets.push({
-        range: bracket.upTo === Infinity
-          ? `${formatter.format(prevLimit + 1)}+`
-          : `${formatter.format(prevLimit + 1)}–${formatter.format(bracket.upTo)}`,
-        rate: bracket.rate,
-        amount,
-      })
-    }
-    remaining -= taxable
-    prevLimit = bracket.upTo
-  }
-
-  return { tax: totalTax, brackets }
-}
+import { ToggleGroup } from '@/components/ui/ToggleGroup'
 
 export function IncomeTaxCalculator() {
   const [income, setIncome] = useState('')
@@ -68,7 +22,7 @@ export function IncomeTaxCalculator() {
 
   const result = useMemo(() => {
     if (parsed === 0) return null
-    const { tax: rawTax, brackets } = calculateTax(parsed)
+    const { tax: rawTax, brackets } = calcProgressiveTaxDetailed(parsed, formatILS)
     const creditDeduction = CREDIT_POINTS[gender] * CREDIT_POINT_VALUE
     const finalTax = Math.max(0, rawTax - creditDeduction)
     const effectiveRate = parsed > 0 ? (finalTax / parsed) * 100 : 0
@@ -91,34 +45,15 @@ export function IncomeTaxCalculator() {
       </div>
 
       {/* Gender toggle */}
-      <div className="flex rounded-xl bg-bg-surface p-1 mb-6" role="radiogroup" aria-label="מגדר">
-        <button
-          role="radio"
-          aria-checked={gender === 'male'}
-          onClick={() => setGender('male')}
-          className={cn(
-            'flex-1 rounded-lg px-4 py-2.5 text-sm font-semibold transition-all',
-            gender === 'male'
-              ? 'bg-primary text-bg-main shadow-sm'
-              : 'text-text-muted hover:text-text-primary'
-          )}
-        >
-          גבר (2.25 נ״ז)
-        </button>
-        <button
-          role="radio"
-          aria-checked={gender === 'female'}
-          onClick={() => setGender('female')}
-          className={cn(
-            'flex-1 rounded-lg px-4 py-2.5 text-sm font-semibold transition-all',
-            gender === 'female'
-              ? 'bg-primary text-bg-main shadow-sm'
-              : 'text-text-muted hover:text-text-primary'
-          )}
-        >
-          אישה (2.75 נ״ז)
-        </button>
-      </div>
+      <ToggleGroup
+        options={[
+          { value: 'male', label: 'גבר (2.25 נ״ז)' },
+          { value: 'female', label: 'אישה (2.75 נ״ז)' },
+        ]}
+        value={gender}
+        onChange={setGender}
+        ariaLabel="מגדר"
+      />
 
       {/* Income input */}
       <Input
@@ -138,7 +73,7 @@ export function IncomeTaxCalculator() {
           <div className="rounded-xl bg-bg-surface p-4 space-y-3">
             <div className="flex items-center justify-between">
               <span className="text-sm text-text-muted">מס הכנסה חודשי</span>
-              <span className="text-xl font-bold text-primary">₪{formatter.format(result.finalTax)}</span>
+              <span className="text-xl font-bold text-primary">₪{formatILS(result.finalTax)}</span>
             </div>
             <div className="flex items-center justify-between border-t border-text-muted/10 pt-3">
               <span className="text-sm text-text-muted">שיעור מס אפקטיבי</span>
@@ -146,7 +81,7 @@ export function IncomeTaxCalculator() {
             </div>
             <div className="flex items-center justify-between border-t border-text-muted/10 pt-3">
               <span className="text-sm text-text-muted">הכנסה אחרי מס</span>
-              <span className="text-lg font-semibold text-text-primary">₪{formatter.format(result.afterTax)}</span>
+              <span className="text-lg font-semibold text-text-primary">₪{formatILS(result.afterTax)}</span>
             </div>
           </div>
 
@@ -160,16 +95,16 @@ export function IncomeTaxCalculator() {
               {result.brackets.map((b, i) => (
                 <div key={i} className="flex items-center justify-between">
                   <span className="text-text-muted" dir="ltr">₪{b.range} ({(b.rate * 100).toFixed(0)}%)</span>
-                  <span className="text-text-primary font-medium">₪{formatter.format(b.amount)}</span>
+                  <span className="text-text-primary font-medium">₪{formatILS(b.amount)}</span>
                 </div>
               ))}
               <div className="flex items-center justify-between border-t border-text-muted/10 pt-2">
                 <span className="text-text-muted">מס לפני זיכוי</span>
-                <span className="text-text-primary font-medium">₪{formatter.format(result.rawTax)}</span>
+                <span className="text-text-primary font-medium">₪{formatILS(result.rawTax)}</span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-text-muted">זיכוי נקודות ({CREDIT_POINTS[gender]})</span>
-                <span className="text-success font-medium">-₪{formatter.format(result.creditDeduction)}</span>
+                <span className="text-success font-medium">-₪{formatILS(result.creditDeduction)}</span>
               </div>
             </div>
           </details>

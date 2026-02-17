@@ -269,10 +269,3 @@ export const serviceCategories: ServiceCategory[] = [
 ]
 
 export const featuredServices = services.filter((s) => s.featured)
-
-export const audienceOptions = [
-  { key: 'all' as const, label: 'הכל' },
-  { key: 'freelancers' as const, label: 'עצמאים' },
-  { key: 'employees' as const, label: 'שכירים' },
-  { key: 'companies' as const, label: 'חברות' },
-] as const

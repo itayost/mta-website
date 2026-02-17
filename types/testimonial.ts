@@ -5,5 +5,4 @@ export interface Testimonial {
   content: string
   rating: number
   image?: string
-  serviceCategoryId?: string
 }

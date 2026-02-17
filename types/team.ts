@@ -3,6 +3,7 @@ export interface TeamMember {
   name: string
   role: string
   description: string
+  experience?: string
   image?: string
   credentials: string[]
   specializations: string[]

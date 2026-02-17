@@ -1,7 +1,3 @@
-'use client'
-
-import { useEffect, useRef } from 'react'
-import { motion, useAnimationControls } from 'motion/react'
 import { Container } from '@/components/ui/Container'
 
 const logos = [
@@ -15,14 +11,14 @@ const logos = [
 
 export function LogoCarousel() {
   return (
-    <section className="py-12 sm:py-16">
+    <section className="bg-bg-dark py-10 sm:py-12">
       <Container>
-        <p className="text-center text-sm font-medium text-text-muted/60 mb-8">
+        <p className="text-center text-sm font-medium text-white/50 mb-8">
           עובדים עם הגופים המובילים
         </p>
         <div className="relative overflow-hidden" dir="ltr">
-          <div className="absolute inset-y-0 start-0 w-24 bg-gradient-to-l from-transparent to-bg-surface z-10" />
-          <div className="absolute inset-y-0 end-0 w-24 bg-gradient-to-r from-transparent to-bg-surface z-10" />
+          <div className="absolute inset-y-0 start-0 w-24 bg-gradient-to-l from-transparent to-bg-dark z-10" />
+          <div className="absolute inset-y-0 end-0 w-24 bg-gradient-to-r from-transparent to-bg-dark z-10" />
           <InfiniteScroll />
         </div>
       </Container>
@@ -38,7 +34,7 @@ function InfiniteScroll() {
           key={`${logo.name}-${i}`}
           className="flex shrink-0 items-center justify-center px-6 py-3"
         >
-          <span className="text-lg font-semibold text-text-muted/40 whitespace-nowrap hover:text-text-muted/70 transition-colors">
+          <span className="text-lg font-semibold text-white/30 whitespace-nowrap hover:text-white/60 transition-colors">
             {logo.text}
           </span>
         </div>

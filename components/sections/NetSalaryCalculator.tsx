@@ -1,55 +1,21 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import { cn } from '@/lib/utils'
+import { formatILS } from '@/lib/formatters'
+import {
+  CREDIT_POINT_VALUE,
+  CREDIT_POINTS,
+  NII_REDUCED_RATE,
+  NII_FULL_RATE,
+  NII_THRESHOLD,
+  MAX_INSURABLE,
+  HEALTH_REDUCED_RATE,
+  HEALTH_FULL_RATE,
+  calcProgressiveTax,
+} from '@/lib/tax-constants'
 import { Card } from '@/components/ui/Card'
 import { Input } from '@/components/ui/Input'
-
-// 2025 Israeli constants
-const TAX_BRACKETS = [
-  { upTo: 7_010, rate: 0.10 },
-  { upTo: 10_060, rate: 0.14 },
-  { upTo: 16_150, rate: 0.20 },
-  { upTo: 22_440, rate: 0.31 },
-  { upTo: 46_690, rate: 0.35 },
-  { upTo: 60_130, rate: 0.47 },
-  { upTo: Infinity, rate: 0.50 },
-]
-
-const CREDIT_POINT_VALUE = 242
-const CREDIT_POINTS = { male: 2.25, female: 2.75 }
-
-// National Insurance (employee)
-const NII_REDUCED_RATE = 0.004  // 0.4% up to threshold
-const NII_FULL_RATE = 0.07     // 7% above threshold
-const NII_THRESHOLD = 7_522
-const MAX_INSURABLE = 50_695
-
-// Health tax (employee)
-const HEALTH_REDUCED_RATE = 0.031  // 3.1% up to threshold
-const HEALTH_FULL_RATE = 0.05     // 5% above threshold
-
-// Pension
-const DEFAULT_PENSION_RATE = 0.06 // 6% employee
-
-const formatter = new Intl.NumberFormat('he-IL', {
-  minimumFractionDigits: 0,
-  maximumFractionDigits: 0,
-})
-
-function calcProgressiveTax(taxableIncome: number): number {
-  let remaining = taxableIncome
-  let tax = 0
-  let prev = 0
-  for (const bracket of TAX_BRACKETS) {
-    if (remaining <= 0) break
-    const taxable = Math.min(remaining, bracket.upTo - prev)
-    tax += taxable * bracket.rate
-    remaining -= taxable
-    prev = bracket.upTo
-  }
-  return tax
-}
+import { ToggleGroup } from '@/components/ui/ToggleGroup'
 
 export function NetSalaryCalculator() {
   const [gross, setGross] = useState('')
@@ -116,34 +82,15 @@ export function NetSalaryCalculator() {
       </div>
 
       {/* Gender toggle */}
-      <div className="flex rounded-xl bg-bg-surface p-1 mb-6" role="radiogroup" aria-label="מגדר">
-        <button
-          role="radio"
-          aria-checked={gender === 'male'}
-          onClick={() => setGender('male')}
-          className={cn(
-            'flex-1 rounded-lg px-4 py-2.5 text-sm font-semibold transition-all',
-            gender === 'male'
-              ? 'bg-primary text-bg-main shadow-sm'
-              : 'text-text-muted hover:text-text-primary'
-          )}
-        >
-          גבר (2.25 נ״ז)
-        </button>
-        <button
-          role="radio"
-          aria-checked={gender === 'female'}
-          onClick={() => setGender('female')}
-          className={cn(
-            'flex-1 rounded-lg px-4 py-2.5 text-sm font-semibold transition-all',
-            gender === 'female'
-              ? 'bg-primary text-bg-main shadow-sm'
-              : 'text-text-muted hover:text-text-primary'
-          )}
-        >
-          אישה (2.75 נ״ז)
-        </button>
-      </div>
+      <ToggleGroup
+        options={[
+          { value: 'male', label: 'גבר (2.25 נ״ז)' },
+          { value: 'female', label: 'אישה (2.75 נ״ז)' },
+        ]}
+        value={gender}
+        onChange={setGender}
+        ariaLabel="מגדר"
+      />
 
       {/* Gross salary input */}
       <Input
@@ -185,7 +132,7 @@ export function NetSalaryCalculator() {
           {/* Net salary highlight */}
           <div className="rounded-xl bg-primary/10 border border-primary/20 p-5 text-center">
             <p className="text-sm text-text-muted mb-1">שכר נטו</p>
-            <p className="text-3xl font-black text-primary">₪{formatter.format(result.net)}</p>
+            <p className="text-3xl font-black text-primary">₪{formatILS(result.net)}</p>
             <p className="text-xs text-text-muted/60 mt-1">{result.netPercent.toFixed(1)}% מהברוטו</p>
           </div>
 
@@ -193,27 +140,27 @@ export function NetSalaryCalculator() {
           <div className="rounded-xl bg-bg-surface p-4 space-y-3 text-sm">
             <div className="flex items-center justify-between">
               <span className="text-text-muted">שכר ברוטו</span>
-              <span className="text-text-primary font-semibold">₪{formatter.format(result.gross)}</span>
+              <span className="text-text-primary font-semibold">₪{formatILS(result.gross)}</span>
             </div>
             <div className="flex items-center justify-between border-t border-text-muted/10 pt-3">
               <span className="text-text-muted">מס הכנסה</span>
-              <span className="text-error font-medium">-₪{formatter.format(result.incomeTax)}</span>
+              <span className="text-error font-medium">-₪{formatILS(result.incomeTax)}</span>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-text-muted">ביטוח לאומי</span>
-              <span className="text-error font-medium">-₪{formatter.format(result.nii)}</span>
+              <span className="text-error font-medium">-₪{formatILS(result.nii)}</span>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-text-muted">מס בריאות</span>
-              <span className="text-error font-medium">-₪{formatter.format(result.health)}</span>
+              <span className="text-error font-medium">-₪{formatILS(result.health)}</span>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-text-muted">פנסיה עובד ({parsedPension}%)</span>
-              <span className="text-error font-medium">-₪{formatter.format(result.pension)}</span>
+              <span className="text-error font-medium">-₪{formatILS(result.pension)}</span>
             </div>
             <div className="flex items-center justify-between border-t border-text-muted/10 pt-3">
               <span className="text-text-primary font-semibold">סה״כ ניכויים</span>
-              <span className="text-error font-bold">-₪{formatter.format(result.totalDeductions)}</span>
+              <span className="text-error font-bold">-₪{formatILS(result.totalDeductions)}</span>
             </div>
           </div>
 

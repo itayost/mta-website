@@ -18,18 +18,13 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* 1. Hero */}
+      {/* 1. Hero + dark blue band */}
       <Hero />
-
-      {/* 2. Transition → surface */}
-      <RoundedTransition from="bg-bg-main" to="bg-bg-surface" />
-
-      {/* 3. Logo Carousel + Stats */}
       <LogoCarousel />
       <StatsCounter />
 
-      {/* 4. Transition → main */}
-      <RoundedTransitionUp from="bg-bg-surface" to="bg-bg-main" />
+      {/* 2. Transition → main */}
+      <RoundedTransitionUp from="bg-bg-dark" to="bg-bg-main" />
 
       {/* 5. Bento Grid services */}
       <BentoGrid />

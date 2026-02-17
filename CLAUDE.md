@@ -80,6 +80,7 @@ All buttons use `rounded-full font-semibold` (pill shape).
 
 - `RoundedTransition` / `RoundedTransitionUp` components for curved dividers between sections with different backgrounds
 - No gradient bars, no glow dividers, no wave dividers
+- Dark navy contrast band: `bg-[#0f1c2e]` with `text-white` / `text-white/70` — used in StatsCounter and About scrollytelling
 
 ### Library Components (copy-paste, no npm packages)
 
@@ -95,6 +96,13 @@ All buttons use `rounded-full font-semibold` (pill shape).
 | `FeatureSections` | Aceternity UI | Categorized service feature grid |
 
 All use the `motion` package (v12, imports from `motion/react`).
+
+### Scrollytelling (About page)
+
+- `TeamScrollStory` groups consecutive segments sharing the same visual into "visual groups"
+- Each group renders its own 2-col grid with a CSS `sticky` visual — no JS animation, pure natural scroll
+- When a group's text ends, its visual scrolls away and the next group's visual scrolls in
+- Each group can have its own full-width background + `RoundedTransition` between them
 
 ## Key Conventions
 
@@ -122,6 +130,7 @@ All use the `motion` package (v12, imports from `motion/react`).
 ## Gotchas
 
 - React Compiler enabled (`reactCompiler: true` in next.config.ts) — avoid non-standard React patterns
+- Prefer server components — only add `'use client'` when the component uses hooks, event handlers, or `motion` animations
 - No `.env` file currently — API route at `/api/contact` uses `lib/send-lead.ts`
 - `data/` files are static (no CMS) — all content changes are code changes
 - Tailwind v4 uses `@theme` (not `tailwind.config.ts`) for custom tokens

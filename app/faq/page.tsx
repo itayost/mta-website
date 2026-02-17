@@ -1,9 +1,8 @@
 import type { Metadata } from 'next'
 import { PageHero } from '@/components/sections/PageHero'
-import { TrustBar } from '@/components/sections/TrustBar'
-import { FaqPopular } from '@/components/sections/FaqPopular'
 import { FaqSearch } from '@/components/sections/FaqSearch'
 import { FaqCta } from '@/components/sections/FaqCta'
+import { RoundedTransition, RoundedTransitionUp } from '@/components/ui/RoundedTransition'
 import { PageTransition } from '@/components/ui/motion'
 import { faqItems } from '@/data/faq'
 import { generatePageMetadata, buildFaqJsonLd } from '@/lib/seo'
@@ -31,11 +30,11 @@ export default function FaqPage() {
         subtitle="כל מה שרציתם לדעת על שירותי המשרד, מחירים ואיך מתחילים"
       />
 
-      <TrustBar />
-
-      <FaqPopular />
+      <RoundedTransition from="bg-bg-main" to="bg-bg-surface" />
 
       <FaqSearch />
+
+      <RoundedTransitionUp from="bg-bg-surface" to="bg-bg-main" />
 
       <FaqCta />
     </PageTransition>

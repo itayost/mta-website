@@ -1,9 +1,6 @@
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
-import { Container } from '@/components/ui/Container'
-import { SectionHeading } from '@/components/ui/SectionHeading'
-import { AccordionItem } from '@/components/ui/Accordion'
-import { AnimateOnScroll } from '@/components/ui/motion'
+import { FaqSection } from './FaqSection'
 
 const contactFaqItems = [
   {
@@ -26,34 +23,22 @@ const contactFaqItems = [
 
 export function ContactFaq() {
   return (
-    <section className="py-16 sm:py-20 bg-bg-surface">
-      <Container>
-        <SectionHeading
-          title="שאלות נפוצות לפני פנייה"
-          subtitle="הנה כמה תשובות שאולי יעזרו"
-        />
-        <AnimateOnScroll preset="fade-in-up">
-          <div className="max-w-3xl mx-auto rounded-2xl bg-bg-card overflow-hidden">
-            {contactFaqItems.map((item, index) => (
-              <AccordionItem
-                key={index}
-                question={item.question}
-                answer={item.answer}
-                className="px-6"
-              />
-            ))}
-          </div>
-          <p className="text-center mt-6">
-            <Link
-              href="/faq"
-              className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:text-primary-dark transition-colors"
-            >
-              <span>לכל השאלות הנפוצות</span>
-              <ArrowLeft className="size-4" />
-            </Link>
-          </p>
-        </AnimateOnScroll>
-      </Container>
-    </section>
+    <FaqSection
+      title="שאלות נפוצות לפני פנייה"
+      subtitle="הנה כמה תשובות שאולי יעזרו"
+      items={contactFaqItems}
+      sectionClassName="py-16 sm:py-20 bg-bg-surface"
+      footer={
+        <p className="text-center mt-6">
+          <Link
+            href="/faq"
+            className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:text-primary-dark transition-colors"
+          >
+            <span>לכל השאלות הנפוצות</span>
+            <ArrowLeft className="size-4" />
+          </Link>
+        </p>
+      }
+    />
   )
 }

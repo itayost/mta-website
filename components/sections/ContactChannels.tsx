@@ -2,6 +2,7 @@ import { Phone, MessageCircle, Mail, MapPin } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { StaggerChildren, StaggerItem } from '@/components/ui/motion'
+import { cn } from '@/lib/utils'
 import { contactInfo } from '@/data/contact'
 
 const channels = [
@@ -56,7 +57,7 @@ export function ContactChannels() {
                 rel={channel.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                 className="group flex flex-col items-center rounded-2xl bg-bg-card p-6 text-center transition-all duration-300 hover:bg-primary/5 hover:-translate-y-1"
               >
-                <div className={`flex size-14 items-center justify-center rounded-2xl ${channel.color} mb-4 transition-transform duration-300 group-hover:scale-110`}>
+                <div className={cn('flex size-14 items-center justify-center rounded-2xl mb-4 transition-transform duration-300 group-hover:scale-110', channel.color)}>
                   <channel.icon className="size-7" />
                 </div>
                 <h3 className="text-base font-bold text-text-primary mb-1">

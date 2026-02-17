@@ -24,10 +24,10 @@ export function Header() {
     <>
       <header
         className={cn(
-          'sticky top-0 z-40 w-full transition-all duration-300',
+          'fixed top-0 z-40 w-full transition-all duration-300',
           scrolled
             ? 'bg-bg-main/92 backdrop-blur-xl border-b border-text-muted/5'
-            : 'bg-bg-main'
+            : 'bg-transparent'
         )}
       >
         <Container className="flex items-center justify-between h-16 sm:h-20">

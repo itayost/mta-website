@@ -36,7 +36,8 @@ export function LeadForm() {
       } else {
         setStatus('error')
       }
-    } catch {
+    } catch (error) {
+      console.error('Lead form submission error:', error)
       setStatus('error')
     }
   }

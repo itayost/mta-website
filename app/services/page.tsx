@@ -1,12 +1,9 @@
 import type { Metadata } from 'next'
-import { Container } from '@/components/ui/Container'
 import { PageHero } from '@/components/sections/PageHero'
-import { TrustBar } from '@/components/sections/TrustBar'
 import { ServicesFilteredList } from '@/components/sections/ServicesFilteredList'
-import { FeatureSections } from '@/components/sections/FeatureSections'
 import { ProcessSteps } from '@/components/sections/ProcessSteps'
 import { ServicesNotSureCta } from '@/components/sections/ServicesNotSureCta'
-import { RoundedTransition, RoundedTransitionUp } from '@/components/ui/RoundedTransition'
+import { RoundedTransitionUp } from '@/components/ui/RoundedTransition'
 import { PageTransition } from '@/components/ui/motion'
 import { serviceCategories } from '@/data/services'
 import { generatePageMetadata, buildLocalBusinessJsonLd } from '@/lib/seo'
@@ -34,23 +31,13 @@ export default function ServicesPage() {
         subtitle="17 שירותים מקצועיים לעצמאים, שכירים וחברות"
       />
 
-      <TrustBar />
+      <ServicesFilteredList categories={serviceCategories} />
 
-      <section className="py-20 sm:py-28">
-        <Container>
-          <ServicesFilteredList categories={serviceCategories} />
-        </Container>
-      </section>
-
-      <RoundedTransition from="bg-bg-main" to="bg-bg-surface" />
-
-      <section className="py-20 sm:py-28 bg-bg-surface">
-        <FeatureSections categories={serviceCategories} />
-      </section>
-
-      <RoundedTransitionUp from="bg-bg-surface" to="bg-bg-main" />
-
+      {/* Last category (bg-surface) flows directly into ProcessSteps (bg-surface) */}
       <ProcessSteps />
+
+      {/* Transition from ProcessSteps (bg-surface) → main */}
+      <RoundedTransitionUp from="bg-bg-surface" to="bg-bg-main" />
 
       <ServicesNotSureCta />
     </PageTransition>

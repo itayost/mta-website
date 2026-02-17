@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'motion/react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { cn } from '@/lib/utils'
 import { Container } from '@/components/ui/Container'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { testimonials } from '@/data/testimonials'
@@ -140,8 +141,4 @@ export function AnimatedTestimonials() {
       </Container>
     </section>
   )
-}
-
-function cn(...classes: (string | boolean | undefined)[]) {
-  return classes.filter(Boolean).join(' ')
 }

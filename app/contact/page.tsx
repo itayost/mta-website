@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { Container } from '@/components/ui/Container'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { PageHero } from '@/components/sections/PageHero'
-import { TrustBar } from '@/components/sections/TrustBar'
 import { ContactChannels } from '@/components/sections/ContactChannels'
 import { LeadForm } from '@/components/sections/LeadForm'
 import { ContactTestimonial } from '@/components/sections/ContactTestimonial'
@@ -10,6 +9,7 @@ import { ContactResponseTimeline } from '@/components/sections/ContactResponseTi
 import { ContactInfo } from '@/components/sections/ContactInfo'
 import { GoogleMap } from '@/components/sections/GoogleMap'
 import { ContactFaq } from '@/components/sections/ContactFaq'
+import { RoundedTransition, RoundedTransitionUp } from '@/components/ui/RoundedTransition'
 import { PageTransition, AnimateOnScroll } from '@/components/ui/motion'
 import { generatePageMetadata, buildLocalBusinessJsonLd } from '@/lib/seo'
 
@@ -36,8 +36,6 @@ export default function ContactPage() {
         subtitle="הפגישה הראשונה חינם — בואו נכיר ונבין מה אתם צריכים"
         variant="default"
       />
-
-      <TrustBar />
 
       <ContactChannels />
 
@@ -71,9 +69,13 @@ export default function ContactPage() {
         </Container>
       </section>
 
+      <RoundedTransition from="bg-bg-main" to="bg-bg-surface" />
+
       <ContactResponseTimeline />
 
       <ContactFaq />
+
+      <RoundedTransitionUp from="bg-bg-surface" to="bg-bg-main" />
 
       {/* Map */}
       <section className="py-16 sm:py-20">

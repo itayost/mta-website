@@ -21,7 +21,8 @@ export async function POST(request: Request) {
 
     const result = await sendLead(parsed.data)
     return NextResponse.json(result, { status: result.success ? 200 : 500 })
-  } catch {
+  } catch (error) {
+    console.error('Contact API error:', error)
     return NextResponse.json(
       { success: false, message: 'אירעה שגיאה בשרת' },
       { status: 500 }

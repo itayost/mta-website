@@ -1,50 +1,21 @@
 'use client'
 
-import { BookOpen, Calculator, ClipboardCheck, TrendingUp, Users, FileText } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { AnimateOnScroll } from '@/components/ui/motion'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { cn } from '@/lib/utils'
+import { featuredServices } from '@/data/services'
 
-const iconMap: Record<string, React.ElementType> = {
-  BookOpen,
-  Calculator,
-  ClipboardCheck,
-  TrendingUp,
-  Users,
-  FileText,
+/* Bento span overrides per card index (6 featured services).
+   Row 1: card 0 spans 2 cols, card 1 spans 1 col
+   Row 2: card 2 spans 1 col, card 3 spans 2 cols
+   Row 3: card 4 spans 2 cols, card 5 spans 1 col */
+const bentoSpans: Record<number, string> = {
+  0: 'sm:col-span-2',
+  3: 'sm:col-span-2',
+  4: 'sm:col-span-2 lg:col-span-1',
+  5: 'lg:col-span-2',
 }
-
-const bentoItems = [
-  {
-    title: 'הנהלת חשבונות',
-    description: 'ניהול ספרים מקצועי ומדויק לעסקים בכל הגדלים, כולל דיווחים שוטפים למע"מ, ביטוח לאומי ומס הכנסה.',
-    icon: 'BookOpen',
-    className: 'md:col-span-2',
-    stat: '1,000+',
-    statLabel: 'לקוחות פעילים',
-  },
-  {
-    title: 'ייעוץ מס',
-    description: 'תכנון מס אופטימלי והפחתת נטל המס באופן חוקי. ליווי בהחלטות פיננסיות משמעותיות.',
-    icon: 'Calculator',
-    className: 'md:row-span-2',
-    stat: '₪340K',
-    statLabel: 'חיסכון ממוצע ללקוח',
-  },
-  {
-    title: 'ביקורת חשבונות',
-    description: 'ביקורת דוחות כספיים בהתאם לתקנים המקצועיים, לרבות חוות דעת רואה חשבון מבקר.',
-    icon: 'ClipboardCheck',
-    className: '',
-  },
-  {
-    title: 'ייעוץ עסקי',
-    description: 'ליווי בהקמת עסק, בחירת מבנה משפטי, תכנון פיננסי ואסטרטגיה עסקית.',
-    icon: 'TrendingUp',
-    className: '',
-  },
-]
 
 export function BentoGrid() {
   return (
@@ -57,38 +28,31 @@ export function BentoGrid() {
         />
 
         <div
-          className="grid grid-cols-1 gap-4 md:grid-cols-3 md:auto-rows-[18rem]"
+          className="grid grid-cols-1 gap-4 sm:grid-cols-3"
           aria-labelledby="services-heading"
         >
-          {bentoItems.map((item, i) => {
-            const Icon = iconMap[item.icon]
-            return (
-              <AnimateOnScroll key={item.title} preset="fade-in-up" delay={i * 0.1}>
-                <div
-                  className={cn(
-                    'group relative overflow-hidden rounded-2xl bg-bg-card p-8 transition-all duration-300 hover:bg-primary/[0.03] h-full',
-                    item.className
-                  )}
-                >
-                  <div className="flex flex-col justify-between h-full">
-                    <div>
-                      <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10 mb-4">
-                        <Icon className="size-6 text-primary" />
-                      </div>
-                      <h3 className="text-xl font-bold text-text-primary">{item.title}</h3>
-                      <p className="mt-2 text-text-muted leading-relaxed">{item.description}</p>
-                    </div>
-                    {item.stat && (
-                      <div className="mt-6 pt-4 border-t border-text-muted/10">
-                        <p className="text-3xl font-black text-primary">{item.stat}</p>
-                        <p className="text-sm text-text-muted">{item.statLabel}</p>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </AnimateOnScroll>
-            )
-          })}
+          {featuredServices.map((service, i) => (
+            <AnimateOnScroll
+              key={service.id}
+              preset="fade-in-up"
+              delay={i * 0.08}
+              className={bentoSpans[i] ?? ''}
+            >
+              <div className="rounded-2xl p-8 h-full flex flex-col bg-bg-card text-text-primary">
+                <span className="text-sm font-medium text-text-muted/50">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+
+                <div className="my-5 h-px bg-text-muted/10" />
+
+                <h3 className="text-xl font-bold">{service.title}</h3>
+
+                <p className="mt-3 text-sm leading-relaxed text-text-muted">
+                  {service.description}
+                </p>
+              </div>
+            </AnimateOnScroll>
+          ))}
         </div>
       </Container>
     </section>

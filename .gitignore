@@ -38,3 +38,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# editor / IDE
+.idea/
+*.swp
+*.swo
+*~
+
+# debug logs
+firebase-debug.log
+
+# testing tools
+.playwright-mcp/

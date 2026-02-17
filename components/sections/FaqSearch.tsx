@@ -4,15 +4,11 @@ import { useState } from 'react'
 import { Search } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { AccordionItem } from '@/components/ui/Accordion'
+import { AnimateOnScroll } from '@/components/ui/motion'
+import { cn } from '@/lib/utils'
 import { faqItems, faqCategoryLabels, type FaqCategory } from '@/data/faq'
 
 const categoryOrder: FaqCategory[] = ['services', 'pricing', 'practical']
-
-const categoryIcons: Record<FaqCategory, string> = {
-  services: 'השירותים',
-  pricing: 'מחירים',
-  practical: 'מעשי',
-}
 
 export function FaqSearch() {
   const [query, setQuery] = useState('')
@@ -40,7 +36,7 @@ export function FaqSearch() {
       }]
 
   return (
-    <section className="py-16 sm:py-24">
+    <section className="py-16 sm:py-24 bg-bg-surface">
       <Container>
         <div className="max-w-3xl mx-auto">
           {/* Search bar */}
@@ -61,11 +57,12 @@ export function FaqSearch() {
               role="tab"
               aria-selected={activeCategory === 'all'}
               onClick={() => setActiveCategory('all')}
-              className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${
+              className={cn(
+                'rounded-lg px-4 py-2 text-sm font-medium transition-all',
                 activeCategory === 'all'
-                  ? 'bg-primary text-bg-main'
-                  : 'bg-bg-surface text-text-muted hover:bg-primary/5'
-              }`}
+                  ? 'bg-primary/10 text-primary'
+                  : 'bg-bg-card text-text-muted hover:text-text-primary hover:bg-bg-card/80',
+              )}
             >
               הכל ({faqItems.length})
             </button>
@@ -77,11 +74,12 @@ export function FaqSearch() {
                   role="tab"
                   aria-selected={activeCategory === cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${
+                  className={cn(
+                    'rounded-lg px-4 py-2 text-sm font-medium transition-all',
                     activeCategory === cat
-                      ? 'bg-primary text-bg-main'
-                      : 'bg-bg-surface text-text-muted hover:bg-primary/5'
-                  }`}
+                      ? 'bg-primary/10 text-primary'
+                      : 'bg-bg-card text-text-muted hover:text-text-primary hover:bg-bg-card/80',
+                  )}
                 >
                   {faqCategoryLabels[cat]} ({count})
                 </button>
@@ -103,7 +101,7 @@ export function FaqSearch() {
           ) : (
             <div className="space-y-10" role="tabpanel">
               {grouped.map((group) => (
-                <div key={group.category}>
+                <AnimateOnScroll key={group.category} preset="fade-in-up">
                   <h2 className="text-xl font-extrabold text-text-primary mb-4 flex items-center gap-3">
                     <div className="w-6 h-1 bg-primary rounded-full" />
                     {group.label}
@@ -118,7 +116,7 @@ export function FaqSearch() {
                       />
                     ))}
                   </div>
-                </div>
+                </AnimateOnScroll>
               ))}
             </div>
           )}

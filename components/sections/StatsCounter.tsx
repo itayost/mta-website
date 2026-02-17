@@ -11,7 +11,7 @@ const stats = [
 
 export function StatsCounter() {
   return (
-    <section className="py-16 sm:py-20">
+    <section className="bg-bg-dark py-16 sm:py-20">
       <Container>
         <StaggerChildren staggerDelay={0.15} className="grid grid-cols-2 gap-8 lg:grid-cols-4">
           {stats.map((stat) => (
@@ -20,9 +20,9 @@ export function StatsCounter() {
                 <AnimatedCounter
                   target={stat.target}
                   suffix={stat.suffix}
-                  className="text-5xl font-black text-primary lg:text-6xl"
+                  className="text-5xl font-black text-white lg:text-6xl"
                 />
-                <p className="mt-2 text-sm text-text-muted font-medium">{stat.label}</p>
+                <p className="mt-2 text-sm text-white/60 font-medium">{stat.label}</p>
               </div>
             </StaggerItem>
           ))}

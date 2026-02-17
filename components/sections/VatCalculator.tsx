@@ -1,18 +1,13 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import { cn } from '@/lib/utils'
+import { formatILSPrecise } from '@/lib/formatters'
+import { VAT_RATE } from '@/lib/tax-constants'
 import { Card } from '@/components/ui/Card'
 import { Input } from '@/components/ui/Input'
-
-const VAT_RATE = 0.17
+import { ToggleGroup } from '@/components/ui/ToggleGroup'
 
 type Direction = 'add' | 'remove'
-
-const formatter = new Intl.NumberFormat('he-IL', {
-  minimumFractionDigits: 2,
-  maximumFractionDigits: 2,
-})
 
 export function VatCalculator() {
   const [direction, setDirection] = useState<Direction>('add')
@@ -38,34 +33,15 @@ export function VatCalculator() {
       <h2 className="text-2xl font-extrabold text-text-primary mb-6">מחשבון מע״מ</h2>
 
       {/* Direction toggle */}
-      <div className="flex rounded-xl bg-bg-surface p-1 mb-6" role="radiogroup" aria-label="כיוון חישוב">
-        <button
-          role="radio"
-          aria-checked={direction === 'add'}
-          onClick={() => setDirection('add')}
-          className={cn(
-            'flex-1 rounded-lg px-4 py-2.5 text-sm font-semibold transition-all',
-            direction === 'add'
-              ? 'bg-primary text-bg-main shadow-sm'
-              : 'text-text-muted hover:text-text-primary'
-          )}
-        >
-          ללא → כולל מע״מ
-        </button>
-        <button
-          role="radio"
-          aria-checked={direction === 'remove'}
-          onClick={() => setDirection('remove')}
-          className={cn(
-            'flex-1 rounded-lg px-4 py-2.5 text-sm font-semibold transition-all',
-            direction === 'remove'
-              ? 'bg-primary text-bg-main shadow-sm'
-              : 'text-text-muted hover:text-text-primary'
-          )}
-        >
-          כולל → ללא מע״מ
-        </button>
-      </div>
+      <ToggleGroup
+        options={[
+          { value: 'add', label: 'ללא → כולל מע״מ' },
+          { value: 'remove', label: 'כולל → ללא מע״מ' },
+        ]}
+        value={direction}
+        onChange={setDirection}
+        ariaLabel="כיוון חישוב"
+      />
 
       {/* Amount input */}
       <Input
@@ -86,13 +62,13 @@ export function VatCalculator() {
               {direction === 'add' ? 'סכום כולל מע״מ' : 'סכום ללא מע״מ'}
             </span>
             <span className="text-xl font-bold text-primary">
-              ₪{formatter.format(result.total)}
+              ₪{formatILSPrecise(result.total)}
             </span>
           </div>
           <div className="flex items-center justify-between border-t border-text-muted/10 pt-3">
             <span className="text-sm text-text-muted">מע״מ (17%)</span>
             <span className="text-lg font-semibold text-accent">
-              ₪{formatter.format(result.vat)}
+              ₪{formatILSPrecise(result.vat)}
             </span>
           </div>
         </div>
