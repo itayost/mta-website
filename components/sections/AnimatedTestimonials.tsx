@@ -10,9 +10,8 @@ import { testimonials } from '@/data/testimonials'
 
 export function AnimatedTestimonials() {
   const [active, setActive] = useState(0)
-  const [rotations] = useState(
-    () => testimonials.map(() => Math.floor(Math.random() * 21) - 10)
-  )
+  // Deterministic rotations to avoid hydration mismatch (Math.random differs server vs client)
+  const rotations = testimonials.map((_, i) => ((i * 7 + 3) % 21) - 10)
 
   const handleNext = () => {
     setActive((prev) => (prev + 1) % testimonials.length)
