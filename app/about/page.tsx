@@ -1,15 +1,15 @@
 import type { Metadata } from 'next'
 import { Container } from '@/components/ui/Container'
 import { SectionHeading } from '@/components/ui/SectionHeading'
-import { GlowDivider } from '@/components/ui/GlowDivider'
 import { PageHero } from '@/components/sections/PageHero'
-import { TrustBar } from '@/components/sections/TrustBar'
+import { LogoCarousel } from '@/components/sections/LogoCarousel'
 import { StatsCounter } from '@/components/sections/StatsCounter'
 import { ValuesGrid } from '@/components/sections/ValuesGrid'
 import { TeamMember } from '@/components/sections/TeamMember'
 import { AboutTestimonial } from '@/components/sections/AboutTestimonial'
 import { ProcessSteps } from '@/components/sections/ProcessSteps'
 import { AboutCta } from '@/components/sections/AboutCta'
+import { RoundedTransition, RoundedTransitionUp } from '@/components/ui/RoundedTransition'
 import { PageTransition, AnimateOnScroll, StaggerChildren, StaggerItem } from '@/components/ui/motion'
 import { teamMembers } from '@/data/team'
 import { generatePageMetadata, buildLocalBusinessJsonLd } from '@/lib/seo'
@@ -66,9 +66,13 @@ export default function AboutPage() {
         variant="about"
       />
 
-      <TrustBar />
+      <RoundedTransition from="bg-bg-main" to="bg-bg-surface" />
+
+      <LogoCarousel />
 
       <StatsCounter />
+
+      <RoundedTransitionUp from="bg-bg-surface" to="bg-bg-main" />
 
       {/* Timeline Story */}
       <section className="py-20 sm:py-28">
@@ -80,7 +84,7 @@ export default function AboutPage() {
           <div className="relative max-w-3xl mx-auto">
             {/* Vertical line */}
             <div
-              className="absolute start-6 sm:start-1/2 top-0 bottom-0 w-0.5 bg-white/10 -translate-x-1/2"
+              className="absolute start-6 sm:start-1/2 top-0 bottom-0 w-0.5 bg-text-muted/10 -translate-x-1/2"
               aria-hidden="true"
             />
 
@@ -123,11 +127,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <GlowDivider />
-
       <ValuesGrid />
-
-      <GlowDivider />
 
       <section className="py-20 sm:py-28 bg-bg-surface">
         <Container>

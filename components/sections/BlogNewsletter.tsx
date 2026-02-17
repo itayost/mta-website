@@ -29,11 +29,11 @@ export function BlogNewsletter() {
                 type="email"
                 placeholder="your@email.com"
                 dir="ltr"
-                className="flex-1 rounded-xl border border-white/10 bg-bg-card px-4 py-3 text-text-primary placeholder:text-text-muted/40 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-colors"
+                className="flex-1 rounded-full border border-text-muted/10 bg-bg-card px-4 py-3 text-text-primary placeholder:text-text-muted/40 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-colors"
               />
               <button
                 type="submit"
-                className="rounded-xl bg-primary px-6 py-3 text-base font-semibold text-bg-main shadow-md shadow-primary/20 hover:bg-primary-dark hover:text-white transition-all active:scale-[0.98] shrink-0"
+                className="rounded-full bg-primary px-6 py-3 text-base font-semibold text-bg-main hover:bg-primary-dark hover:text-white transition-all active:scale-[0.98] shrink-0"
               >
                 הרשמו
               </button>

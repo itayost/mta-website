@@ -22,7 +22,7 @@ export function ServicesOverview() {
           />
         </AnimateOnScroll>
 
-        {/* Primary 3 services — large cards */}
+        {/* Primary 3 services -- large cards */}
         <StaggerChildren className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-10">
           {primaryServices.map((service) => (
             <StaggerItem key={service.id}>
@@ -37,7 +37,7 @@ export function ServicesOverview() {
             {remainingServices.map((service) => (
               <span
                 key={service.id}
-                className="inline-flex items-center rounded-full bg-white/5 border border-white/10 px-3.5 py-1.5 text-sm text-text-muted hover:bg-white/10 hover:text-text-primary transition-colors"
+                className="inline-flex items-center rounded-full bg-bg-surface px-3.5 py-1.5 text-sm text-text-muted hover:bg-bg-card hover:text-text-primary transition-colors"
               >
                 {service.title}
               </span>
@@ -49,7 +49,7 @@ export function ServicesOverview() {
           <div className="text-center">
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 rounded-xl bg-white/5 border border-white/10 px-6 py-3 text-base font-semibold text-text-primary hover:bg-white/10 transition-all"
+              className="inline-flex items-center gap-2 rounded-full border border-text-muted/30 px-6 py-3 text-base font-semibold text-text-primary hover:bg-primary/5 transition-all"
             >
               <span>לכל 17 השירותים</span>
               <ArrowLeft className="size-5" />

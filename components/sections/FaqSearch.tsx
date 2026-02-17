@@ -51,7 +51,7 @@ export function FaqSearch() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="חפשו שאלה..."
-              className="w-full rounded-2xl bg-bg-card border border-white/10 ps-12 pe-4 py-4 text-text-primary placeholder:text-text-muted/40 focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-colors"
+              className="w-full rounded-2xl bg-bg-card border border-text-muted/10 ps-12 pe-4 py-4 text-text-primary placeholder:text-text-muted/40 focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-colors"
             />
           </div>
 
@@ -63,8 +63,8 @@ export function FaqSearch() {
               onClick={() => setActiveCategory('all')}
               className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${
                 activeCategory === 'all'
-                  ? 'bg-primary text-bg-main shadow-md shadow-primary/20'
-                  : 'bg-white/5 text-text-muted border border-white/10 hover:bg-white/10'
+                  ? 'bg-primary text-bg-main'
+                  : 'bg-bg-surface text-text-muted hover:bg-primary/5'
               }`}
             >
               הכל ({faqItems.length})
@@ -79,8 +79,8 @@ export function FaqSearch() {
                   onClick={() => setActiveCategory(cat)}
                   className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${
                     activeCategory === cat
-                      ? 'bg-primary text-bg-main shadow-md shadow-primary/20'
-                      : 'bg-white/5 text-text-muted border border-white/10 hover:bg-white/10'
+                      ? 'bg-primary text-bg-main'
+                      : 'bg-bg-surface text-text-muted hover:bg-primary/5'
                   }`}
                 >
                   {faqCategoryLabels[cat]} ({count})
@@ -108,7 +108,7 @@ export function FaqSearch() {
                     <div className="w-6 h-1 bg-primary rounded-full" />
                     {group.label}
                   </h2>
-                  <div className="rounded-2xl border border-white/5 bg-bg-card overflow-hidden">
+                  <div className="rounded-2xl bg-bg-card overflow-hidden">
                     {group.items.map((item, index) => (
                       <AccordionItem
                         key={index}

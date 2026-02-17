@@ -51,8 +51,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <PageTransition>
-      {/* Inline gradient header instead of PageHero */}
-      <div className="bg-gradient-to-b from-navy-800 to-bg-main pt-12 pb-8">
+      {/* Inline header */}
+      <div className="bg-bg-surface pt-12 pb-8">
         <Container>
           <div className="max-w-3xl mx-auto">
             <Link
@@ -98,7 +98,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       {post.image && (
         <Container>
           <div className="max-w-3xl mx-auto -mt-2 mb-8">
-            <div className="relative aspect-[2/1] rounded-2xl border border-white/10 overflow-hidden">
+            <div className="relative aspect-[2/1] rounded-2xl overflow-hidden">
               <Image
                 src={post.image}
                 alt={post.title}
@@ -107,7 +107,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 sizes="(max-width: 768px) 100vw, 768px"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-bg-main/40 via-transparent to-navy-900/20" />
+              <div className="absolute inset-0 bg-gradient-to-t from-bg-main/20 via-transparent to-transparent" />
             </div>
           </div>
         </Container>
@@ -116,19 +116,19 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <article className="py-12 sm:py-16">
         <Container>
           <div className="max-w-3xl mx-auto">
-            <div className="prose prose-lg prose-dark max-w-none leading-relaxed">
+            <div className="prose prose-lg max-w-none leading-relaxed">
               <p>{post.content}</p>
             </div>
 
             {/* Share buttons */}
-            <div className="mt-12 pt-8 border-t border-white/10">
+            <div className="mt-12 pt-8 border-t border-text-muted/10">
               <p className="text-sm font-medium text-text-muted mb-3">שתפו את המאמר:</p>
               <div className="flex gap-3">
                 <a
                   href={whatsappShareUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl bg-white/5 border border-white/10 px-4 py-2 text-sm font-semibold text-text-primary hover:bg-white/10 transition-all"
+                  className="inline-flex items-center gap-2 rounded-full bg-bg-surface px-4 py-2 text-sm font-semibold text-text-primary hover:bg-primary/5 transition-all"
                 >
                   <Share2 className="size-4" />
                   <span>WhatsApp</span>

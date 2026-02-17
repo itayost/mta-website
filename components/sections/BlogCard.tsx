@@ -21,7 +21,7 @@ export function BlogCard({ post }: BlogCardProps) {
             className="object-cover transition-transform duration-500 group-hover:scale-105"
             sizes="(max-width: 640px) 100vw, 50vw"
           />
-          <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-bg-card to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-bg-card/40 to-transparent" />
         </div>
       )}
       <div className="p-6">

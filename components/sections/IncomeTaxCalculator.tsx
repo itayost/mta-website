@@ -140,11 +140,11 @@ export function IncomeTaxCalculator() {
               <span className="text-sm text-text-muted">מס הכנסה חודשי</span>
               <span className="text-xl font-bold text-primary">₪{formatter.format(result.finalTax)}</span>
             </div>
-            <div className="flex items-center justify-between border-t border-white/10 pt-3">
+            <div className="flex items-center justify-between border-t border-text-muted/10 pt-3">
               <span className="text-sm text-text-muted">שיעור מס אפקטיבי</span>
               <span className="text-lg font-semibold text-accent">{result.effectiveRate.toFixed(1)}%</span>
             </div>
-            <div className="flex items-center justify-between border-t border-white/10 pt-3">
+            <div className="flex items-center justify-between border-t border-text-muted/10 pt-3">
               <span className="text-sm text-text-muted">הכנסה אחרי מס</span>
               <span className="text-lg font-semibold text-text-primary">₪{formatter.format(result.afterTax)}</span>
             </div>
@@ -163,7 +163,7 @@ export function IncomeTaxCalculator() {
                   <span className="text-text-primary font-medium">₪{formatter.format(b.amount)}</span>
                 </div>
               ))}
-              <div className="flex items-center justify-between border-t border-white/10 pt-2">
+              <div className="flex items-center justify-between border-t border-text-muted/10 pt-2">
                 <span className="text-text-muted">מס לפני זיכוי</span>
                 <span className="text-text-primary font-medium">₪{formatter.format(result.rawTax)}</span>
               </div>

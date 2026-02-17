@@ -42,7 +42,7 @@ export default function BlogPage() {
               {/* Featured post — 2-column with image */}
               {featuredPost && (
                 <AnimateOnScroll preset="fade-in-up">
-                  <article className="rounded-2xl border border-white/5 bg-bg-card overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:border-white/10">
+                  <article className="rounded-2xl bg-bg-card overflow-hidden transition-all duration-300">
                     <div className="grid grid-cols-1 lg:grid-cols-2">
                       {/* Image column */}
                       {featuredPost.image && (
@@ -55,7 +55,7 @@ export default function BlogPage() {
                             sizes="(max-width: 1024px) 100vw, 50vw"
                             priority
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-l from-bg-card/60 via-transparent to-transparent" />
+                          <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-l from-bg-card/40 via-transparent to-transparent" />
                         </div>
                       )}
                       {/* Text column */}

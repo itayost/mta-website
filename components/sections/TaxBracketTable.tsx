@@ -24,7 +24,7 @@ export function TaxBracketTable() {
           <div className="max-w-3xl mx-auto overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-white/10">
+                <tr className="border-b border-text-muted/10">
                   <th className="py-3 px-4 text-start text-text-muted font-semibold">הכנסה חודשית (₪)</th>
                   <th className="py-3 px-4 text-start text-text-muted font-semibold">הכנסה שנתית (₪)</th>
                   <th className="py-3 px-4 text-start text-text-muted font-semibold">שיעור המס</th>
@@ -34,7 +34,7 @@ export function TaxBracketTable() {
                 {brackets.map((row, i) => (
                   <tr
                     key={i}
-                    className="border-b border-white/5 hover:bg-white/5 transition-colors"
+                    className="border-b border-text-muted/5 hover:bg-bg-surface transition-colors"
                   >
                     <td className="py-3 px-4 text-text-primary font-medium" dir="ltr">{row.monthly}</td>
                     <td className="py-3 px-4 text-text-primary font-medium" dir="ltr">{row.annual}</td>

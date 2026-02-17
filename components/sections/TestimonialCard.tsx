@@ -34,7 +34,7 @@ export function TestimonialCard({ testimonial }: TestimonialCardProps) {
       <blockquote className="flex-1 text-text-muted leading-relaxed mb-4 relative">
         {testimonial.content}
       </blockquote>
-      <div className="border-t border-white/10 pt-4 flex items-center gap-3">
+      <div className="border-t border-text-muted/10 pt-4 flex items-center gap-3">
         {testimonial.image ? (
           <Image
             src={testimonial.image}

@@ -37,9 +37,9 @@ export function ValuesGrid() {
         <StaggerChildren className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 max-w-5xl mx-auto">
           {values.map((value) => (
             <StaggerItem key={value.title}>
-              <div className="rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm p-6 text-center">
-                <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-2xl bg-gold/10">
-                  <value.icon className="size-7 text-gold" />
+              <div className="rounded-2xl bg-bg-card p-6 text-center">
+                <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-2xl bg-primary/10">
+                  <value.icon className="size-7 text-primary" />
                 </div>
                 <h3 className="text-lg font-bold text-text-primary mb-2">
                   {value.title}

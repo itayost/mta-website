@@ -11,7 +11,7 @@ const trustItems = [
 
 export function TrustBar() {
   return (
-    <section className="py-6 bg-bg-surface border-y border-white/5">
+    <section className="py-6">
       <Container>
         <StaggerChildren className="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
           {trustItems.map((item) => (

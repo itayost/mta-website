@@ -7,9 +7,6 @@ import { contactInfo } from '@/data/contact'
 export function Footer() {
   return (
     <footer className="bg-bg-surface text-text-muted">
-      {/* Gradient top border */}
-      <div className="h-1 bg-gradient-to-l from-primary via-accent to-primary" />
-
       <Container className="py-12 sm:py-16">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {/* About */}
@@ -32,7 +29,7 @@ export function Footer() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-text-muted hover:text-white transition-colors hover:translate-x-[-2px] inline-block"
+                  className="text-text-muted hover:text-primary transition-colors inline-block"
                 >
                   {item.label}
                 </Link>
@@ -46,24 +43,24 @@ export function Footer() {
             <div className="flex flex-col gap-3">
               <a
                 href={`tel:${contactInfo.phone}`}
-                className="flex items-center gap-3 text-text-muted hover:text-white transition-colors group"
+                className="flex items-center gap-3 text-text-muted hover:text-primary transition-colors group"
               >
-                <div className="flex size-9 items-center justify-center rounded-lg bg-bg-card group-hover:bg-primary transition-colors">
+                <div className="flex size-9 items-center justify-center rounded-full bg-bg-card group-hover:bg-primary/10 transition-colors">
                   <Phone className="size-4" />
                 </div>
                 <span>{contactInfo.phone}</span>
               </a>
               <a
                 href={`mailto:${contactInfo.email}`}
-                className="flex items-center gap-3 text-text-muted hover:text-white transition-colors group"
+                className="flex items-center gap-3 text-text-muted hover:text-primary transition-colors group"
               >
-                <div className="flex size-9 items-center justify-center rounded-lg bg-bg-card group-hover:bg-primary transition-colors">
+                <div className="flex size-9 items-center justify-center rounded-full bg-bg-card group-hover:bg-primary/10 transition-colors">
                   <Mail className="size-4" />
                 </div>
                 <span>{contactInfo.email}</span>
               </a>
               <div className="flex items-start gap-3 text-text-muted">
-                <div className="flex size-9 items-center justify-center rounded-lg bg-bg-card shrink-0">
+                <div className="flex size-9 items-center justify-center rounded-full bg-bg-card shrink-0">
                   <MapPin className="size-4" />
                 </div>
                 <span>{contactInfo.address.full}</span>
@@ -79,7 +76,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-white/10 text-center text-sm text-text-muted/50">
+        <div className="mt-12 pt-8 border-t border-text-muted/10 text-center text-sm text-text-muted/50">
           <p>&copy; {new Date().getFullYear()} משרד מזון – רואי חשבון ויועצי מס. כל הזכויות שמורות.</p>
         </div>
       </Container>

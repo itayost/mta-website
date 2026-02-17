@@ -46,7 +46,6 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
   useEffect(() => {
     if (open) {
       document.body.style.overflow = 'hidden'
-      // Focus close button on open
       requestAnimationFrame(() => closeRef.current?.focus())
       document.addEventListener('keydown', handleKeyDown)
     } else {
@@ -63,7 +62,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
       {/* Backdrop */}
       <div
         className={cn(
-          'fixed inset-0 z-50 bg-black/60 backdrop-blur-sm transition-opacity duration-300 lg:hidden',
+          'fixed inset-0 z-50 bg-black/30 backdrop-blur-sm transition-opacity duration-300 lg:hidden',
           open ? 'opacity-100' : 'opacity-0 pointer-events-none'
         )}
         onClick={onClose}
@@ -77,19 +76,19 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
         aria-modal="true"
         aria-label="תפריט ניווט"
         className={cn(
-          'fixed inset-block-0 inset-inline-start-0 z-50 w-80 max-w-[85vw] bg-bg-surface shadow-2xl transition-transform duration-300 ease-out lg:hidden',
+          'fixed inset-block-0 inset-inline-start-0 z-50 w-80 max-w-[85vw] bg-bg-main shadow-2xl transition-transform duration-300 ease-out lg:hidden',
           open
             ? 'translate-x-0'
             : 'ltr:translate-x-full rtl:-translate-x-full'
         )}
       >
-        <div className="flex items-center justify-between p-4 border-b border-white/5">
+        <div className="flex items-center justify-between p-4 border-b border-text-muted/10">
           <span className="text-xl font-bold text-text-primary">משרד מזון</span>
           <button
             ref={closeRef}
             type="button"
             onClick={onClose}
-            className="rounded-lg p-2.5 text-text-muted hover:bg-white/5 transition-colors"
+            className="rounded-full p-2.5 text-text-muted hover:bg-bg-surface transition-colors"
             aria-label="סגור תפריט"
           >
             <X className="size-6" />
@@ -102,17 +101,17 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
               key={item.href}
               href={item.href}
               onClick={onClose}
-              className="block rounded-lg px-4 py-3 text-base font-medium text-text-muted hover:bg-white/5 hover:text-primary transition-colors"
+              className="block rounded-xl px-4 py-3 text-base font-medium text-text-muted hover:bg-bg-surface hover:text-primary transition-colors"
             >
               {item.label}
             </Link>
           ))}
         </nav>
 
-        <div className="p-4 border-t border-white/5">
+        <div className="p-4 border-t border-text-muted/10">
           <a
             href={`tel:${contactInfo.phone}`}
-            className="flex items-center justify-center gap-2 w-full rounded-xl bg-primary px-4 py-3 text-base font-semibold text-bg-main hover:bg-primary-dark hover:text-white transition-colors"
+            className="flex items-center justify-center gap-2 w-full rounded-full border border-primary px-4 py-3 text-base font-semibold text-primary hover:bg-primary hover:text-white transition-colors"
           >
             <Phone className="size-5" />
             <span>{contactInfo.phone}</span>

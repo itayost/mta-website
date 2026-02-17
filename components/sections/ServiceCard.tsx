@@ -31,8 +31,8 @@ export function ServiceCard({ service }: ServiceCardProps) {
   return (
     <details
       className={cn(
-        'group rounded-2xl border border-white/5 bg-bg-card shadow-sm',
-        'transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:border-white/10',
+        'group rounded-2xl bg-bg-card',
+        'transition-all duration-300',
         '[&_summary::-webkit-details-marker]:hidden'
       )}
     >

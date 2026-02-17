@@ -26,7 +26,7 @@ const steps = [
 
 export function ContactResponseTimeline() {
   return (
-    <section className="py-16 sm:py-20 bg-gradient-to-bl from-navy-800 via-primary-deep to-navy-900">
+    <section className="py-16 sm:py-20 bg-bg-surface">
       <Container>
         <SectionHeading
           title="מה קורה אחרי שפונים?"
@@ -34,7 +34,7 @@ export function ContactResponseTimeline() {
         />
         <div className="relative max-w-4xl mx-auto">
           {/* Connecting line */}
-          <div className="hidden sm:block absolute top-7 inset-x-[15%] h-0.5 bg-white/10" aria-hidden="true" />
+          <div className="hidden sm:block absolute top-7 inset-x-[15%] h-0.5 bg-text-muted/10" aria-hidden="true" />
           <StaggerChildren staggerDelay={0.15} className="grid grid-cols-1 gap-8 sm:grid-cols-3">
             {steps.map((step, i) => (
               <StaggerItem key={step.title}>

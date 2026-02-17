@@ -23,7 +23,7 @@ export function BlogPreview() {
             <StaggerItem key={post.slug}>
               <Link
                 href={`/blog/${post.slug}`}
-                className="group block rounded-2xl border border-white/5 bg-bg-card overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:border-white/10 hover:-translate-y-1"
+                className="group block rounded-2xl bg-bg-card overflow-hidden transition-all duration-300 hover:-translate-y-1"
               >
                 {post.image && (
                   <div className="relative aspect-video overflow-hidden">

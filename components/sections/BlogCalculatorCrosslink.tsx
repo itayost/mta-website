@@ -10,10 +10,10 @@ export function BlogCalculatorCrosslink() {
         <AnimateOnScroll preset="fade-in-up">
           <Link
             href="/calculators"
-            className="group flex items-center gap-5 max-w-2xl mx-auto rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm p-6 transition-all duration-300 hover:bg-white/10 hover:border-white/20"
+            className="group flex items-center gap-5 max-w-2xl mx-auto rounded-2xl bg-bg-card p-6 transition-all duration-300 hover:bg-primary/5"
           >
-            <div className="flex size-14 items-center justify-center rounded-2xl bg-gold/10 shrink-0 transition-transform duration-300 group-hover:scale-110">
-              <Calculator className="size-7 text-gold" />
+            <div className="flex size-14 items-center justify-center rounded-2xl bg-primary/10 shrink-0 transition-transform duration-300 group-hover:scale-110">
+              <Calculator className="size-7 text-primary" />
             </div>
             <div className="flex-1">
               <h3 className="text-base font-bold text-text-primary mb-1 group-hover:text-primary transition-colors">

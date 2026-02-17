@@ -113,7 +113,7 @@ export function TestimonialCarousel({ testimonials }: TestimonialCarouselProps) 
               'size-2.5 rounded-full transition-all duration-300',
               i === activeIndex
                 ? 'bg-primary scale-125'
-                : 'bg-white/20 hover:bg-white/30'
+                : 'bg-text-muted/20 hover:bg-text-muted/30'
             )}
           />
         ))}

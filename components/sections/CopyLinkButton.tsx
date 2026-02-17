@@ -20,7 +20,7 @@ export function CopyLinkButton() {
     <button
       type="button"
       onClick={handleCopy}
-      className="inline-flex items-center gap-2 rounded-xl bg-white/5 border border-white/10 px-4 py-2 text-sm font-semibold text-text-primary hover:bg-white/10 transition-all"
+      className="inline-flex items-center gap-2 rounded-full bg-bg-surface px-4 py-2 text-sm font-semibold text-text-primary hover:bg-primary/5 transition-all"
       aria-label="העתק קישור"
     >
       {copied ? <Check className="size-4 text-success" /> : <Copy className="size-4" />}

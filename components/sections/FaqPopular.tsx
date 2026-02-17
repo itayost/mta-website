@@ -15,11 +15,11 @@ export function FaqPopular() {
       <Container>
         <div className="max-w-3xl mx-auto">
           <div className="flex items-center justify-center gap-2 mb-6">
-            <Sparkles className="size-5 text-gold" />
+            <Sparkles className="size-5 text-primary" />
             <h2 className="text-lg font-bold text-text-primary">השאלות הכי נפוצות</h2>
           </div>
           <AnimateOnScroll preset="fade-in-up">
-            <div className="rounded-2xl border border-white/5 bg-bg-card overflow-hidden">
+            <div className="rounded-2xl bg-bg-card overflow-hidden">
               {popularItems.map((item, index) => (
                 <AccordionItem
                   key={index}

@@ -25,7 +25,7 @@ export function ServicesStickyNav({
   }
 
   return (
-    <div className="sticky top-[calc(4rem+2px)] sm:top-[calc(5rem+2px)] z-30 bg-bg-main/95 backdrop-blur-xl border-b border-white/5 -mx-4 px-4 sm:-mx-0 sm:px-0">
+    <div className="sticky top-[calc(4rem+2px)] sm:top-[calc(5rem+2px)] z-30 bg-bg-main/95 backdrop-blur-xl border-b border-text-muted/10 -mx-4 px-4 sm:-mx-0 sm:px-0">
       {/* Category links row */}
       <div className="flex gap-2 overflow-x-auto scrollbar-hide py-3" role="navigation" aria-label="ניווט בין קטגוריות שירותים">
         {categories.map((cat) => (
@@ -36,7 +36,7 @@ export function ServicesStickyNav({
               'shrink-0 rounded-lg px-4 py-1.5 text-sm font-medium transition-colors whitespace-nowrap',
               activeCategoryId === cat.id
                 ? 'bg-primary/10 text-primary'
-                : 'text-text-muted hover:text-text-primary hover:bg-white/5'
+                : 'text-text-muted hover:text-text-primary hover:bg-bg-surface'
             )}
           >
             {cat.title}
@@ -55,8 +55,8 @@ export function ServicesStickyNav({
             className={cn(
               'rounded-xl px-4 py-2 text-sm font-semibold transition-all',
               activeFilter === option.key
-                ? 'bg-primary text-bg-main shadow-md shadow-primary/20'
-                : 'bg-white/5 backdrop-blur-sm text-text-primary border border-white/10 hover:bg-white/10'
+                ? 'bg-primary text-bg-main'
+                : 'bg-bg-surface text-text-primary hover:bg-primary/5'
             )}
           >
             {option.label}

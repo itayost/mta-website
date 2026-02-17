@@ -40,7 +40,7 @@ export function AudienceCards() {
         <StaggerChildren className="grid grid-cols-1 gap-6 sm:grid-cols-3">
           {audiences.map((audience) => (
             <StaggerItem key={audience.title}>
-              <Card glass className="group h-full flex flex-col">
+              <Card className="group h-full flex flex-col">
                 <div className="flex size-14 items-center justify-center rounded-2xl bg-primary/10 text-primary mb-5 transition-transform duration-300 group-hover:scale-110">
                   <audience.icon className="size-7" />
                 </div>

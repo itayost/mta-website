@@ -35,7 +35,7 @@ const channels = [
     description: 'בתיאום מראש',
     value: contactInfo.address.full,
     href: `https://www.google.com/maps?q=${contactInfo.address.lat},${contactInfo.address.lng}`,
-    color: 'text-gold bg-gold/10',
+    color: 'text-primary bg-primary/10',
   },
 ]
 
@@ -54,7 +54,7 @@ export function ContactChannels() {
                 href={channel.href}
                 target={channel.href.startsWith('http') ? '_blank' : undefined}
                 rel={channel.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="group flex flex-col items-center rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm p-6 text-center transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:-translate-y-1"
+                className="group flex flex-col items-center rounded-2xl bg-bg-card p-6 text-center transition-all duration-300 hover:bg-primary/5 hover:-translate-y-1"
               >
                 <div className={`flex size-14 items-center justify-center rounded-2xl ${channel.color} mb-4 transition-transform duration-300 group-hover:scale-110`}>
                   <channel.icon className="size-7" />

@@ -4,7 +4,6 @@ import { TrustBar } from '@/components/sections/TrustBar'
 import { FaqPopular } from '@/components/sections/FaqPopular'
 import { FaqSearch } from '@/components/sections/FaqSearch'
 import { FaqCta } from '@/components/sections/FaqCta'
-import { GlowDivider } from '@/components/ui/GlowDivider'
 import { PageTransition } from '@/components/ui/motion'
 import { faqItems } from '@/data/faq'
 import { generatePageMetadata, buildFaqJsonLd } from '@/lib/seo'
@@ -35,8 +34,6 @@ export default function FaqPage() {
       <TrustBar />
 
       <FaqPopular />
-
-      <GlowDivider />
 
       <FaqSearch />
 

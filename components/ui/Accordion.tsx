@@ -13,7 +13,7 @@ export function AccordionItem({ question, answer, className }: AccordionItemProp
   return (
     <details
       className={cn(
-        'group border-b border-white/10 [&_summary::-webkit-details-marker]:hidden',
+        'group border-b border-text-muted/10 [&_summary::-webkit-details-marker]:hidden',
         className
       )}
     >
@@ -23,7 +23,7 @@ export function AccordionItem({ question, answer, className }: AccordionItemProp
       </summary>
       <div className="grid grid-rows-[0fr] group-open:grid-rows-[1fr] transition-[grid-template-rows] duration-200">
         <div className="overflow-hidden">
-          <div className="pb-5 text-text-muted leading-relaxed group-open:bg-white/5 -mx-4 px-4 rounded-lg">{answer}</div>
+          <div className="pb-5 text-text-muted leading-relaxed">{answer}</div>
         </div>
       </div>
     </details>

@@ -7,7 +7,6 @@ import { useState } from 'react'
 import { Input } from '@/components/ui/Input'
 import { Textarea } from '@/components/ui/Textarea'
 import { Button } from '@/components/ui/Button'
-import { Card } from '@/components/ui/Card'
 import { contactFormSchema, type ContactFormValues } from '@/lib/schemas'
 
 export function LeadForm() {
@@ -44,7 +43,7 @@ export function LeadForm() {
 
   if (status === 'success') {
     return (
-      <div role="status" aria-live="polite" className="rounded-2xl border border-success/20 bg-success/10 p-8 text-center animate-fade-in">
+      <div role="status" aria-live="polite" className="rounded-2xl bg-success/10 p-8 text-center animate-fade-in">
         <CheckCircle className="size-12 mx-auto text-success mb-4" />
         <h3 className="text-xl font-bold text-text-primary mb-2">הפנייה נשלחה בהצלחה!</h3>
         <p className="text-success/80">ניצור אתכם קשר בהקדם האפשרי.</p>
@@ -60,7 +59,7 @@ export function LeadForm() {
   }
 
   return (
-    <Card>
+    <div className="rounded-2xl bg-bg-card p-6">
       {/* Trust indicator */}
       <div className="flex items-center justify-center gap-2 mb-6">
         <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
@@ -112,7 +111,7 @@ export function LeadForm() {
           </p>
         )}
 
-        <Button type="submit" size="lg" className="w-full" disabled={status === 'submitting'}>
+        <Button type="submit" size="lg" className="w-full rounded-full" disabled={status === 'submitting'}>
           {status === 'submitting' ? (
             <>
               <Loader2 className="size-5 animate-spin" />
@@ -131,6 +130,6 @@ export function LeadForm() {
           <span>המידע שלכם מאובטח</span>
         </p>
       </form>
-    </Card>
+    </div>
   )
 }

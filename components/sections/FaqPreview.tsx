@@ -17,7 +17,7 @@ export function FaqPreview() {
           subtitle="תשובות מהירות לשאלות הנפוצות ביותר"
         />
         <AnimateOnScroll preset="fade-in-up">
-          <div className="max-w-3xl mx-auto rounded-2xl border border-white/5 bg-bg-card overflow-hidden">
+          <div className="max-w-3xl mx-auto rounded-2xl bg-bg-card overflow-hidden">
             {topQuestions.map((item, index) => (
               <AccordionItem
                 key={index}

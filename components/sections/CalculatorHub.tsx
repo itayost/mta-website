@@ -22,7 +22,7 @@ const calculators = [
     title: 'מחשבון שכר נטו',
     description: 'גלו כמה תקבלו נטו אחרי כל הניכויים.',
     href: '#net-salary',
-    color: 'text-gold bg-gold/10',
+    color: 'text-primary bg-primary/10',
   },
 ]
 
@@ -35,7 +35,7 @@ export function CalculatorHub() {
             <StaggerItem key={calc.title}>
               <a
                 href={calc.href}
-                className="group flex items-start gap-4 rounded-2xl bg-white/5 border border-white/10 p-5 transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:-translate-y-1"
+                className="group flex items-start gap-4 rounded-2xl bg-bg-card p-5 transition-all duration-300 hover:bg-primary/5 hover:-translate-y-1"
               >
                 <div className={`flex size-12 items-center justify-center rounded-xl ${calc.color} shrink-0 transition-transform duration-300 group-hover:scale-110`}>
                   <calc.icon className="size-6" />

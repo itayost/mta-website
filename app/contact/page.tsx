@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Container } from '@/components/ui/Container'
 import { SectionHeading } from '@/components/ui/SectionHeading'
-import { GlowDivider } from '@/components/ui/GlowDivider'
 import { PageHero } from '@/components/sections/PageHero'
 import { TrustBar } from '@/components/sections/TrustBar'
 import { ContactChannels } from '@/components/sections/ContactChannels'
@@ -41,8 +40,6 @@ export default function ContactPage() {
       <TrustBar />
 
       <ContactChannels />
-
-      <GlowDivider />
 
       {/* Form + Testimonial side by side */}
       <section className="py-20 sm:py-28">

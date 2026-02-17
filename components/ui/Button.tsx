@@ -11,13 +11,13 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    'btn-shimmer bg-primary text-bg-main shadow-md shadow-primary/20 hover:bg-primary-dark hover:text-white hover:shadow-lg hover:shadow-primary/30 focus-visible:ring-primary',
+    'border border-primary text-primary bg-transparent hover:bg-primary hover:text-white focus-visible:ring-primary',
   secondary:
-    'bg-accent text-bg-main shadow-sm hover:shadow-md focus-visible:ring-accent',
+    'border border-text-primary/20 text-text-primary bg-transparent hover:bg-bg-surface focus-visible:ring-primary',
   outline:
-    'border-2 border-white/30 text-text-primary hover:bg-white/10 focus-visible:ring-primary',
+    'border border-text-muted/30 text-text-primary hover:bg-primary/5 focus-visible:ring-primary',
   ghost:
-    'bg-white/5 backdrop-blur-sm text-text-primary border border-white/10 hover:bg-white/10 focus-visible:ring-primary',
+    'text-text-muted hover:text-text-primary hover:bg-bg-surface focus-visible:ring-primary',
 }
 
 const sizeStyles: Record<ButtonSize, string> = {
@@ -36,7 +36,7 @@ export function Button({
   return (
     <button
       className={cn(
-        'inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ring-offset-bg-main disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98]',
+        'inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ring-offset-bg-main disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98]',
         variantStyles[variant],
         sizeStyles[size],
         className

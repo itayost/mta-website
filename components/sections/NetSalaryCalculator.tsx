@@ -195,7 +195,7 @@ export function NetSalaryCalculator() {
               <span className="text-text-muted">שכר ברוטו</span>
               <span className="text-text-primary font-semibold">₪{formatter.format(result.gross)}</span>
             </div>
-            <div className="flex items-center justify-between border-t border-white/10 pt-3">
+            <div className="flex items-center justify-between border-t border-text-muted/10 pt-3">
               <span className="text-text-muted">מס הכנסה</span>
               <span className="text-error font-medium">-₪{formatter.format(result.incomeTax)}</span>
             </div>
@@ -211,7 +211,7 @@ export function NetSalaryCalculator() {
               <span className="text-text-muted">פנסיה עובד ({parsedPension}%)</span>
               <span className="text-error font-medium">-₪{formatter.format(result.pension)}</span>
             </div>
-            <div className="flex items-center justify-between border-t border-white/10 pt-3">
+            <div className="flex items-center justify-between border-t border-text-muted/10 pt-3">
               <span className="text-text-primary font-semibold">סה״כ ניכויים</span>
               <span className="text-error font-bold">-₪{formatter.format(result.totalDeductions)}</span>
             </div>

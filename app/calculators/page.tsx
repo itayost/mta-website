@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Container } from '@/components/ui/Container'
 import { SectionHeading } from '@/components/ui/SectionHeading'
-import { GlowDivider } from '@/components/ui/GlowDivider'
 import { PageHero } from '@/components/sections/PageHero'
 import { CalculatorHub } from '@/components/sections/CalculatorHub'
 import { VatCalculator } from '@/components/sections/VatCalculator'
@@ -44,8 +43,6 @@ export default function CalculatorsPage() {
         </Container>
       </section>
 
-      <GlowDivider />
-
       {/* Income Tax Calculator */}
       <section id="income-tax" className="py-16 sm:py-20 scroll-mt-24">
         <Container>
@@ -58,8 +55,6 @@ export default function CalculatorsPage() {
           </AnimateOnScroll>
         </Container>
       </section>
-
-      <GlowDivider />
 
       {/* Net Salary Calculator */}
       <section id="net-salary" className="py-16 sm:py-20 scroll-mt-24">

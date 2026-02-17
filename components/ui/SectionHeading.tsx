@@ -23,7 +23,6 @@ export function SectionHeading({
       >
         {title}
       </h2>
-      <div className={cn('w-12 h-1 bg-primary rounded-full mt-4', centered && 'mx-auto')} />
       {subtitle && (
         <p className="mt-4 font-light text-xl text-text-muted max-w-2xl mx-auto">{subtitle}</p>
       )}

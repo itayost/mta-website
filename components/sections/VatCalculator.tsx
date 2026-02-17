@@ -89,7 +89,7 @@ export function VatCalculator() {
               ₪{formatter.format(result.total)}
             </span>
           </div>
-          <div className="flex items-center justify-between border-t border-white/10 pt-3">
+          <div className="flex items-center justify-between border-t border-text-muted/10 pt-3">
             <span className="text-sm text-text-muted">מע״מ (17%)</span>
             <span className="text-lg font-semibold text-accent">
               ₪{formatter.format(result.vat)}

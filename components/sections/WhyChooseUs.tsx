@@ -35,8 +35,8 @@ export function WhyChooseUs() {
           {pillars.map((pillar) => (
             <StaggerItem key={pillar.title}>
               <div className="text-center">
-                <div className="mx-auto mb-5 flex size-16 items-center justify-center rounded-2xl bg-gold/10">
-                  <pillar.icon className="size-8 text-gold" />
+                <div className="mx-auto mb-5 flex size-16 items-center justify-center rounded-2xl bg-primary/10">
+                  <pillar.icon className="size-8 text-primary" />
                 </div>
                 <h3 className="text-lg font-extrabold text-text-primary mb-2">
                   {pillar.title}

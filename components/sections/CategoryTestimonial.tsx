@@ -16,7 +16,7 @@ function getInitials(name: string): string {
 
 export function CategoryTestimonial({ testimonial }: CategoryTestimonialProps) {
   return (
-    <div className="relative mt-8 rounded-2xl border border-white/10 bg-white/5 p-6 sm:p-8">
+    <div className="relative mt-8 rounded-2xl bg-bg-card p-6 sm:p-8">
       <Quote className="absolute top-4 end-4 size-8 text-primary/20" aria-hidden="true" />
 
       <div className="flex gap-1 mb-3" aria-label={`דירוג ${testimonial.rating} מתוך 5`}>

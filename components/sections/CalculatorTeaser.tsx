@@ -24,7 +24,7 @@ const calculators = [
     title: 'מחשבון שכר נטו',
     description: 'ברוטו לנטו כולל כל הניכויים',
     href: '/calculators#net-salary',
-    color: 'text-gold bg-gold/10',
+    color: 'text-primary bg-primary/10',
   },
 ]
 
@@ -42,7 +42,7 @@ export function CalculatorTeaser() {
             <StaggerItem key={calc.title}>
               <Link
                 href={calc.href}
-                className="group flex flex-col items-center gap-3 rounded-2xl border border-white/5 bg-bg-card p-6 text-center transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:border-white/10 hover:-translate-y-1"
+                className="group flex flex-col items-center gap-3 rounded-2xl bg-bg-card p-6 text-center transition-all duration-300 hover:-translate-y-1"
               >
                 <div className={`flex size-12 items-center justify-center rounded-xl ${calc.color} transition-transform duration-300 group-hover:scale-110`}>
                   <calc.icon className="size-6" />
@@ -61,7 +61,7 @@ export function CalculatorTeaser() {
         <div className="text-center">
           <Link
             href="/calculators"
-            className="inline-flex items-center gap-2 rounded-xl bg-white/5 border border-white/10 px-6 py-3 text-base font-semibold text-text-primary hover:bg-white/10 transition-all"
+            className="inline-flex items-center gap-2 rounded-full border border-text-muted/30 px-6 py-3 text-base font-semibold text-text-primary hover:bg-primary/5 transition-all"
           >
             <Calculator className="size-5" />
             <span>לכל המחשבונים</span>

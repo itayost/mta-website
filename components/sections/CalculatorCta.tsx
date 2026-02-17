@@ -9,14 +9,10 @@ export function CalculatorCta() {
     <section className="py-16 sm:py-24">
       <Container>
         <AnimateOnScroll preset="fade-in">
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-bl from-navy-700 via-navy-800 to-navy-900 px-8 py-12 sm:px-16 sm:py-16 text-center">
-            {/* Dot pattern overlay */}
+          <div className="relative overflow-hidden rounded-3xl bg-bg-surface px-8 py-12 sm:px-16 sm:py-16 text-center">
+            {/* Radial glow */}
             <div
-              className="absolute inset-0 opacity-[0.04]"
-              style={{
-                backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
-                backgroundSize: '20px 20px',
-              }}
+              className="absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 size-96 rounded-full bg-primary/5 blur-3xl pointer-events-none"
               aria-hidden="true"
             />
 
@@ -25,7 +21,7 @@ export function CalculatorCta() {
                 <TrendingDown className="size-8 text-primary" />
               </div>
 
-              <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
+              <h2 className="text-3xl font-extrabold sm:text-4xl bg-gradient-to-l from-text-primary to-text-muted bg-clip-text text-transparent">
                 רוצים לשלם פחות מס?
               </h2>
               <p className="mt-4 font-light text-lg text-text-muted max-w-xl mx-auto">
@@ -35,14 +31,14 @@ export function CalculatorCta() {
               <div className="mt-8 flex flex-wrap justify-center gap-4">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-base font-semibold text-bg-main shadow-lg shadow-primary/25 hover:bg-primary-dark hover:text-white transition-all active:scale-[0.98]"
+                  className="inline-flex items-center gap-2 rounded-full border border-primary px-6 py-3.5 text-base font-semibold text-primary hover:bg-primary hover:text-white transition-all"
                 >
                   <span>פגישת ייעוץ חינם</span>
                   <ArrowLeft className="size-5" />
                 </Link>
                 <a
                   href={`tel:${contactInfo.phone}`}
-                  className="inline-flex items-center gap-2 rounded-xl border-2 border-white/30 backdrop-blur-sm px-6 py-3.5 text-base font-semibold text-text-primary hover:bg-white/10 transition-all"
+                  className="inline-flex items-center gap-2 rounded-full border border-text-muted/30 px-6 py-3.5 text-base font-semibold text-text-primary hover:bg-primary/5 transition-all"
                 >
                   <Phone className="size-5" />
                   <span>{contactInfo.phone}</span>
