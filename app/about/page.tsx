@@ -30,7 +30,7 @@ export default function AboutPage() {
 
       <TeamScrollStory />
 
-      {/* Team grid — all members */}
+      {/* Team grid - all members */}
       <section className="py-16 sm:py-24">
         <Container>
           <SectionHeading

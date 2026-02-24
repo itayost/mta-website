@@ -121,7 +121,7 @@ export function CurrencyConverter() {
               >
                 {CURRENCY_LIST.map((c) => (
                   <option key={c.code} value={c.code}>
-                    {c.code} — {c.name}
+                    {c.code} - {c.name}
                   </option>
                 ))}
               </Select>
@@ -146,7 +146,7 @@ export function CurrencyConverter() {
               >
                 {CURRENCY_LIST.map((c) => (
                   <option key={c.code} value={c.code}>
-                    {c.code} — {c.name}
+                    {c.code} - {c.name}
                   </option>
                 ))}
               </Select>

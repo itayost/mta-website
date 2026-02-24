@@ -6,7 +6,7 @@ interface LogoMotifProps {
 }
 
 /**
- * Decorative logo mark — the two overlapping chevrons from the MTA logo.
+ * Decorative logo mark - the two overlapping chevrons from the MTA logo.
  * Paths extracted directly from the company SVG (file.svg).
  */
 export function LogoMotif({ opacity = 0.12, className }: LogoMotifProps) {

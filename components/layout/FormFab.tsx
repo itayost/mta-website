@@ -63,7 +63,7 @@ export function FormFab() {
 
   return (
     <>
-      {/* FAB Button — 44px+ touch target, cursor-pointer, touch-manipulation */}
+      {/* FAB Button - 44px+ touch target, cursor-pointer, touch-manipulation */}
       <motion.button
         ref={fabRef}
         type="button"
@@ -106,7 +106,7 @@ export function FormFab() {
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Mobile backdrop — bg-black/40 */}
+            {/* Mobile backdrop - bg-black/40 */}
             <motion.div
               className="fixed inset-0 z-40 bg-black/40 sm:hidden"
               initial={{ opacity: 0 }}
@@ -124,7 +124,7 @@ export function FormFab() {
               aria-hidden="true"
             />
 
-            {/* Form card — mobile: bottom sheet, desktop: floating card above FAB */}
+            {/* Form card - mobile: bottom sheet, desktop: floating card above FAB */}
             <motion.div
               ref={dialogRef}
               role="dialog"

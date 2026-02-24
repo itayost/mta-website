@@ -7,8 +7,8 @@ const ROOT_MARGIN = '-160px 0px -60% 0px'
  * Used by sticky nav components (services, calculators, FAQ) to highlight
  * the active tab as the user scrolls.
  *
- * @param ids — DOM element IDs to observe
- * @param prefix — optional prefix stripped from IDs before setting active
+ * @param ids - DOM element IDs to observe
+ * @param prefix - optional prefix stripped from IDs before setting active
  *   (e.g. prefix "faq-" turns element id "faq-services" into active id "services")
  */
 export function useScrollSpy(ids: string[], prefix = '') {

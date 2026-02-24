@@ -37,7 +37,7 @@ export default function BlogPage() {
         <Container>
           {blogPosts.length > 0 ? (
             <div className="space-y-8 sm:space-y-12">
-              {/* Featured post — 2-column with image */}
+              {/* Featured post - 2-column with image */}
               {featuredPost && (
                 <AnimateOnScroll preset="fade-in-up">
                   <article className="rounded-2xl bg-bg-card overflow-hidden transition-all duration-300">
@@ -105,7 +105,7 @@ export default function BlogPage() {
                 </AnimateOnScroll>
               )}
 
-              {/* Remaining posts — 2-column grid */}
+              {/* Remaining posts - 2-column grid */}
               {remainingPosts.length > 0 && (
                 <StaggerChildren className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                   {remainingPosts.map((post) => (

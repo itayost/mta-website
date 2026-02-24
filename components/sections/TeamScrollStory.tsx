@@ -17,7 +17,7 @@ type VisualType = 'group' | 'sami' | 'yossi'
 
 const segments: { title: string; body: string; visual: VisualType }[] = [
   {
-    title: 'מזון — חשבונאות וייעוץ מס',
+    title: 'מזון - חשבונאות וייעוץ מס',
     body: 'במשרד מזון, המטרה שלנו ברורה: למצוא את הדרכים המעשיות והחוקיות ביותר לחסוך לך כסף, ולעזור לך לנהל את הפיננסים של העסק בצורה חכמה ורווחית. בתקופה שבה כל שקל נחשב, אנחנו מאמינים שייעוץ מס נכון הוא ההבדל בין עסק שורד לעסק צומח.',
     visual: 'group',
   },
@@ -130,7 +130,7 @@ export function TeamScrollStory() {
             <div className={cn(bg, 'py-16 sm:py-24')}>
               <Container>
                 <div className="lg:grid lg:grid-cols-2 lg:gap-16">
-                  {/* Sticky visual — scrolls away naturally when group ends */}
+                  {/* Sticky visual - scrolls away naturally when group ends */}
                   <div className="hidden lg:block">
                     <div className="sticky top-28">
                       <motion.div

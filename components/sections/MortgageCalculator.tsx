@@ -143,7 +143,7 @@ export function MortgageCalculator() {
       </div>
 
       <Input
-        label="ריבית שנתית (%) — ניתן לשנות ידנית"
+        label="ריבית שנתית (%) - ניתן לשנות ידנית"
         name="rate-override"
         type="text"
         inputMode="decimal"

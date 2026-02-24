@@ -30,7 +30,7 @@ export default function ContactPage() {
 
       <PageHero
         title="איך תרצו ליצור קשר?"
-        subtitle="בחרו את הדרך הנוחה לכם — אנחנו כאן בכל ערוץ"
+        subtitle="בחרו את הדרך הנוחה לכם - אנחנו כאן בכל ערוץ"
         variant="default"
       />
 
