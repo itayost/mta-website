@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   return {
     title: fullTitle,
     description: post.excerpt,
-    keywords: ['רואה חשבון חיפה', 'יועץ מס בחיפה', 'הנהלת חשבונות חיפה', ...post.tags],
+    keywords: ['חשבונאי חיפה', 'יועץ מס בחיפה', 'הנהלת חשבונות חיפה', ...post.tags],
     openGraph: {
       title: post.title,
       description: post.excerpt,

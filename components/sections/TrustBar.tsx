@@ -3,10 +3,10 @@ import { Container } from '@/components/ui/Container'
 import { StaggerChildren, StaggerItem } from '@/components/ui/motion'
 
 const trustItems = [
-  { icon: Award, label: 'חבר לשכת רואי חשבון' },
+  { icon: Award, label: 'חבר לשכת חשבונאים' },
   { icon: Clock, label: '40+ שנות ניסיון' },
   { icon: Users, label: '1,000+ לקוחות מרוצים' },
-  { icon: ShieldCheck, label: 'רישיון רו"ח מוסמך' },
+  { icon: ShieldCheck, label: 'חשבונאים מוסמכים' },
 ]
 
 export function TrustBar() {

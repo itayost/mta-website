@@ -7,11 +7,11 @@ import { RoundedTransition, RoundedTransitionUp } from '@/components/ui/RoundedT
 import { buildLocalBusinessJsonLd, generatePageMetadata } from '@/lib/seo'
 
 export const metadata = generatePageMetadata({
-  title: 'מזון ייעוץ מס – רואי חשבון ויועצי מס בחיפה',
+  title: 'מזון ייעוץ מס – חשבונאים ויועצי מס בחיפה',
   description:
-    'משרד רואי חשבון ויועצי מס ותיק בחיפה. מעל 40 שנות ניסיון בהנהלת חשבונות, ייעוץ מס, ביקורת חשבונות ושירותים נוספים לעצמאים, שכירים וחברות.',
+    'משרד חשבונאים ויועצי מס ותיק בחיפה. מעל 40 שנות ניסיון בהנהלת חשבונות, ייעוץ מס, ביקורת חשבונות ושירותים נוספים לעצמאים, שכירים וחברות.',
   path: '/',
-  keywords: ['משרד רואי חשבון', 'ייעוץ מס', 'ביקורת חשבונות', 'הנהלת חשבונות'],
+  keywords: ['משרד חשבונאים', 'ייעוץ מס', 'ביקורת חשבונות', 'הנהלת חשבונות'],
 })
 
 export default function HomePage() {

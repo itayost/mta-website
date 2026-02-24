@@ -13,9 +13,9 @@ import { generatePageMetadata, buildLocalBusinessJsonLd } from '@/lib/seo'
 export const metadata: Metadata = generatePageMetadata({
   title: 'אודות',
   description:
-    'הכירו את מזון ייעוץ מס – משרד רואי חשבון ויועצי מס ותיק בחיפה עם למעלה מ-40 שנות ניסיון. סמי ויוסי מזון וצוות מקצועי.',
+    'הכירו את מזון ייעוץ מס – משרד חשבונאים ויועצי מס ותיק בחיפה עם למעלה מ-40 שנות ניסיון. סמי ויוסי מזון וצוות מקצועי.',
   path: '/about',
-  keywords: ['אודות מזון ייעוץ מס', 'רואה חשבון ותיק חיפה'],
+  keywords: ['אודות מזון ייעוץ מס', 'חשבונאי ותיק חיפה'],
 })
 
 export default function AboutPage() {

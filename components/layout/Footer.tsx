@@ -23,7 +23,7 @@ export function Footer() {
               <span className="text-lg font-bold text-text-primary">מזון ייעוץ מס</span>
             </div>
             <p className="text-text-muted leading-relaxed">
-              משרד רואי חשבון ויועצי מס ותיק בחיפה. מעל 40 שנות ניסיון בליווי עצמאים,
+              משרד חשבונאים ויועצי מס ותיק בחיפה. מעל 40 שנות ניסיון בליווי עצמאים,
               שכירים וחברות בכל תחומי המיסוי והחשבונאות.
             </p>
           </div>
@@ -84,7 +84,7 @@ export function Footer() {
         </div>
 
         <div className="mt-8 pt-6 sm:mt-12 sm:pt-8 border-t border-text-muted/10 text-center text-sm text-text-muted/50">
-          <p>&copy; {new Date().getFullYear()} מזון ייעוץ מס – רואי חשבון ויועצי מס. כל הזכויות שמורות.</p>
+          <p>&copy; {new Date().getFullYear()} מזון ייעוץ מס – חשבונאים ויועצי מס. כל הזכויות שמורות.</p>
         </div>
       </Container>
     </footer>

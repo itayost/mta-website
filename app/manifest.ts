@@ -2,10 +2,10 @@ import type { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'מזון ייעוץ מס – רואי חשבון ויועצי מס',
+    name: 'מזון ייעוץ מס – חשבונאים ויועצי מס',
     short_name: 'מזון ייעוץ מס',
     description:
-      'משרד רואי חשבון ויועצי מס ותיק בחיפה. הנהלת חשבונות, ייעוץ מס, ביקורת חשבונות ושירותים נוספים.',
+      'משרד חשבונאים ויועצי מס ותיק בחיפה. הנהלת חשבונות, ייעוץ מס, ביקורת חשבונות ושירותים נוספים.',
     dir: 'rtl',
     lang: 'he',
     start_url: '/',

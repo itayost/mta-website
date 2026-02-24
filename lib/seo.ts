@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { contactInfo } from '@/data/contact'
 
 export const SITE_URL = 'https://mta-website-six.vercel.app'
-export const SITE_NAME = 'מזון ייעוץ מס – רואי חשבון ויועצי מס'
+export const SITE_NAME = 'מזון ייעוץ מס – חשבונאים ויועצי מס'
 
 interface PageSeoConfig {
   title: string
@@ -24,7 +24,7 @@ export function generatePageMetadata({
     title: fullTitle,
     description,
     keywords: [
-      'רואה חשבון חיפה',
+      'חשבונאי חיפה',
       'יועץ מס בחיפה',
       'הנהלת חשבונות חיפה',
       ...keywords,
@@ -54,7 +54,7 @@ export function buildLocalBusinessJsonLd() {
     '@type': ['AccountingService', 'ProfessionalService'],
     name: SITE_NAME,
     description:
-      'משרד רואי חשבון ויועצי מס ותיק בחיפה. שירותי הנהלת חשבונות, ייעוץ מס, ביקורת חשבונות ושירותים נוספים לעצמאים, שכירים וחברות.',
+      'משרד חשבונאים ויועצי מס ותיק בחיפה. שירותי הנהלת חשבונות, ייעוץ מס, ביקורת חשבונות ושירותים נוספים לעצמאים, שכירים וחברות.',
     url: SITE_URL,
     telephone: contactInfo.phone,
     faxNumber: contactInfo.fax,
