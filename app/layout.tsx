@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { SITE_NAME } from '@/lib/seo'
+import { SITE_NAME, SITE_URL } from '@/lib/seo'
 import { heebo, frankRuhlLibre } from '@/lib/fonts'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
@@ -7,7 +7,7 @@ import { FormFab } from '@/components/layout/FormFab'
 import './globals.css'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://mta.co.il'),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: 'מזון ייעוץ מס – רואי חשבון ויועצי מס בחיפה',
     template: '%s | מזון ייעוץ מס',

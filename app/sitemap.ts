@@ -1,8 +1,9 @@
 import type { MetadataRoute } from 'next'
 import { blogPosts } from '@/data/blog'
+import { SITE_URL } from '@/lib/seo'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://mta.co.il'
+  const baseUrl = SITE_URL
 
   const blogEntries: MetadataRoute.Sitemap = blogPosts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,

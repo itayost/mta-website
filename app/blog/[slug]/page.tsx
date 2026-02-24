@@ -10,7 +10,7 @@ import { CopyLinkButton } from '@/components/sections/CopyLinkButton'
 import { RoundedTransition, RoundedTransitionUp } from '@/components/ui/RoundedTransition'
 import { StaggerChildren, StaggerItem } from '@/components/ui/motion'
 import { blogPosts } from '@/data/blog'
-import { SITE_NAME, buildArticleJsonLd, buildBreadcrumbJsonLd } from '@/lib/seo'
+import { SITE_NAME, SITE_URL, buildArticleJsonLd, buildBreadcrumbJsonLd } from '@/lib/seo'
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   if (!post) return {}
 
   const fullTitle = `${post.title} | ${SITE_NAME}`
-  const url = `https://mta.co.il/blog/${slug}`
+  const url = `${SITE_URL}/blog/${slug}`
 
   return {
     title: fullTitle,

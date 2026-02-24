@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { contactInfo } from '@/data/contact'
 
-const SITE_URL = 'https://mta.co.il'
+export const SITE_URL = 'https://mta-website-six.vercel.app'
 export const SITE_NAME = 'מזון ייעוץ מס – רואי חשבון ויועצי מס'
 
 interface PageSeoConfig {
