@@ -37,6 +37,11 @@ export function generatePageMetadata({
       locale: 'he_IL',
       type: 'website',
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: fullTitle,
+      description,
+    },
     alternates: {
       canonical: url,
     },
@@ -92,6 +97,61 @@ export function buildFaqJsonLd(items: { question: string; answer: string }[]) {
         '@type': 'Answer',
         text: item.answer,
       },
+    })),
+  }
+}
+
+interface ArticleJsonLdConfig {
+  title: string
+  description: string
+  slug: string
+  date: string
+  author: string
+  image?: string
+  tags?: string[]
+}
+
+export function buildArticleJsonLd({
+  title,
+  description,
+  slug,
+  date,
+  author,
+  image,
+  tags = [],
+}: ArticleJsonLdConfig) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: title,
+    description,
+    url: `${SITE_URL}/blog/${slug}`,
+    datePublished: date,
+    dateModified: date,
+    inLanguage: 'he',
+    author: {
+      '@type': 'Person',
+      name: author,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+    ...(image && { image }),
+    ...(tags.length > 0 && { keywords: tags.join(', ') }),
+  }
+}
+
+export function buildBreadcrumbJsonLd(items: { name: string; path: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: `${SITE_URL}${item.path}`,
     })),
   }
 }

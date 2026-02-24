@@ -1,7 +1,15 @@
 import type { MetadataRoute } from 'next'
+import { blogPosts } from '@/data/blog'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://mta.co.il'
+
+  const blogEntries: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.date),
+    changeFrequency: 'monthly',
+    priority: 0.6,
+  }))
 
   return [
     { url: baseUrl, lastModified: new Date(), changeFrequency: 'weekly', priority: 1 },
@@ -11,5 +19,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/faq`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
     { url: `${baseUrl}/calculators`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.5 },
     { url: `${baseUrl}/contact`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+    ...blogEntries,
   ]
 }

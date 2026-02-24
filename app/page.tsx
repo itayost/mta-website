@@ -4,7 +4,15 @@ import { BentoGrid } from '@/components/sections/BentoGrid'
 import { MiniAbout } from '@/components/sections/MiniAbout'
 import { CtaBanner } from '@/components/sections/CtaBanner'
 import { RoundedTransition, RoundedTransitionUp } from '@/components/ui/RoundedTransition'
-import { buildLocalBusinessJsonLd } from '@/lib/seo'
+import { buildLocalBusinessJsonLd, generatePageMetadata } from '@/lib/seo'
+
+export const metadata = generatePageMetadata({
+  title: 'מזון ייעוץ מס – רואי חשבון ויועצי מס בחיפה',
+  description:
+    'משרד רואי חשבון ויועצי מס ותיק בחיפה. מעל 40 שנות ניסיון בהנהלת חשבונות, ייעוץ מס, ביקורת חשבונות ושירותים נוספים לעצמאים, שכירים וחברות.',
+  path: '/',
+  keywords: ['משרד רואי חשבון', 'ייעוץ מס', 'ביקורת חשבונות', 'הנהלת חשבונות'],
+})
 
 export default function HomePage() {
   const jsonLd = buildLocalBusinessJsonLd()

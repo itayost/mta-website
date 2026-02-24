@@ -10,6 +10,7 @@ import { CopyLinkButton } from '@/components/sections/CopyLinkButton'
 import { RoundedTransition, RoundedTransitionUp } from '@/components/ui/RoundedTransition'
 import { StaggerChildren, StaggerItem } from '@/components/ui/motion'
 import { blogPosts } from '@/data/blog'
+import { SITE_NAME, buildArticleJsonLd, buildBreadcrumbJsonLd } from '@/lib/seo'
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>
@@ -24,17 +25,32 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   const post = blogPosts.find((p) => p.slug === slug)
   if (!post) return {}
 
+  const fullTitle = `${post.title} | ${SITE_NAME}`
+  const url = `https://mta.co.il/blog/${slug}`
+
   return {
-    title: `${post.title} | מזון ייעוץ מס`,
+    title: fullTitle,
     description: post.excerpt,
+    keywords: ['רואה חשבון חיפה', 'יועץ מס בחיפה', 'הנהלת חשבונות חיפה', ...post.tags],
     openGraph: {
       title: post.title,
       description: post.excerpt,
+      url,
+      siteName: SITE_NAME,
       type: 'article',
       locale: 'he_IL',
       publishedTime: post.date,
       authors: [post.author],
       ...(post.image && { images: [{ url: post.image, width: 1200, height: 630, alt: post.title }] }),
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      ...(post.image && { images: [post.image] }),
+    },
+    alternates: {
+      canonical: url,
     },
   }
 }
@@ -50,8 +66,33 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const relatedPosts = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 2)
   const whatsappShareUrl = `https://wa.me/?text=${encodeURIComponent(post.title)}`
 
+  const articleJsonLd = buildArticleJsonLd({
+    title: post.title,
+    description: post.excerpt,
+    slug: post.slug,
+    date: post.date,
+    author: post.author,
+    image: post.image,
+    tags: post.tags,
+  })
+
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: 'דף הבית', path: '/' },
+    { name: 'מרכז הידע', path: '/blog' },
+    { name: post.title, path: `/blog/${post.slug}` },
+  ])
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+
       {/* Inline header */}
       <div className="bg-bg-surface pt-12 pb-8">
         <Container>

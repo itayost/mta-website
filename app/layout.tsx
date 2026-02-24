@@ -27,6 +27,9 @@ export const metadata: Metadata = {
     locale: 'he_IL',
     siteName: SITE_NAME,
   },
+  twitter: {
+    card: 'summary_large_image',
+  },
   robots: {
     index: true,
     follow: true,
