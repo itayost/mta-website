@@ -1,10 +1,15 @@
 import { ImageResponse } from 'next/og'
+import { readFile } from 'node:fs/promises'
+import { join } from 'node:path'
 
 export const alt = 'מזון ייעוץ מס – רואי חשבון ויועצי מס בחיפה'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
-export default function OgImage() {
+export default async function OgImage() {
+  const heeboFont = await readFile(join(process.cwd(), 'app/fonts/Heebo-Regular.ttf'))
+  const heeboBold = await readFile(join(process.cwd(), 'app/fonts/Heebo-Bold.ttf'))
+
   return new ImageResponse(
     (
       <div
@@ -16,6 +21,7 @@ export default function OgImage() {
           alignItems: 'center',
           justifyContent: 'center',
           background: '#f0ece7',
+          fontFamily: 'Heebo',
         }}
       >
         {/* Logo mark */}
@@ -48,10 +54,9 @@ export default function OgImage() {
               fontSize: 64,
               fontWeight: 700,
               color: '#2a2520',
-              direction: 'rtl',
             }}
           >
-            מזון ייעוץ מס
+            {'\u200Fמזון ייעוץ מס'}
           </div>
           <div
             style={{
@@ -59,14 +64,19 @@ export default function OgImage() {
               fontWeight: 400,
               color: '#8a8078',
               marginTop: 12,
-              direction: 'rtl',
             }}
           >
-            רואי חשבון ויועצי מס בחיפה
+            {'\u200Fרואי חשבון ויועצי מס בחיפה'}
           </div>
         </div>
       </div>
     ),
-    { ...size }
+    {
+      ...size,
+      fonts: [
+        { name: 'Heebo', data: heeboFont, weight: 400, style: 'normal' },
+        { name: 'Heebo', data: heeboBold, weight: 700, style: 'normal' },
+      ],
+    }
   )
 }
