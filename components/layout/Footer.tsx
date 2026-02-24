@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { Phone, Mail, MapPin } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
@@ -8,16 +9,22 @@ export function Footer() {
   return (
     <footer className="bg-bg-surface text-text-muted">
       <Container className="py-12 sm:py-16">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3">
           {/* About */}
           <div>
-            <h3 className="text-lg font-bold text-text-primary mb-4">משרד מזון</h3>
+            <div className="flex items-center gap-2 mb-4">
+              <Image
+                src="/logo.png"
+                alt=""
+                width={40}
+                height={40}
+                className="h-10 w-auto"
+              />
+              <span className="text-lg font-bold text-text-primary">מזון ייעוץ מס</span>
+            </div>
             <p className="text-text-muted leading-relaxed">
               משרד רואי חשבון ויועצי מס ותיק בחיפה. מעל 40 שנות ניסיון בליווי עצמאים,
               שכירים וחברות בכל תחומי המיסוי והחשבונאות.
-            </p>
-            <p className="mt-4 text-sm text-text-muted/60">
-              רישיון רואה חשבון מס&apos; 7890 | חבר לשכת רואי חשבון בישראל
             </p>
           </div>
 
@@ -50,34 +57,34 @@ export function Footer() {
                 </div>
                 <span>{contactInfo.phone}</span>
               </a>
-              <a
-                href={`mailto:${contactInfo.email}`}
-                className="flex items-center gap-3 text-text-muted hover:text-primary transition-colors group"
-              >
-                <div className="flex size-9 items-center justify-center rounded-full bg-bg-card group-hover:bg-primary/10 transition-colors">
+              <div className="flex items-start gap-3 text-text-muted">
+                <div className="flex size-9 items-center justify-center rounded-full bg-bg-card shrink-0">
                   <Mail className="size-4" />
                 </div>
-                <span>{contactInfo.email}</span>
-              </a>
+                <div className="flex flex-col">
+                  {contactInfo.emails.map((email) => (
+                    <a
+                      key={email}
+                      href={`mailto:${email}`}
+                      className="hover:text-primary transition-colors"
+                    >
+                      {email}
+                    </a>
+                  ))}
+                </div>
+              </div>
               <div className="flex items-start gap-3 text-text-muted">
                 <div className="flex size-9 items-center justify-center rounded-full bg-bg-card shrink-0">
                   <MapPin className="size-4" />
                 </div>
                 <span>{contactInfo.address.full}</span>
               </div>
-              <div className="mt-2 text-sm text-text-muted/60">
-                {contactInfo.hours.map((h) => (
-                  <p key={h.label}>
-                    {h.label}: {h.display}
-                  </p>
-                ))}
-              </div>
             </div>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-text-muted/10 text-center text-sm text-text-muted/50">
-          <p>&copy; {new Date().getFullYear()} משרד מזון – רואי חשבון ויועצי מס. כל הזכויות שמורות.</p>
+        <div className="mt-8 pt-6 sm:mt-12 sm:pt-8 border-t border-text-muted/10 text-center text-sm text-text-muted/50">
+          <p>&copy; {new Date().getFullYear()} מזון ייעוץ מס – רואי חשבון ויועצי מס. כל הזכויות שמורות.</p>
         </div>
       </Container>
     </footer>

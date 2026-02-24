@@ -6,18 +6,16 @@ import { Container } from '@/components/ui/Container'
 import { PageHero } from '@/components/sections/PageHero'
 import { TrustBar } from '@/components/sections/TrustBar'
 import { BlogCard } from '@/components/sections/BlogCard'
-import { BlogNewsletter } from '@/components/sections/BlogNewsletter'
-import { BlogCalculatorCrosslink } from '@/components/sections/BlogCalculatorCrosslink'
 import { BlogCta } from '@/components/sections/BlogCta'
 import { Badge } from '@/components/ui/Badge'
-import { PageTransition, AnimateOnScroll, StaggerChildren, StaggerItem } from '@/components/ui/motion'
+import { AnimateOnScroll, StaggerChildren, StaggerItem } from '@/components/ui/motion'
 import { blogPosts } from '@/data/blog'
 import { generatePageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = generatePageMetadata({
   title: 'מרכז הידע',
   description:
-    'מאמרים ומדריכים בנושאי מס, חשבונאות ופיננסים. טיפים לעצמאים, שכירים וחברות מצוות משרד מזון.',
+    'מאמרים ומדריכים בנושאי מס, חשבונאות ופיננסים. טיפים לעצמאים, שכירים וחברות מצוות מזון ייעוץ מס.',
   path: '/blog',
   keywords: ['מאמרי מס', 'בלוג חשבונאות', 'טיפים מס', 'מדריכי מיסוי'],
 })
@@ -26,19 +24,19 @@ export default function BlogPage() {
   const [featuredPost, ...remainingPosts] = blogPosts
 
   return (
-    <PageTransition>
+    <>
       <PageHero
         title="מרכז הידע"
         subtitle="מאמרים, מדריכים וטיפים מקצועיים בנושאי מס וחשבונאות"
-        variant="editorial"
+        variant="default"
       />
 
       <TrustBar />
 
-      <section className="py-16 sm:py-24">
+      <section className="py-12 sm:py-24">
         <Container>
           {blogPosts.length > 0 ? (
-            <div className="space-y-12">
+            <div className="space-y-8 sm:space-y-12">
               {/* Featured post — 2-column with image */}
               {featuredPost && (
                 <AnimateOnScroll preset="fade-in-up">
@@ -79,7 +77,7 @@ export default function BlogPage() {
                             <span>{featuredPost.author}</span>
                           </div>
                         </div>
-                        <h2 className="text-2xl font-extrabold text-text-primary mb-3">
+                        <h2 className="font-display text-2xl font-extrabold tracking-tight leading-tight text-text-primary mb-3">
                           {featuredPost.title}
                         </h2>
                         <p className="text-text-muted leading-relaxed mb-4 max-w-2xl">
@@ -126,11 +124,7 @@ export default function BlogPage() {
         </Container>
       </section>
 
-      <BlogNewsletter />
-
-      <BlogCalculatorCrosslink />
-
       <BlogCta />
-    </PageTransition>
+    </>
   )
 }

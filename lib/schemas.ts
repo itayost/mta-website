@@ -15,12 +15,8 @@ export const contactFormSchema = z.object({
     .email('כתובת אימייל לא תקינה')
     .optional()
     .or(z.literal('')),
-  message: z
-    .string()
-    .max(1000, 'ההודעה ארוכה מדי (עד 1000 תווים)')
-    .optional()
-    .or(z.literal('')),
   honeypot: z.string().max(0).optional(),
+  consent: z.literal(true, { message: 'יש לאשר את תנאי מסירת המידע' }),
 })
 
 export type ContactFormValues = z.infer<typeof contactFormSchema>

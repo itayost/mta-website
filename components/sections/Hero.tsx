@@ -1,33 +1,25 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { Phone, ArrowLeft } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { SplitText } from '@/components/ui/motion/SplitText'
-import RotatingText from '@/components/sections/RotatingText'
+import { RotatingText } from '@/components/sections/RotatingText'
 import { AnimateOnScroll } from '@/components/ui/motion'
 import { contactInfo } from '@/data/contact'
+import { LogoMotif } from '@/components/ui/LogoMotif'
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-bg-main ">
-      {/* Dark strip on the end (left in RTL) ~35% of width */}
-      <div className="absolute inset-y-0 end-0 hidden w-[35%] bg-bg-dark lg:block" aria-hidden="true" />
+    <section className="relative overflow-hidden bg-bg-main">
 
       <Container className="relative">
         <div className="grid grid-cols-1 items-center gap-10 pt-10 pb-12 sm:pt-14 sm:pb-16 lg:grid-cols-2 lg:gap-12 lg:pb-0 lg:pt-16">
           {/* Text side (appears on the right in RTL) */}
-          <div className="lg:py-44">
-            <AnimateOnScroll preset="fade-in-up" delay={0.1}>
-              <p className="mb-4 text-lg font-medium text-primary">
-                מעל 40 שנות ניסיון
-              </p>
-            </AnimateOnScroll>
-
-            <h1 className="text-4xl font-extrabold tracking-tight text-text-primary sm:text-5xl lg:text-6xl">
-              <SplitText text="רואי חשבון ויועצי מס" delay={0.2} />
-              <span className="mt-3 flex">
+          <div className="relative text-center lg:text-start lg:py-20">
+            <h1 className="font-display text-4xl font-extrabold tracking-tight leading-tight text-text-primary sm:text-5xl lg:text-6xl">
+              <SplitText text="ייעוץ מס וחשבונאות" delay={0.2} />
+              <span className="mt-3 flex justify-center lg:justify-start">
                 <RotatingText
                   texts={['לעסקים', 'לעצמאים', 'לשכירים']}
                   rotationInterval={3000}
@@ -46,23 +38,22 @@ export function Hero() {
             </h1>
 
             <AnimateOnScroll preset="fade-in-up" delay={0.4}>
-              <p className="mt-6 max-w-lg text-lg leading-relaxed text-text-muted">
-                משרד מזון מלווה עצמאים, שכירים וחברות בכל תחומי המיסוי, החשבונאות
-                והייעוץ הפיננסי. מקצוענות, אמינות ושירות אישי.
+              <p className="mt-6 max-w-lg mx-auto lg:mx-0 text-lg leading-relaxed text-text-muted">
+                ליווי פיננסי חכם, שוטף ופרואקטיבי שלא מחכה לסוף השנה. אנחנו מנהלים את המספרים במקצועיות ובשקיפות, כדי שאתה תוכל להתרכז במה שחשוב באמת: הצלחת העסק.
               </p>
             </AnimateOnScroll>
 
-            <AnimateOnScroll preset="fade-in-up" delay={0.5} className="mt-8 flex flex-wrap gap-4">
+            <AnimateOnScroll preset="fade-in-up" delay={0.5} className="mt-8 flex flex-wrap justify-center lg:justify-start gap-2 sm:gap-4">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-primary/20 hover:bg-primary-dark transition-all active:scale-[0.98]"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-3 sm:px-7 sm:py-3.5 text-sm sm:text-base font-semibold text-white hover:bg-primary-dark transition-all active:scale-[0.98]"
               >
-                <span>פגישת ייעוץ חינם</span>
+                <span>קבעו שיחה עכשיו</span>
                 <ArrowLeft className="size-5" />
               </Link>
               <a
                 href={`tel:${contactInfo.phone}`}
-                className="inline-flex items-center gap-2 rounded-full border border-text-muted/30 px-6 py-3.5 text-base font-semibold text-text-primary hover:bg-primary/5 transition-all"
+                className="inline-flex items-center gap-2 rounded-full border border-text-muted/30 px-3 py-3 sm:px-6 sm:py-3.5 text-sm sm:text-base font-semibold text-text-primary hover:bg-primary/5 transition-all"
               >
                 <Phone className="size-5" />
                 <span>{contactInfo.phone}</span>
@@ -70,17 +61,20 @@ export function Hero() {
             </AnimateOnScroll>
           </div>
 
-          {/* Image side (appears on the left in RTL) — flush to bottom */}
-          <AnimateOnScroll preset="fade-in-up" delay={0.3} className="lg:self-end">
-            <div className="relative aspect-[4/3] sm:aspect-[3/2] lg:aspect-auto lg:h-[34rem] overflow-hidden rounded-t-2xl lg:rounded-b-none">
-              <Image
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&h=1000&fit=crop&crop=center"
-                alt="פגישת ייעוץ מקצועית"
-                fill
-                priority
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
+          {/* Brand card (appears on the left in RTL) */}
+          <AnimateOnScroll preset="fade-in-up" delay={0.3} className="lg:self-center">
+            <div className="flex flex-col items-center justify-center px-8 py-12 sm:px-12 sm:py-16 lg:py-20 text-center">
+              <LogoMotif opacity={1} className="w-48 h-28 sm:w-56 sm:h-32 lg:w-64 lg:h-36 mb-4" />
+              <h2 className="font-display text-3xl font-extrabold tracking-tight text-text-primary sm:text-4xl lg:text-5xl">
+                מזון ייעוץ מס
+              </h2>
+              <div className="mt-8" />
+              <p className="font-display text-lg font-extrabold leading-relaxed tracking-wide text-text-primary sm:text-xl mx-auto w-fit text-start" lang="he">
+                הַשְׁלֵךְ עַל יְהוָה יְהָבְךָ
+                <br />
+                וְהוּא יְכַלְכְּלֶךָ
+              </p>
+              <span className="mt-3 text-base text-text-muted/50 self-end">(תהלים נה, כג)</span>
             </div>
           </AnimateOnScroll>
         </div>

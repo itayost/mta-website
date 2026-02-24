@@ -6,18 +6,17 @@ type ButtonSize = 'sm' | 'md' | 'lg'
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant
   size?: ButtonSize
-  asChild?: boolean
 }
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    'border border-primary text-primary bg-transparent hover:bg-primary hover:text-white focus-visible:ring-primary',
+    'bg-primary text-white hover:bg-primary-dark focus-visible:ring-primary',
   secondary:
     'border border-text-primary/20 text-text-primary bg-transparent hover:bg-bg-surface focus-visible:ring-primary',
   outline:
-    'border border-text-muted/30 text-text-primary hover:bg-primary/5 focus-visible:ring-primary',
+    'border border-primary text-primary bg-transparent hover:bg-primary hover:text-white focus-visible:ring-primary',
   ghost:
-    'text-text-muted hover:text-text-primary hover:bg-bg-surface focus-visible:ring-primary',
+    'bg-transparent text-text-muted hover:text-text-primary hover:bg-bg-surface focus-visible:ring-primary',
 }
 
 const sizeStyles: Record<ButtonSize, string> = {

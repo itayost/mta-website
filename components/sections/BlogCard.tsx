@@ -37,7 +37,7 @@ export function BlogCard({ post }: BlogCardProps) {
             <span>{post.readTime} דק׳ קריאה</span>
           </div>
         </div>
-        <h3 className="text-lg font-extrabold text-text-primary mb-2">{post.title}</h3>
+        <h3 className="text-lg font-bold leading-snug text-text-primary mb-2">{post.title}</h3>
         <p className="text-text-muted text-sm leading-relaxed mb-4">{post.excerpt}</p>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">

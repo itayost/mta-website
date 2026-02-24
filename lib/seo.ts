@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { contactInfo } from '@/data/contact'
 
 const SITE_URL = 'https://mta.co.il'
-const SITE_NAME = 'משרד מזון – רואי חשבון ויועצי מס'
+export const SITE_NAME = 'מזון ייעוץ מס – רואי חשבון ויועצי מס'
 
 interface PageSeoConfig {
   title: string
@@ -47,17 +47,19 @@ export function buildLocalBusinessJsonLd() {
   return {
     '@context': 'https://schema.org',
     '@type': ['AccountingService', 'ProfessionalService'],
-    name: 'משרד מזון – רואי חשבון ויועצי מס',
+    name: SITE_NAME,
     description:
       'משרד רואי חשבון ויועצי מס ותיק בחיפה. שירותי הנהלת חשבונות, ייעוץ מס, ביקורת חשבונות ושירותים נוספים לעצמאים, שכירים וחברות.',
     url: SITE_URL,
     telephone: contactInfo.phone,
-    email: contactInfo.email,
+    faxNumber: contactInfo.fax,
+    email: contactInfo.emails[0],
     address: {
       '@type': 'PostalAddress',
       streetAddress: contactInfo.address.street,
       addressLocality: contactInfo.address.city,
       postalCode: contactInfo.address.zip,
+      postOfficeBoxNumber: contactInfo.address.poBox,
       addressCountry: 'IL',
     },
     geo: {
@@ -65,12 +67,6 @@ export function buildLocalBusinessJsonLd() {
       latitude: contactInfo.address.lat,
       longitude: contactInfo.address.lng,
     },
-    openingHoursSpecification: contactInfo.hours.map((h) => ({
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: h.days,
-      opens: h.opens,
-      closes: h.closes,
-    })),
     areaServed: {
       '@type': 'City',
       name: 'חיפה',

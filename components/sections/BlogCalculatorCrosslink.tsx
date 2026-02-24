@@ -19,7 +19,7 @@ export function BlogCalculatorCrosslink() {
               <h3 className="text-base font-bold text-text-primary mb-1 group-hover:text-primary transition-colors">
                 חשבתם כמה מס אתם משלמים?
               </h3>
-              <p className="text-sm text-text-muted">
+              <p className="text-sm leading-relaxed text-text-muted">
                 נסו את המחשבונים החינמיים שלנו — מס הכנסה, שכר נטו ומע״מ, מעודכנים ל-2025.
               </p>
             </div>

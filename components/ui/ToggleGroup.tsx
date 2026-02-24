@@ -29,9 +29,9 @@ export function ToggleGroup<T extends string>({
           aria-checked={value === option.value}
           onClick={() => onChange(option.value)}
           className={cn(
-            'flex-1 rounded-lg px-4 py-2.5 text-sm font-semibold transition-all',
+            'flex-1 rounded-lg px-4 py-2.5 text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg-main',
             value === option.value
-              ? 'bg-primary text-bg-main shadow-sm'
+              ? 'bg-primary text-white shadow-sm'
               : 'text-text-muted hover:text-text-primary'
           )}
         >

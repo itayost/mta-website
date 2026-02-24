@@ -13,15 +13,15 @@ npm run lint         # ESLint
 ## Architecture
 
 ```
-app/                 # Next.js App Router pages (7 pages + API + 404)
+app/                 # Next.js App Router pages (7 pages + API + 404 + sitemap + robots)
 components/
-  ui/                # Primitives: Button, Card, Input, Textarea, Badge, Accordion, SectionHeading, Container, RoundedTransition
-  ui/effects/        # Visual effects: Spotlight (mouse-following glow)
-  ui/motion/         # Animation wrappers: AnimateOnScroll, SplitText, StaggerChildren, PageTransition
+  ui/                # Primitives: Button, Card, Input, Textarea, Badge, Accordion, SectionHeading, Container, RoundedTransition, LogoMotif, StickyNavBar, ToggleGroup
+  ui/motion/         # Animation wrappers: AnimateOnScroll, AnimatedCounter, SplitText, StaggerChildren, StaggerItem, PageTransition
   layout/            # Header, Footer, MobileNav, WhatsAppButton
-  sections/          # Page sections: Hero, PageHero, LeadForm, StatsCounter, LogoCarousel, BentoGrid, AnimatedTestimonials, FeatureSections, etc.
-data/                # Static data (services, team, blog, FAQ, contact, navigation)
+  sections/          # Page sections: Hero, PageHero, LeadForm, BentoGrid, BenefitsBar, MiniAbout, TeamScrollStory, TeamMember, CtaSection, StepsSection, FaqSection, etc.
+data/                # Static data (services, team, blog, FAQ, contact, navigation, testimonials)
 lib/                 # Utilities: fonts, schemas (Zod), SEO helpers, send-lead
+public/team/         # Real team photos (sami-mazon.jpeg, yossi-mazon.jpeg, sara-mazon.jpeg, smadar.jpeg, rachel.jpeg, office.jpeg)
 types/               # TypeScript interfaces
 ```
 
@@ -48,9 +48,21 @@ Single light theme inspired by Aceternity Schedule Template. No dark mode, no `n
 
 ### Typography
 
-- **Font**: Heebo variable (100–900) via `lib/fonts.ts`
-- **Headlines**: `font-extrabold` or `font-black`, `text-text-primary`
-- **Body**: `font-light` or default, `text-text-muted`
+- **Body font**: Heebo variable (100–900) — `font-sans` via `lib/fonts.ts`
+- **Display font**: Frank Ruhl Libre variable (Hebrew serif) — `font-display` via `lib/fonts.ts`
+
+| Role | Font | Weight | Size | Leading | Tracking |
+|------|------|--------|------|---------|----------|
+| Hero H1 | `font-display` | `font-extrabold` | `text-4xl sm:text-5xl lg:text-6xl` | `leading-tight` | `tracking-tight` |
+| Page H1 | `font-display` | `font-extrabold` | `text-3xl sm:text-4xl` / `text-4xl sm:text-5xl` | `leading-tight` | `tracking-tight` |
+| Section H2 | `font-display` | `font-extrabold` | `text-4xl sm:text-5xl` | `leading-tight` | `tracking-tight` |
+| Small H2 | `font-display` | `font-extrabold` | `text-xl` / `text-2xl` | — | `tracking-tight` |
+| Card H3 | sans (default) | `font-bold` | `text-lg` / `text-xl` | `leading-snug` | — |
+| Body (large) | sans | `font-light` | `text-lg` / `text-xl` | `leading-relaxed` | — |
+| Body | sans | default | `text-sm` / `text-base` | `leading-relaxed` | — |
+| Labels/meta | sans | `font-medium` | `text-xs` / `text-sm` | — | — |
+| Stats numbers | `font-display` | `font-black` | `text-5xl lg:text-6xl` | `leading-none` | `tracking-tight` |
+
 - **Small/labels**: `text-text-muted/60`
 
 ### Button Variants
@@ -87,15 +99,16 @@ All buttons use `rounded-full font-semibold` (pill shape).
 | Component | Source | Usage |
 |-----------|--------|-------|
 | `SplitText` | React Bits | Word-by-word text reveal in hero headings |
-| `Spotlight` | Aceternity UI | Mouse-following radial glow on hero/CTA |
-| `LogoCarousel` | Cult UI | Infinite scroll logo bar (Homepage, About) |
+| `RotatingText` | React Bits | Animated rotating words in hero H1 |
 | `BentoGrid` | Aceternity UI | Variable-size card grid (Homepage services) |
-| `AnimatedTestimonials` | Aceternity UI | Auto-advancing single testimonial (Homepage) |
-| `AppleCardsCarousel` | Aceternity UI | Horizontal drag-scroll cards |
-| `InfiniteMovingCards` | Aceternity UI | Auto-scrolling marquee strip |
-| `FeatureSections` | Aceternity UI | Categorized service feature grid |
 
 All use the `motion` package (v12, imports from `motion/react`).
+
+### Brand Elements
+
+- **LogoMotif** (`components/ui/LogoMotif.tsx`): Decorative SVG chevron mark from company logo. Used as background watermark (`opacity={0.08}`) and as primary brand visual in Hero (`opacity={1}`)
+- **Hero brand card**: Logo + firm name + biblical verse (Psalms 55:23) — no stock photos, no team photos in hero
+- **Team photos**: Real images in `public/team/` — used in About page (scrollytelling + team grid) and Homepage (MiniAbout avatars)
 
 ### Scrollytelling (About page)
 
@@ -140,3 +153,5 @@ All use the `motion` package (v12, imports from `motion/react`).
 - **No `border-white/*`** — use `border-text-muted/10` or `border-border-subtle` if borders are needed
 - **No `bg-white/*`** — use `bg-text-muted/10` or `bg-bg-surface` for transparency effects
 - **No `gold`/`navy` tokens** — removed from design system
+- **No stock photos** — use real team images from `public/team/` or LogoMotif brand visual
+- **Team data** in `data/team.ts` — 5 members with local image paths (no Unsplash URLs)

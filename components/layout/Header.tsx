@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { Phone, Menu } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
@@ -31,8 +32,16 @@ export function Header() {
         )}
       >
         <Container className="flex items-center justify-between h-16 sm:h-20">
-          <Link href="/" className="text-xl sm:text-2xl font-bold text-text-primary">
-            משרד מזון
+          <Link href="/" className="flex items-center gap-2 shrink-0">
+            <Image
+              src="/logo.png"
+              alt=""
+              width={40}
+              height={40}
+              priority
+              className="h-8 sm:h-10 w-auto"
+            />
+            <span className="text-xl sm:text-2xl font-bold text-text-primary">מזון ייעוץ מס</span>
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1" aria-label="ניווט ראשי">

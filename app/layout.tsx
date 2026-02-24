@@ -1,15 +1,16 @@
 import type { Metadata } from 'next'
-import { heebo } from '@/lib/fonts'
+import { SITE_NAME } from '@/lib/seo'
+import { heebo, frankRuhlLibre } from '@/lib/fonts'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
-import { WhatsAppButton } from '@/components/layout/WhatsAppButton'
+import { FormFab } from '@/components/layout/FormFab'
 import './globals.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://mta.co.il'),
   title: {
-    default: 'משרד מזון – רואי חשבון ויועצי מס בחיפה',
-    template: '%s | משרד מזון',
+    default: 'מזון ייעוץ מס – רואי חשבון ויועצי מס בחיפה',
+    template: '%s | מזון ייעוץ מס',
   },
   description:
     'משרד רואי חשבון ויועצי מס ותיק בחיפה. מעל 40 שנות ניסיון בהנהלת חשבונות, ייעוץ מס, ביקורת חשבונות ושירותים נוספים לעצמאים, שכירים וחברות.',
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'he_IL',
-    siteName: 'משרד מזון – רואי חשבון ויועצי מס',
+    siteName: SITE_NAME,
   },
   robots: {
     index: true,
@@ -38,15 +39,15 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="he" dir="rtl" className={heebo.variable}>
+    <html lang="he" dir="rtl" className={`${heebo.variable} ${frankRuhlLibre.variable}`}>
       <body className="min-h-screen flex flex-col font-sans">
         <a href="#main-content" className="skip-link">
           דלג לתוכן
         </a>
         <Header />
-        <main id="main-content" className="flex-1">{children}</main>
+        <main id="main-content" className="flex-1 pt-16 sm:pt-20">{children}</main>
         <Footer />
-        <WhatsAppButton />
+        <FormFab />
       </body>
     </html>
   )

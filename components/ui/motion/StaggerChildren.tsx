@@ -1,7 +1,7 @@
 'use client'
 
 import { type ReactNode } from 'react'
-import { motion } from 'motion/react'
+import { motion, useReducedMotion } from 'motion/react'
 import { cn } from '@/lib/utils'
 
 interface StaggerChildrenProps {
@@ -24,12 +24,14 @@ export function StaggerChildren({
   staggerDelay = 0.1,
   className,
 }: StaggerChildrenProps) {
+  const shouldReduceMotion = useReducedMotion()
+
   return (
     <motion.div
-      initial="hidden"
+      initial={shouldReduceMotion ? 'visible' : 'hidden'}
       whileInView="visible"
       viewport={{ once: true, amount: 0.15 }}
-      variants={containerVariants(staggerDelay)}
+      variants={shouldReduceMotion ? undefined : containerVariants(staggerDelay)}
       className={cn(className)}
     >
       {children}

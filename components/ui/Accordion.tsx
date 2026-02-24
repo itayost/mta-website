@@ -17,7 +17,7 @@ export function AccordionItem({ question, answer, className }: AccordionItemProp
         className
       )}
     >
-      <summary className="flex cursor-pointer items-center justify-between gap-4 py-5 text-lg font-medium text-text-primary hover:text-primary transition-colors">
+      <summary className="flex cursor-pointer items-center justify-between gap-4 py-5 text-lg font-medium text-text-primary hover:text-primary transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg-main">
         <span>{question}</span>
         <ChevronDown className="size-5 shrink-0 text-text-muted transition-transform duration-200 group-open:rotate-180" />
       </summary>

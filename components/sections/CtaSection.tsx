@@ -6,6 +6,7 @@ import { Container } from '@/components/ui/Container'
 import { AnimateOnScroll } from '@/components/ui/motion'
 import { contactInfo } from '@/data/contact'
 import { cn } from '@/lib/utils'
+import { LogoMotif } from '@/components/ui/LogoMotif'
 
 interface CtaSectionProps {
   icon?: LucideIcon
@@ -32,11 +33,9 @@ export function CtaSection({
     <section className={sectionClassName}>
       <Container>
         <AnimateOnScroll preset="fade-in">
-          <div className="relative overflow-hidden rounded-3xl bg-bg-surface px-8 py-12 sm:px-16 sm:py-16 text-center">
-            <div
-              className="absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 size-96 rounded-full bg-primary/5 blur-3xl pointer-events-none"
-              aria-hidden="true"
-            />
+          <div className="relative overflow-hidden rounded-3xl bg-bg-surface px-5 py-10 sm:px-16 sm:py-16 text-center">
+            <LogoMotif opacity={0.1} className="absolute top-1/4 start-0 w-48 h-64 -rotate-12" />
+            <LogoMotif opacity={0.08} className="absolute bottom-1/4 end-0 w-40 h-56 rotate-6" />
 
             <div className="relative">
               {Icon && (
@@ -47,7 +46,7 @@ export function CtaSection({
 
               <h2
                 className={cn(
-                  'font-extrabold',
+                  'font-display font-extrabold tracking-tight leading-tight',
                   headingClassName,
                   blueGradient
                     ? 'text-gradient-blue'
@@ -56,12 +55,12 @@ export function CtaSection({
               >
                 {title}
               </h2>
-              <p className="mt-4 font-light text-lg text-text-muted max-w-xl mx-auto">
+              <p className="mt-4 font-light text-lg leading-relaxed text-text-muted max-w-xl mx-auto">
                 {body}
               </p>
 
               {trustItems && trustItems.length > 0 && (
-                <div className="mt-6 flex justify-center gap-6 text-sm text-text-muted/60">
+                <div className="mt-5 flex justify-center gap-3 sm:gap-6 text-sm text-text-muted/60">
                   {trustItems.map((item, i) => (
                     <Fragment key={item}>
                       {i > 0 && <span className="text-text-muted/20">|</span>}
@@ -71,17 +70,17 @@ export function CtaSection({
                 </div>
               )}
 
-              <div className="mt-8 flex flex-wrap justify-center gap-4">
+              <div className="mt-6 sm:mt-8 flex flex-wrap justify-center gap-3 sm:gap-4">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 rounded-full border border-primary px-6 py-3.5 text-base font-semibold text-primary hover:bg-primary hover:text-white transition-all"
+                  className="inline-flex items-center gap-2 rounded-full border border-primary px-5 py-3 text-sm sm:px-6 sm:py-3.5 sm:text-base font-semibold text-primary hover:bg-primary hover:text-white transition-all"
                 >
                   <span>{primaryLabel}</span>
                   <ArrowLeft className="size-5" />
                 </Link>
                 <a
                   href={`tel:${contactInfo.phone}`}
-                  className="inline-flex items-center gap-2 rounded-full border border-text-muted/30 px-6 py-3.5 text-base font-semibold text-text-primary hover:bg-primary/5 transition-all"
+                  className="inline-flex items-center gap-2 rounded-full border border-text-muted/30 px-5 py-3 text-sm sm:px-6 sm:py-3.5 sm:text-base font-semibold text-text-primary hover:bg-primary/5 transition-all"
                 >
                   <Phone className="size-5" />
                   <span>{contactInfo.phone}</span>

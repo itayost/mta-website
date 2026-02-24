@@ -222,4 +222,4 @@ const RotatingText = forwardRef<RotatingTextRef, RotatingTextProps>((props, ref)
 })
 
 RotatingText.displayName = 'RotatingText'
-export default RotatingText
+export { RotatingText }

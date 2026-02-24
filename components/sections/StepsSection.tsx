@@ -30,7 +30,7 @@ export function StepsSection({
         <SectionHeading title={title} subtitle={subtitle} />
         <div className="relative max-w-4xl mx-auto">
           <div className="hidden sm:block absolute top-7 inset-x-[15%] h-0.5 bg-text-muted/10" aria-hidden="true" />
-          <StaggerChildren staggerDelay={0.15} className="grid grid-cols-1 gap-8 sm:grid-cols-3">
+          <StaggerChildren staggerDelay={0.15} className="grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-8">
             {steps.map((step) => (
               <StaggerItem key={step.title}>
                 <div className="text-center relative">
@@ -43,13 +43,13 @@ export function StepsSection({
                       {step.label}
                     </span>
                   )}
-                  <h3 className="text-lg font-extrabold text-text-primary mb-2">{step.title}</h3>
+                  <h3 className="text-lg font-bold leading-snug text-text-primary mb-2">{step.title}</h3>
                   {step.badge && (
                     <span className="inline-block text-xs font-medium text-primary bg-primary/10 rounded-full px-3 py-1 mb-2">
                       {step.badge}
                     </span>
                   )}
-                  <p className="text-text-muted">{step.description}</p>
+                  <p className="text-sm leading-relaxed text-text-muted">{step.description}</p>
                 </div>
               </StaggerItem>
             ))}

@@ -2,78 +2,107 @@ import type { Metadata } from 'next'
 import { Container } from '@/components/ui/Container'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { PageHero } from '@/components/sections/PageHero'
-import { CalculatorHub } from '@/components/sections/CalculatorHub'
-import { VatCalculator } from '@/components/sections/VatCalculator'
-import { IncomeTaxCalculator } from '@/components/sections/IncomeTaxCalculator'
-import { NetSalaryCalculator } from '@/components/sections/NetSalaryCalculator'
-import { TaxBracketTable } from '@/components/sections/TaxBracketTable'
-import { CalculatorFaq } from '@/components/sections/CalculatorFaq'
+import { CalculatorsStickyNav } from '@/components/sections/CalculatorsStickyNav'
+import { ExchangeRatesTable } from '@/components/sections/ExchangeRatesTable'
+import { MortgageCalculator } from '@/components/sections/MortgageCalculator'
+import { CurrencyConverter } from '@/components/sections/CurrencyConverter'
+import { InflationCalculator } from '@/components/sections/InflationCalculator'
+import { SavingsCalculator } from '@/components/sections/SavingsCalculator'
 import { CalculatorCta } from '@/components/sections/CalculatorCta'
-import { PageTransition, AnimateOnScroll } from '@/components/ui/motion'
+import { AnimateOnScroll } from '@/components/ui/motion'
 import { generatePageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = generatePageMetadata({
   title: 'מחשבונים',
   description:
-    'מחשבוני מס ופיננסים חינמיים ומעודכנים ל-2025 – מחשבון מס הכנסה, מחשבון שכר נטו-ברוטו, מחשבון מע"מ. חשבו בקלות כמה מס תשלמו.',
+    'מחשבונים פיננסיים חינמיים עם נתונים בזמן אמת מבנק ישראל – שערי חליפין, משכנתא, המרת מטבעות, אינפלציה וחיסכון.',
   path: '/calculators',
-  keywords: ['מחשבון מס הכנסה 2025', 'מחשבון שכר נטו', 'מחשבון מע"מ', 'מדרגות מס 2025'],
+  keywords: [
+    'שערי חליפין בנק ישראל',
+    'מחשבון משכנתא',
+    'המרת מטבעות',
+    'מחשבון אינפלציה',
+    'מחשבון חיסכון',
+    'ריבית בנק ישראל',
+  ],
 })
 
 export default function CalculatorsPage() {
   return (
-    <PageTransition>
+    <>
       <PageHero
         title="מחשבונים פיננסיים"
-        subtitle="כלים חינמיים ומעודכנים ל-2025 לחישובי מס, שכר ומע״מ"
+        subtitle="כלים חינמיים עם נתונים בזמן אמת מבנק ישראל"
       />
 
-      <CalculatorHub />
+      <CalculatorsStickyNav />
 
-      {/* VAT Calculator */}
-      <section id="vat" className="py-16 sm:py-20 scroll-mt-24">
+      {/* Currency Converter */}
+      <section id="currency-converter" className="py-12 sm:py-20 scroll-mt-32 sm:scroll-mt-36">
         <Container>
           <SectionHeading
-            title="מחשבון מע״מ"
-            subtitle="הוסיפו או הסירו מע״מ (17%) מכל סכום"
+            title="המרת מטבעות"
+            subtitle="המירו בין מטבעות לפי שערים יומיים מבנק ישראל"
           />
           <AnimateOnScroll preset="fade-in-up">
-            <VatCalculator />
+            <CurrencyConverter />
           </AnimateOnScroll>
         </Container>
       </section>
 
-      {/* Income Tax Calculator */}
-      <section id="income-tax" className="py-16 sm:py-20 scroll-mt-24">
+      {/* Exchange Rates */}
+      <section id="exchange-rates" className="py-12 sm:py-20 scroll-mt-32 sm:scroll-mt-36">
         <Container>
           <SectionHeading
-            title="מחשבון מס הכנסה"
-            subtitle="חשבו מס הכנסה חודשי לפי מדרגות המס 2025"
+            title="שערי חליפין"
+            subtitle="שערי מטבע יומיים מבנק ישראל"
           />
           <AnimateOnScroll preset="fade-in-up">
-            <IncomeTaxCalculator />
+            <ExchangeRatesTable />
           </AnimateOnScroll>
         </Container>
       </section>
 
-      {/* Net Salary Calculator */}
-      <section id="net-salary" className="py-16 sm:py-20 scroll-mt-24">
+      {/* Mortgage Calculator */}
+      <section id="mortgage" className="py-12 sm:py-20 scroll-mt-32 sm:scroll-mt-36">
         <Container>
           <SectionHeading
-            title="מחשבון שכר נטו"
-            subtitle="גלו כמה תקבלו נטו אחרי מס הכנסה, ביטוח לאומי, מס בריאות ופנסיה"
+            title="מחשבון משכנתא"
+            subtitle="חשבו החזר חודשי לפי ריביות ממוצעות מבנק ישראל"
           />
           <AnimateOnScroll preset="fade-in-up">
-            <NetSalaryCalculator />
+            <MortgageCalculator />
           </AnimateOnScroll>
         </Container>
       </section>
 
-      <TaxBracketTable />
+      {/* Savings Calculator */}
+      <section id="savings" className="py-12 sm:py-20 scroll-mt-32 sm:scroll-mt-36">
+        <Container>
+          <SectionHeading
+            title="מחשבון חיסכון"
+            subtitle="חשבו ריבית דריבית על הפקדות לפי ריבית בנק ישראל"
+          />
+          <AnimateOnScroll preset="fade-in-up">
+            <SavingsCalculator />
+          </AnimateOnScroll>
+        </Container>
+      </section>
 
-      <CalculatorFaq />
+      {/* Inflation Calculator */}
+      <section id="inflation" className="py-12 sm:py-20 scroll-mt-32 sm:scroll-mt-36">
+        <Container>
+          <SectionHeading
+            title="מחשבון אינפלציה"
+            subtitle="בדקו את הערך הריאלי של כסף לאורך זמן לפי מדד המחירים לצרכן"
+          />
+          <AnimateOnScroll preset="fade-in-up">
+            <InflationCalculator />
+          </AnimateOnScroll>
+        </Container>
+      </section>
 
       <CalculatorCta />
-    </PageTransition>
+    </>
   )
 }

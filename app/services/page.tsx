@@ -4,7 +4,6 @@ import { ServicesFilteredList } from '@/components/sections/ServicesFilteredList
 import { ProcessSteps } from '@/components/sections/ProcessSteps'
 import { ServicesNotSureCta } from '@/components/sections/ServicesNotSureCta'
 import { RoundedTransitionUp } from '@/components/ui/RoundedTransition'
-import { PageTransition } from '@/components/ui/motion'
 import { serviceCategories } from '@/data/services'
 import { generatePageMetadata, buildLocalBusinessJsonLd } from '@/lib/seo'
 
@@ -20,7 +19,7 @@ export default function ServicesPage() {
   const jsonLd = buildLocalBusinessJsonLd()
 
   return (
-    <PageTransition>
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -40,6 +39,6 @@ export default function ServicesPage() {
       <RoundedTransitionUp from="bg-bg-surface" to="bg-bg-main" />
 
       <ServicesNotSureCta />
-    </PageTransition>
+    </>
   )
 }

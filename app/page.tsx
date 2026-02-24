@@ -1,39 +1,36 @@
 import { Hero } from '@/components/sections/Hero'
-import { LogoCarousel } from '@/components/sections/LogoCarousel'
-import { StatsCounter } from '@/components/sections/StatsCounter'
+import { BenefitsBar } from '@/components/sections/BenefitsBar'
 import { BentoGrid } from '@/components/sections/BentoGrid'
-import { AnimatedTestimonials } from '@/components/sections/AnimatedTestimonials'
+import { MiniAbout } from '@/components/sections/MiniAbout'
 import { CtaBanner } from '@/components/sections/CtaBanner'
 import { RoundedTransition, RoundedTransitionUp } from '@/components/ui/RoundedTransition'
-import { PageTransition } from '@/components/ui/motion'
 import { buildLocalBusinessJsonLd } from '@/lib/seo'
 
 export default function HomePage() {
   const jsonLd = buildLocalBusinessJsonLd()
 
   return (
-    <PageTransition>
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* 1. Hero + dark blue band */}
       <Hero />
-      <LogoCarousel />
-      <StatsCounter />
 
-      {/* 2. Transition → main */}
-      <RoundedTransitionUp from="bg-bg-dark" to="bg-bg-main" />
+      {/* Benefits bar */}
+      <BenefitsBar />
 
-      {/* 5. Bento Grid services */}
+      {/* Services */}
       <BentoGrid />
 
-      {/* 6. Animated Testimonials */}
-      <AnimatedTestimonials />
+      {/* Mini-about */}
+      <RoundedTransition from="bg-bg-main" to="bg-bg-surface" />
+      <MiniAbout />
+      <RoundedTransitionUp from="bg-bg-surface" to="bg-bg-main" />
 
-      {/* 7. CTA */}
+      {/* CTA */}
       <CtaBanner />
-    </PageTransition>
+    </>
   )
 }

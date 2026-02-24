@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useCallback } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { X, Phone } from 'lucide-react'
 import { mainNavItems } from '@/data/navigation'
@@ -79,11 +80,20 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
           'fixed inset-block-0 inset-inline-start-0 z-50 w-80 max-w-[85vw] bg-bg-main shadow-2xl transition-transform duration-300 ease-out lg:hidden',
           open
             ? 'translate-x-0'
-            : 'ltr:translate-x-full rtl:-translate-x-full'
+            : 'ltr:-translate-x-full rtl:translate-x-full'
         )}
       >
         <div className="flex items-center justify-between p-4 border-b border-text-muted/10">
-          <span className="text-xl font-bold text-text-primary">משרד מזון</span>
+          <div className="flex items-center gap-2">
+            <Image
+              src="/logo.png"
+              alt=""
+              width={40}
+              height={40}
+              className="h-8 w-auto"
+            />
+            <span className="text-xl font-bold text-text-primary">מזון ייעוץ מס</span>
+          </div>
           <button
             ref={closeRef}
             type="button"

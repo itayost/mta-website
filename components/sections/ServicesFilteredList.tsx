@@ -1,9 +1,10 @@
 'use client'
 
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useMemo } from 'react'
 import { ServiceCategorySection } from './ServiceCategorySection'
 import { ServicesStickyNav } from './ServicesStickyNav'
 import { RoundedTransition, RoundedTransitionUp } from '@/components/ui/RoundedTransition'
+import { useScrollSpy } from '@/lib/useScrollSpy'
 import type { ServiceCategory } from '@/types/service'
 
 interface ServicesFilteredListProps {
@@ -12,8 +13,8 @@ interface ServicesFilteredListProps {
 
 const categoryStyles: Record<string, { bg: string; bgToken: string; dark: boolean }> = {
   accounting: { bg: '', bgToken: 'bg-bg-main', dark: false },
-  tax: { bg: 'bg-bg-dark', bgToken: 'bg-bg-dark', dark: true },
-  'audit-consulting': { bg: 'bg-bg-surface', bgToken: 'bg-bg-surface', dark: false },
+  tax: { bg: 'bg-bg-surface', bgToken: 'bg-bg-surface', dark: false },
+  'audit-consulting': { bg: '', bgToken: 'bg-bg-main', dark: false },
 }
 
 function getStyle(id: string) {
@@ -21,36 +22,11 @@ function getStyle(id: string) {
 }
 
 export function ServicesFilteredList({ categories }: ServicesFilteredListProps) {
-  const [activeCategoryId, setActiveCategoryId] = useState<string | null>(null)
-  const observerRef = useRef<IntersectionObserver | null>(null)
-
-  const setupObserver = useCallback(() => {
-    observerRef.current?.disconnect()
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            const id = entry.target.id.replace('category-', '')
-            setActiveCategoryId(id)
-          }
-        }
-      },
-      { rootMargin: '-160px 0px -60% 0px' },
-    )
-
-    for (const cat of categories) {
-      const el = document.getElementById(`category-${cat.id}`)
-      if (el) observer.observe(el)
-    }
-
-    observerRef.current = observer
-  }, [categories])
-
-  useEffect(() => {
-    setupObserver()
-    return () => observerRef.current?.disconnect()
-  }, [setupObserver])
+  const categoryIds = useMemo(
+    () => categories.map((c) => `category-${c.id}`),
+    [categories],
+  )
+  const activeCategoryId = useScrollSpy(categoryIds, 'category-')
 
   return (
     <div>

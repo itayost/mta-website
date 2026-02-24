@@ -1,5 +1,6 @@
 import { cn } from '@/lib/utils'
 import { Container } from '@/components/ui/Container'
+import { LogoMotif } from '@/components/ui/LogoMotif'
 import type { ServiceCategory } from '@/types/service'
 
 interface ServiceCategorySectionProps {
@@ -57,13 +58,15 @@ export function ServiceCategorySection({
             <div
               key={service.id}
               className={cn(
-                'rounded-2xl p-8 h-full flex flex-col',
+                'relative overflow-hidden rounded-2xl p-8 h-full flex flex-col text-center sm:text-start items-center sm:items-start',
                 getBentoSpan(i),
-                dark
-                  ? 'bg-white/5 border border-white/10'
-                  : 'bg-bg-card border border-white/5',
+                dark ? 'bg-white/5' : 'bg-bg-card',
               )}
             >
+              <LogoMotif
+                opacity={dark ? 0.1 : 0.15}
+                className="absolute top-0 end-0 w-16 h-20 -translate-y-2 translate-x-2"
+              />
               <span
                 className={cn(
                   'text-sm font-medium',

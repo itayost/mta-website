@@ -8,7 +8,7 @@ export const teamMembers: TeamMember[] = [
     description:
       'סמי מזון, רואה חשבון ותיק עם ניסיון של למעלה מ-40 שנה. מייסד ומנהל המשרד, מתמחה בביקורת חשבונות, ייעוץ מס ותכנון פיננסי לעסקים וחברות.',
     experience: 'מעל 40 שנות ניסיון',
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face',
+    image: '/team/sami-mazon.jpeg',
     credentials: ['רואה חשבון מוסמך (CPA)', 'חבר לשכת רואי חשבון בישראל'],
     specializations: ['ביקורת חשבונות', 'ייעוץ מס', 'תכנון פיננסי'],
   },
@@ -19,8 +19,38 @@ export const teamMembers: TeamMember[] = [
     description:
       'יוסי מזון, רואה חשבון ויועץ מס, שותף במשרד. מתמחה בהנהלת חשבונות, דוחות שנתיים וייעוץ מס ליחידים ועצמאים.',
     experience: 'מעל 20 שנות ניסיון',
-    image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop&crop=face',
+    image: '/team/yossi-mazon.jpeg',
     credentials: ['רואה חשבון מוסמך (CPA)', 'יועץ מס מוסמך'],
     specializations: ['הנהלת חשבונות', 'דוחות שנתיים', 'ייעוץ מס ליחידים'],
+  },
+  {
+    id: 'sara-mazon',
+    name: 'שרה מזון',
+    role: 'הנהלת חשבונות',
+    description:
+      'שרה מזון, חלק בלתי נפרד מצוות המשרד. מלווה את לקוחות המשרד בטיפול שוטף ומקצועי בהנהלת חשבונות.',
+    image: '/team/sara-mazon.jpeg',
+    credentials: [],
+    specializations: ['הנהלת חשבונות'],
+  },
+  {
+    id: 'smadar',
+    name: 'סמדר',
+    role: 'הנהלת חשבונות',
+    description:
+      'סמדר, חברת צוות ותיקה במשרד. מספקת שירות אישי ומקצועי ללקוחות המשרד בתחום הנהלת החשבונות.',
+    image: '/team/smadar.jpeg',
+    credentials: [],
+    specializations: ['הנהלת חשבונות'],
+  },
+  {
+    id: 'rachel',
+    name: 'רחל',
+    role: 'הנהלת חשבונות',
+    description:
+      'רחל, חברת צוות במשרד. מסייעת בטיפול השוטף בלקוחות ובמשימות הנהלת החשבונות של המשרד.',
+    image: '/team/rachel.jpeg',
+    credentials: [],
+    specializations: ['הנהלת חשבונות'],
   },
 ]

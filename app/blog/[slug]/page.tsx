@@ -7,7 +7,8 @@ import { Container } from '@/components/ui/Container'
 import { Badge } from '@/components/ui/Badge'
 import { BlogCard } from '@/components/sections/BlogCard'
 import { CopyLinkButton } from '@/components/sections/CopyLinkButton'
-import { PageTransition, StaggerChildren, StaggerItem } from '@/components/ui/motion'
+import { RoundedTransition, RoundedTransitionUp } from '@/components/ui/RoundedTransition'
+import { StaggerChildren, StaggerItem } from '@/components/ui/motion'
 import { blogPosts } from '@/data/blog'
 
 interface BlogPostPageProps {
@@ -24,7 +25,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   if (!post) return {}
 
   return {
-    title: `${post.title} | משרד מזון`,
+    title: `${post.title} | מזון ייעוץ מס`,
     description: post.excerpt,
     openGraph: {
       title: post.title,
@@ -50,7 +51,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const whatsappShareUrl = `https://wa.me/?text=${encodeURIComponent(post.title)}`
 
   return (
-    <PageTransition>
+    <>
       {/* Inline header */}
       <div className="bg-bg-surface pt-12 pb-8">
         <Container>
@@ -63,7 +64,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <span>חזרה למרכז הידע</span>
             </Link>
 
-            <h1 className="text-3xl font-extrabold text-text-primary sm:text-4xl">
+            <h1 className="font-display text-3xl font-extrabold tracking-tight leading-tight text-text-primary sm:text-4xl">
               {post.title}
             </h1>
 
@@ -94,6 +95,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </Container>
       </div>
 
+      <RoundedTransitionUp from="bg-bg-surface" to="bg-bg-main" />
+
       {/* Hero image */}
       {post.image && (
         <Container>
@@ -116,9 +119,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <article className="py-12 sm:py-16">
         <Container>
           <div className="max-w-3xl mx-auto">
-            <div className="prose prose-lg max-w-none leading-relaxed">
-              <p>{post.content}</p>
-            </div>
+            <div
+              className="article-content"
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            />
 
             {/* Share buttons */}
             <div className="mt-12 pt-8 border-t border-text-muted/10">
@@ -142,9 +146,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
       {/* Related posts */}
       {relatedPosts.length > 0 && (
-        <section className="py-16 sm:py-20 bg-bg-surface">
-          <Container>
-            <h2 className="text-2xl font-extrabold text-text-primary mb-8 text-center">
+        <>
+          <RoundedTransition from="bg-bg-main" to="bg-bg-surface" />
+          <section className="py-16 sm:py-20 bg-bg-surface">
+            <Container>
+            <h2 className="font-display text-2xl font-extrabold tracking-tight text-text-primary mb-8 text-center">
               מאמרים נוספים
             </h2>
             <StaggerChildren className="grid grid-cols-1 gap-6 sm:grid-cols-2 max-w-3xl mx-auto">
@@ -154,9 +160,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 </StaggerItem>
               ))}
             </StaggerChildren>
-          </Container>
-        </section>
+            </Container>
+          </section>
+        </>
       )}
-    </PageTransition>
+    </>
   )
 }

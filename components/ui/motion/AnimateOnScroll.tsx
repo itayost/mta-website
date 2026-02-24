@@ -1,7 +1,7 @@
 'use client'
 
 import { type ReactNode } from 'react'
-import { motion, type Transition } from 'motion/react'
+import { motion, useReducedMotion, type Transition } from 'motion/react'
 import { cn } from '@/lib/utils'
 
 type Preset = 'fade-in' | 'fade-in-up' | 'scale-in' | 'slide-in-start' | 'slide-in-end' | 'blur-in'
@@ -61,14 +61,15 @@ export function AnimateOnScroll({
   className,
   once = true,
 }: AnimateOnScrollProps) {
+  const shouldReduceMotion = useReducedMotion()
   const { initial, animate } = presets[preset]
 
   return (
     <motion.div
-      initial={initial}
+      initial={shouldReduceMotion ? false : initial}
       whileInView={animate}
       viewport={{ once, amount: 0.15 }}
-      transition={{ duration, delay, ease: easeMap[ease] }}
+      transition={shouldReduceMotion ? { duration: 0 } : { duration, delay, ease: easeMap[ease] }}
       className={cn(className)}
     >
       {children}

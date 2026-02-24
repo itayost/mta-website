@@ -26,7 +26,9 @@ export async function sendLead(data: ContactFormData): Promise<ContactFormRespon
     }
   }
 
-  // Dev fallback - log to console
-  console.log('📩 New lead received:', data)
+  // Dev fallback
+  if (process.env.NODE_ENV !== 'production') {
+    console.log('📩 New lead received:', data)
+  }
   return { success: true, message: 'הפנייה נשלחה בהצלחה' }
 }
