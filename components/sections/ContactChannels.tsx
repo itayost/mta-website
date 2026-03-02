@@ -14,14 +14,6 @@ const channels = [
     color: 'text-primary bg-primary/10',
   },
   {
-    icon: MessageCircle,
-    title: 'וואטסאפ',
-    description: 'שלחו הודעה',
-    value: 'שלחו הודעה',
-    href: `https://wa.me/${contactInfo.whatsapp}`,
-    color: 'text-whatsapp bg-whatsapp/10',
-  },
-  {
     icon: Mail,
     title: 'אימייל',
     description: 'נחזור אליכם תוך יום עסקים',

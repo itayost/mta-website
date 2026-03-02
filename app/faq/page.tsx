@@ -11,7 +11,7 @@ export const metadata: Metadata = generatePageMetadata({
   description:
     'תשובות לשאלות נפוצות בנושאי מס, חשבונאות ושירותי מזון ייעוץ מס. ייעוץ מס, החזרי מס, הנהלת חשבונות ועוד.',
   path: '/faq',
-  keywords: ['שאלות נפוצות חשבונאי', 'מידע מיסוי'],
+  keywords: ['שאלות נפוצות יועץ מס', 'מידע מיסוי'],
 })
 
 export default function FaqPage() {

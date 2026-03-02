@@ -13,9 +13,9 @@ import { generatePageMetadata, buildLocalBusinessJsonLd } from '@/lib/seo'
 export const metadata: Metadata = generatePageMetadata({
   title: 'צור קשר',
   description:
-    'צרו קשר עם מזון ייעוץ מס – חשבונאים ויועצי מס בחיפה. טלפון, אימייל, כתובת ושעות פעילות. השאירו פרטים ונחזור אליכם.',
+    'צרו קשר עם מזון ייעוץ מס – יועצי מס מוסמכים בחיפה. טלפון, אימייל, כתובת ושעות פעילות. השאירו פרטים ונחזור אליכם.',
   path: '/contact',
-  keywords: ['צור קשר חשבונאי', 'פגישת ייעוץ מס'],
+  keywords: ['צור קשר יועץ מס', 'פגישת ייעוץ מס'],
 })
 
 export default function ContactPage() {

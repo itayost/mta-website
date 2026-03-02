@@ -3,7 +3,6 @@ export const contactInfo = {
   phoneIntl: '+97248660044',
   phoneLabel: 'רב קווי',
   fax: '04-8661155',
-  whatsapp: '97248660044',
   emails: ['sami@mta.co.il', 'yossi@mta.co.il'],
   address: {
     street: 'שער פלמר 1, קומה 7 (חדר 731)',

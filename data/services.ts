@@ -2,20 +2,6 @@ import type { Service, ServiceCategory } from '@/types/service'
 
 export const services: Service[] = [
   {
-    id: 'bookkeeping',
-    title: 'הנהלת חשבונות',
-    description: 'ניהול ספרים מקצועי ומדויק לעסקים בכל הגדלים, כולל דיווחים שוטפים למע"מ, ביטוח לאומי ומס הכנסה.',
-    icon: 'BookOpen',
-    audiences: ['freelancers', 'companies'],
-    featured: true,
-    problem: 'ניהול ספרים לבד גוזל זמן ועלול לגרום לטעויות יקרות',
-    benefits: [
-      'דיווחים שוטפים ומדויקים למע"מ, ביטוח לאומי ומס הכנסה',
-      'התראות לפני מועדי הגשה למניעת קנסות',
-      'גישה למערכת מקוונת לצפייה בנתונים בזמן אמת',
-    ],
-  },
-  {
     id: 'tax-consulting',
     title: 'ייעוץ מס',
     description: 'תכנון מס אופטימלי והפחתת נטל המס באופן חוקי. ליווי בהחלטות פיננסיות משמעותיות.',
@@ -30,17 +16,31 @@ export const services: Service[] = [
     ],
   },
   {
-    id: 'audit',
-    title: 'ביקורת חשבונות',
-    description: 'ביקורת דוחות כספיים בהתאם לתקנים המקצועיים, לרבות חוות דעת חשבונאי מבקר.',
-    icon: 'ClipboardCheck',
-    audiences: ['companies'],
+    id: 'bookkeeping',
+    title: 'הנהלת חשבונות',
+    description: 'ניהול ספרים מקצועי ומדויק לעסקים בכל הגדלים, כולל דיווחים שוטפים למע"מ, ביטוח לאומי ומס הכנסה.',
+    icon: 'BookOpen',
+    audiences: ['freelancers', 'companies'],
     featured: true,
-    problem: 'דוחות כספיים ללא ביקורת עלולים לעכב גיוס הון או קבלת אשראי',
+    problem: 'ניהול ספרים לבד גוזל זמן ועלול לגרום לטעויות יקרות',
     benefits: [
-      'חוות דעת חשבונאי מבקר בהתאם לתקנים בינלאומיים',
-      'זיהוי חולשות בבקרה פנימית והמלצות לשיפור',
-      'דוחות מבוקרים מוכנים להצגה לבנקים ומשקיעים',
+      'דיווחים שוטפים ומדויקים למע"מ, ביטוח לאומי ומס הכנסה',
+      'התראות לפני מועדי הגשה למניעת קנסות',
+      'גישה למערכת מקוונת לצפייה בנתונים בזמן אמת',
+    ],
+  },
+  {
+    id: 'retirement-consulting',
+    title: 'ייעוץ פרישה',
+    description: 'תכנון מס לקראת פרישה, קיבוע זכויות ופטורים ממס על מענקי פרישה וקצבאות.',
+    icon: 'Target',
+    audiences: ['employees', 'freelancers'],
+    featured: true,
+    problem: 'פרישה ללא תכנון מס מתאים עלולה לעלות בתשלומים גבוהים למס הכנסה',
+    benefits: [
+      'קיבוע זכויות לפי תיקון 190 למקסום הפטור על הקצבה',
+      'פריסת מס על מענקי פרישה, ימי חופשה ופיצויים',
+      'ליווי אישי להשגת הפטורים המקסימליים בחוק',
     ],
   },
   {
@@ -183,20 +183,7 @@ export const services: Service[] = [
       'דיווח נכון על הכנסות מחו"ל בהתאם לדין הישראלי',
     ],
   },
-  {
-    id: 'estate-planning',
-    title: 'תכנון עיזבונות',
-    description: 'ייעוץ בתכנון ירושות, מתנות והעברות בין-דוריות בצורה מיטבית מבחינת מס.',
-    icon: 'Landmark',
-    audiences: ['employees'],
-    featured: false,
-    problem: 'העברת נכסים ללא תכנון מס עלולה לגרום להפסדים משמעותיים ליורשים',
-    benefits: [
-      'תכנון העברת נכסים בין-דורית בצורה מיטבית מבחינת מס',
-      'ייעוץ בנושא מתנות, ירושות וצוואות מהיבט מיסויי',
-      'מבנה משפטי מותאם לשמירה על הרכוש המשפחתי',
-    ],
-  },
+
   {
     id: 'nonprofit',
     title: 'עמותות ומלכ"רים',
@@ -260,10 +247,10 @@ export const serviceCategories: ServiceCategory[] = [
   },
   {
     id: 'audit-consulting',
-    title: 'ביקורת וייעוץ עסקי',
-    description: 'ביקורת חשבונות, ייעוץ עסקי ושירותים מיוחדים.',
+    title: 'ייעוץ עסקי ושירותים נוספים',
+    description: 'ייעוץ עסקי, בדיקות נאותות ושירותים מיוחדים.',
     services: services.filter((s) =>
-      ['audit', 'business-consulting', 'company-formation', 'estate-planning', 'nonprofit', 'due-diligence'].includes(s.id)
+      ['business-consulting', 'company-formation', 'nonprofit', 'due-diligence'].includes(s.id)
     ),
   },
 ]

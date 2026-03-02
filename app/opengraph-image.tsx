@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og'
 
-export const alt = 'מזון ייעוץ מס – חשבונאים ויועצי מס בחיפה'
+export const alt = 'מזון ייעוץ מס – יועצי מס מוסמכים בחיפה'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 

@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   return {
     title: fullTitle,
     description: post.excerpt,
-    keywords: ['חשבונאי חיפה', 'יועץ מס בחיפה', 'הנהלת חשבונות חיפה', ...post.tags],
+    keywords: ['יועץ מס מוסמך בחיפה', 'יועץ מס בחיפה', 'הנהלת חשבונות חיפה', ...post.tags],
     openGraph: {
       title: post.title,
       description: post.excerpt,
@@ -64,7 +64,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   const relatedPosts = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 2)
-  const whatsappShareUrl = `https://wa.me/?text=${encodeURIComponent(post.title)}`
 
   const articleJsonLd = buildArticleJsonLd({
     title: post.title,
@@ -169,15 +168,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <div className="mt-12 pt-8 border-t border-text-muted/10">
               <p className="text-sm font-medium text-text-muted mb-3">שתפו את המאמר:</p>
               <div className="flex gap-3">
-                <a
-                  href={whatsappShareUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-bg-surface px-4 py-2 text-sm font-semibold text-text-primary hover:bg-primary/5 transition-all"
-                >
-                  <Share2 className="size-4" />
-                  <span>WhatsApp</span>
-                </a>
                 <CopyLinkButton />
               </div>
             </div>
@@ -191,16 +181,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <RoundedTransition from="bg-bg-main" to="bg-bg-surface" />
           <section className="py-16 sm:py-20 bg-bg-surface">
             <Container>
-            <h2 className="font-display text-2xl font-extrabold tracking-tight text-text-primary mb-8 text-center">
-              מאמרים נוספים
-            </h2>
-            <StaggerChildren className="grid grid-cols-1 gap-6 sm:grid-cols-2 max-w-3xl mx-auto">
-              {relatedPosts.map((relPost) => (
-                <StaggerItem key={relPost.slug}>
-                  <BlogCard post={relPost} />
-                </StaggerItem>
-              ))}
-            </StaggerChildren>
+              <h2 className="font-display text-2xl font-extrabold tracking-tight text-text-primary mb-8 text-center">
+                מאמרים נוספים
+              </h2>
+              <StaggerChildren className="grid grid-cols-1 gap-6 sm:grid-cols-2 max-w-3xl mx-auto">
+                {relatedPosts.map((relPost) => (
+                  <StaggerItem key={relPost.slug}>
+                    <BlogCard post={relPost} />
+                  </StaggerItem>
+                ))}
+              </StaggerChildren>
             </Container>
           </section>
         </>
