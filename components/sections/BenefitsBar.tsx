@@ -12,11 +12,7 @@ const benefits = [
     body: 'קישור ישיר למערכות מס הכנסה, מע"מ וביטוח לאומי לטיפול מזורז והחזרי מס מהירים.',
   },
   {
-    title: 'השפעה ברמה הארצית',
-    body: 'הנהלת המשרד מכהנת בתפקידי מפתח בלשכת יועצי המס ומשפיעה על חקיקת המיסים בישראל.',
-  },
-  {
-    title: 'ניסיון של 40 שנה',
+    title: 'מעל 50 שנות ניסיון',
     body: 'שילוב מנצח של ותק, מקצוענות ודור המשך דינמי שמכיר את כל תחומי המשק.',
   },
 ]
@@ -25,7 +21,7 @@ export function BenefitsBar() {
   return (
     <section className="py-10 sm:py-16 lg:py-20">
       <Container>
-        <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
           {benefits.map(({ title, body }, i) => (
             <AnimateOnScroll key={title} preset="fade-in-up" delay={i * 0.08}>
               <div className="relative overflow-hidden rounded-2xl p-4 sm:p-8 h-full flex flex-col items-center sm:items-start text-center sm:text-start bg-bg-card">

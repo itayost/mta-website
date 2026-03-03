@@ -7,7 +7,7 @@ import { AnimatedCounter } from '@/components/ui/motion/AnimatedCounter'
 import { teamMembers } from '@/data/team'
 
 const stats = [
-  { target: 40, suffix: '+', label: 'שנות ניסיון' },
+  { target: 50, suffix: '+', label: 'שנות ניסיון' },
   { target: 1000, suffix: '+', label: 'לקוחות מרוצים' },
   { target: 17, suffix: '', label: 'שירותים' },
   { target: 100, suffix: '%', label: 'מחויבות' },
@@ -28,10 +28,10 @@ export function MiniAbout() {
               </h2>
               <div className="space-y-4 mb-8">
                 <p className="text-lg font-light leading-relaxed text-text-muted">
-                  עם קרוב ל-40 שנות פעילות, מזון ייעוץ מס הוא הרבה יותר ממשרד ייעוץ מס.
+                  עם מעל 50 שנות פעילות, מזון ייעוץ מס הוא הרבה יותר ממשרד ייעוץ מס.
                 </p>
                 <p className="text-lg font-light leading-relaxed text-text-muted">
-                  בהובלת מר שמואל (סמי) מזון, נשיא ארצי של לשכות יועצי המס לשעבר, ומר יוסף מזון, חבר בוועדה המקצועית הארצית – אנחנו מביאים את הסטנדרט המקצועי הגבוה ביותר בישראל ישירות לעסק שלך.
+                  בהובלת מר שמואל (סמי) מזון, נשיא ארצי של לשכות יועצי המס לשעבר, ומר יוסף מזון, חבר הנהלה מחוז הצפון לשכת יועצי המס – אנחנו מביאים את הסטנדרט המקצועי הגבוה ביותר בישראל ישירות לעסק שלך.
                 </p>
               </div>
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">

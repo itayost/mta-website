@@ -4,7 +4,7 @@ import { StaggerChildren, StaggerItem } from '@/components/ui/motion'
 
 const trustItems = [
   { icon: Award, label: 'לשכת יועצי המס' },
-  { icon: Clock, label: '50+ שנות ניסיון' },
+  { icon: Clock, label: 'מעל 50 שנות ניסיון' },
   { icon: Users, label: '1,000+ לקוחות מרוצים' },
   { icon: ShieldCheck, label: 'יועצי מס מוסמכים' },
 ]

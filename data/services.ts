@@ -156,20 +156,6 @@ export const services: Service[] = [
     ],
   },
   {
-    id: 'real-estate-tax',
-    title: 'מיסוי מקרקעין',
-    description: 'ייעוץ במכירה ורכישת נכסים, מס שבח, מס רכישה ותכנון מס מקרקעין.',
-    icon: 'Home',
-    audiences: ['employees', 'companies'],
-    featured: false,
-    problem: 'עסקאות נדל"ן ללא ייעוץ מס עלולות להוביל לתשלום מס מיותר',
-    benefits: [
-      'חישוב מס שבח ומס רכישה מדויק לפני ביצוע עסקה',
-      'תכנון מס מקרקעין למקסום פטורים והקלות',
-      'ליווי מקצועי מתחילת העסקה ועד להגשת הדיווח',
-    ],
-  },
-  {
     id: 'international-tax',
     title: 'מיסוי בינלאומי',
     description: 'טיפול בסוגיות מס חוצות גבולות, אמנות מס והתנהלות עם רשויות מס זרות.',
@@ -242,7 +228,7 @@ export const serviceCategories: ServiceCategory[] = [
     title: 'ייעוץ מס ותכנון',
     description: 'תכנון מס, ייעוץ ודיווחים שנתיים למס הכנסה.',
     services: services.filter((s) =>
-      ['tax-consulting', 'annual-reports', 'tax-planning', 'tax-representation', 'real-estate-tax', 'international-tax', 'capital-market'].includes(s.id)
+      ['tax-consulting', 'annual-reports', 'tax-planning', 'retirement-consulting', 'tax-representation', 'international-tax', 'capital-market'].includes(s.id)
     ),
   },
   {

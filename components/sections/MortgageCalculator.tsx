@@ -43,10 +43,6 @@ export function MortgageCalculator() {
     return apiRates.rates.find((r) => r.key === rateType)?.rate ?? null
   }, [apiRates, rateType])
 
-  // When rate type changes, clear user override so live rate is used
-  useEffect(() => {
-    setRateOverride('')
-  }, [rateType])
 
   const effectiveRate = useMemo(() => {
     if (rateOverride) {
@@ -93,7 +89,7 @@ export function MortgageCalculator() {
             key={key}
             role="radio"
             aria-checked={rateType === key}
-            onClick={() => setRateType(key)}
+            onClick={() => { setRateType(key); setRateOverride('') }}
             className={cn(
               'flex-1 min-w-[calc(50%-0.25rem)] rounded-lg px-3 py-2.5 text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg-main',
               rateType === key

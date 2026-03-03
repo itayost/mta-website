@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { Phone, ArrowLeft } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
@@ -12,6 +13,20 @@ import { LogoMotif } from '@/components/ui/LogoMotif'
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-bg-main">
+      {/* Background image layer */}
+      <div className="absolute inset-0" aria-hidden="true">
+        <Image
+          src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=2400&q=80&fit=crop&crop=center"
+          alt=""
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+          quality={85}
+        />
+        <div className="absolute inset-0 bg-bg-main/70" />
+        <div className="absolute inset-0 bg-gradient-to-t from-bg-main via-bg-main/40 to-bg-main/60" />
+      </div>
 
       <Container className="relative">
         <div className="grid grid-cols-1 items-center gap-10 pt-10 pb-12 sm:pt-14 sm:pb-16 lg:grid-cols-2 lg:gap-12 lg:pb-0 lg:pt-16">
@@ -36,6 +51,12 @@ export function Hero() {
                 />
               </span>
             </h1>
+
+            <AnimateOnScroll preset="fade-in-up" delay={0.35}>
+              <p className="mt-4 font-display text-xl font-extrabold tracking-tight text-text-primary sm:text-2xl">
+                משרד בוטיק ויחס אישי לכל לקוח
+              </p>
+            </AnimateOnScroll>
 
             <AnimateOnScroll preset="fade-in-up" delay={0.4}>
               <p className="mt-6 max-w-lg mx-auto lg:mx-0 text-lg leading-relaxed text-text-muted">
@@ -69,12 +90,12 @@ export function Hero() {
                 מזון ייעוץ מס
               </h2>
               <div className="mt-8" />
-              <p className="font-display text-lg font-extrabold leading-relaxed tracking-wide text-text-primary sm:text-xl mx-auto w-fit text-start" lang="he">
+              <p className="font-display text-xl font-extrabold leading-relaxed tracking-wide text-text-primary sm:text-2xl mx-auto w-fit text-start" lang="he">
                 הַשְׁלֵךְ עַל יְהוָה יְהָבְךָ
                 <br />
                 וְהוּא יְכַלְכְּלֶךָ
               </p>
-              <span className="mt-3 text-base text-text-muted/50 self-end">(תהלים נה, כג)</span>
+              <span className="mt-3 text-base text-text-muted self-end">(תהלים נה, כג)</span>
             </div>
           </AnimateOnScroll>
         </div>

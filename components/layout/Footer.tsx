@@ -23,7 +23,7 @@ export function Footer() {
               <span className="text-lg font-bold text-text-primary">מזון ייעוץ מס</span>
             </div>
             <p className="text-text-muted leading-relaxed">
-              משרד יועצי מס מוסמכים ותיק בחיפה. 50+ שנות ניסיון בליווי עצמאים,
+              משרד יועצי מס מוסמכים ותיק בחיפה. מעל 50 שנות ניסיון בליווי עצמאים,
               שכירים וחברות בכל תחומי המיסוי והחשבונאות.
             </p>
           </div>
