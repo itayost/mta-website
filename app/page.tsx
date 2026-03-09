@@ -9,7 +9,7 @@ import { buildLocalBusinessJsonLd, generatePageMetadata } from '@/lib/seo'
 export const metadata = generatePageMetadata({
   title: 'מזון ייעוץ מס – יועצי מס מוסמכים בחיפה',
   description:
-    'משרד יועצי מס מוסמכים ותיק בחיפה. מעל 50 שנות ניסיון בהנהלת חשבונות, ייעוץ מס, ייעוץ פרישה ושירותים נוספים לעצמאים, שכירים וחברות.',
+    'משרד יועצי מס מוסמכים ותיק בחיפה. מעל 57 שנות ניסיון בהנהלת חשבונות, ייעוץ מס, ייעוץ פרישה ושירותים נוספים לעצמאים, שכירים וחברות.',
   path: '/',
   keywords: ['משרד יועצי מס', 'ייעוץ מס', 'ייעוץ פרישה', 'הנהלת חשבונות'],
 })
@@ -26,11 +26,11 @@ export default function HomePage() {
 
       <Hero />
 
-      {/* Benefits bar */}
-      <BenefitsBar />
-
       {/* Services */}
       <BentoGrid />
+
+      {/* Benefits bar */}
+      <BenefitsBar />
 
       {/* Mini-about */}
       <RoundedTransition from="bg-bg-main" to="bg-bg-surface" />
