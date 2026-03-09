@@ -1,6 +1,7 @@
 import { Hero } from '@/components/sections/Hero'
 import { BenefitsBar } from '@/components/sections/BenefitsBar'
 import { BentoGrid } from '@/components/sections/BentoGrid'
+import { MidPageCta } from '@/components/sections/MidPageCta'
 import { MiniAbout } from '@/components/sections/MiniAbout'
 import { CtaBanner } from '@/components/sections/CtaBanner'
 import { RoundedTransition, RoundedTransitionUp } from '@/components/ui/RoundedTransition'
@@ -31,6 +32,9 @@ export default function HomePage() {
 
       {/* Benefits bar */}
       <BenefitsBar />
+
+      {/* Mid-page CTA */}
+      <MidPageCta className="py-6 sm:py-10" />
 
       {/* Mini-about */}
       <RoundedTransition from="bg-bg-main" to="bg-bg-surface" />
