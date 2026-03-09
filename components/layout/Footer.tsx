@@ -84,6 +84,15 @@ export function Footer() {
         </div>
 
         <div className="mt-8 pt-6 sm:mt-12 sm:pt-8 border-t border-text-muted/10 text-center text-sm text-text-muted/50">
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <Link href="/accessibility" className="hover:text-primary transition-colors">
+              הצהרת נגישות
+            </Link>
+            <span aria-hidden="true">|</span>
+            <Link href="/privacy" className="hover:text-primary transition-colors">
+              מדיניות פרטיות
+            </Link>
+          </div>
           <p>&copy; {new Date().getFullYear()} מזון ייעוץ מס – יועצי מס מוסמכים. כל הזכויות שמורות.</p>
         </div>
       </Container>
