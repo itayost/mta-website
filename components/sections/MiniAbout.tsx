@@ -23,7 +23,7 @@ export function MiniAbout() {
             <div className="text-center lg:text-start">
               {/* Accent bar */}
               <div className="w-8 h-0.5 bg-primary mb-5 mx-auto lg:mx-0" />
-              <h2 className="font-display text-3xl font-extrabold tracking-tight leading-tight text-text-primary sm:text-4xl mb-6">
+              <h2 className="text-3xl font-extrabold tracking-tight leading-tight text-text-primary sm:text-4xl mb-6">
                 המומחיות שלנו, השקט הנפשי שלך.
               </h2>
               <div className="space-y-4 mb-8">
@@ -68,7 +68,7 @@ export function MiniAbout() {
                   <AnimatedCounter
                     target={target}
                     suffix={suffix}
-                    className="font-display text-3xl sm:text-5xl font-black tracking-tight leading-none text-text-primary"
+                    className="text-3xl sm:text-5xl font-black tracking-tight leading-none text-text-primary"
                   />
                   <p className="mt-1 sm:mt-2 text-xs sm:text-sm font-medium text-text-muted">{label}</p>
                 </div>

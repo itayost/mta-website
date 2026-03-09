@@ -14,8 +14,8 @@ export default function NotFound() {
     <>
       <section className="relative overflow-hidden bg-bg-main py-24 sm:py-32">
         <Container className="relative text-center">
-          <h1 className="font-display text-8xl font-black tracking-tight text-primary mb-4 animate-float">404</h1>
-          <h2 className="font-display text-3xl font-bold tracking-tight leading-tight text-text-primary mb-4">העמוד לא נמצא</h2>
+          <h1 className="text-8xl font-black tracking-tight text-primary mb-4 animate-float">404</h1>
+          <h2 className="text-3xl font-bold tracking-tight leading-tight text-text-primary mb-4">העמוד לא נמצא</h2>
           <p className="text-lg leading-relaxed text-text-muted mb-10 max-w-md mx-auto">
             העמוד שחיפשתם אינו קיים או שהקישור שגוי. אנא חזרו לדף הבית.
           </p>

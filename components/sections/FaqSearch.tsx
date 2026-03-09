@@ -50,7 +50,7 @@ export function FaqSearch() {
               {grouped.map((group) => (
                 <div key={group.category} id={`faq-${group.category}`} className="scroll-mt-32 sm:scroll-mt-36">
                   <AnimateOnScroll preset="fade-in-up">
-                    <h2 className="font-display text-xl font-extrabold tracking-tight text-text-primary mb-4 flex items-center gap-3">
+                    <h2 className="text-xl font-extrabold tracking-tight text-text-primary mb-4 flex items-center gap-3">
                       <div className="w-6 h-1 bg-primary rounded-full" />
                       {group.label}
                     </h2>

@@ -46,7 +46,7 @@ export function CtaSection({
 
               <h2
                 className={cn(
-                  'font-display font-extrabold tracking-tight leading-tight',
+                  'font-extrabold tracking-tight leading-tight',
                   headingClassName,
                   blueGradient
                     ? 'text-gradient-blue'

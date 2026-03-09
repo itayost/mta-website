@@ -18,7 +18,7 @@ export default function GlobalError({
     <div className="min-h-[60vh] flex items-center justify-center py-24">
       <Container>
         <div className="text-center">
-          <h2 className="font-display text-2xl font-extrabold tracking-tight leading-tight text-text-primary mb-4">
+          <h2 className="text-2xl font-extrabold tracking-tight leading-tight text-text-primary mb-4">
             משהו השתבש
           </h2>
           <p className="text-text-muted leading-relaxed mb-8">

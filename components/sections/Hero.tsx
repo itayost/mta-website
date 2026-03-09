@@ -32,7 +32,7 @@ export function Hero() {
         <div className="grid grid-cols-1 items-center gap-10 pt-10 pb-12 sm:pt-14 sm:pb-16 lg:grid-cols-2 lg:gap-12 lg:pb-0 lg:pt-16">
           {/* Text side (appears on the right in RTL) */}
           <div className="relative text-center lg:text-start lg:py-20">
-            <h1 className="font-display text-4xl font-extrabold tracking-tight leading-tight text-text-primary sm:text-5xl lg:text-6xl">
+            <h1 className="text-4xl font-extrabold tracking-tight leading-tight text-text-primary sm:text-5xl lg:text-6xl">
               <SplitText text="ייעוץ מס וחשבונאות" delay={0.2} />
               <span className="mt-3 flex justify-center lg:justify-start">
                 <RotatingText
@@ -53,7 +53,7 @@ export function Hero() {
             </h1>
 
             <AnimateOnScroll preset="fade-in-up" delay={0.35}>
-              <p className="mt-4 font-display text-xl font-extrabold tracking-tight text-text-primary sm:text-2xl">
+              <p className="mt-4 text-xl font-extrabold tracking-tight text-text-primary sm:text-2xl">
                 משרד בוטיק ויחס אישי לכל לקוח
               </p>
             </AnimateOnScroll>
@@ -86,11 +86,11 @@ export function Hero() {
           <AnimateOnScroll preset="fade-in-up" delay={0.3} className="lg:self-center">
             <div className="flex flex-col items-center justify-center px-8 py-12 sm:px-12 sm:py-16 lg:py-20 text-center">
               <LogoMotif opacity={1} className="w-48 h-28 sm:w-56 sm:h-32 lg:w-64 lg:h-36 mb-4" />
-              <h2 className="font-display text-3xl font-extrabold tracking-tight text-text-primary sm:text-4xl lg:text-5xl">
+              <h2 className="text-3xl font-extrabold tracking-tight text-text-primary sm:text-4xl lg:text-5xl">
                 מזון ייעוץ מס
               </h2>
               <div className="mt-8" />
-              <p className="font-display text-xl font-extrabold leading-relaxed tracking-wide text-text-primary sm:text-2xl mx-auto w-fit text-start" lang="he">
+              <p className="text-xl font-extrabold leading-relaxed tracking-wide text-text-primary sm:text-2xl mx-auto w-fit text-start" lang="he">
                 הַשְׁלֵךְ עַל יְהוָה יְהָבְךָ
                 <br />
                 וְהוּא יְכַלְכְּלֶךָ

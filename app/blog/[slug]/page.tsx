@@ -104,7 +104,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <span>חזרה למרכז הידע</span>
             </Link>
 
-            <h1 className="font-display text-3xl font-extrabold tracking-tight leading-tight text-text-primary sm:text-4xl">
+            <h1 className="text-3xl font-extrabold tracking-tight leading-tight text-text-primary sm:text-4xl">
               {post.title}
             </h1>
 
@@ -181,7 +181,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <RoundedTransition from="bg-bg-main" to="bg-bg-surface" />
           <section className="py-16 sm:py-20 bg-bg-surface">
             <Container>
-              <h2 className="font-display text-2xl font-extrabold tracking-tight text-text-primary mb-8 text-center">
+              <h2 className="text-2xl font-extrabold tracking-tight text-text-primary mb-8 text-center">
                 מאמרים נוספים
               </h2>
               <StaggerChildren className="grid grid-cols-1 gap-6 sm:grid-cols-2 max-w-3xl mx-auto">

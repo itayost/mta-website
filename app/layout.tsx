@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
 import { SITE_NAME, SITE_URL } from '@/lib/seo'
-import { heebo, frankRuhlLibre } from '@/lib/fonts'
+import { heebo } from '@/lib/fonts'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { FormFab } from '@/components/layout/FormFab'
@@ -43,7 +43,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="he" dir="rtl" className={`${heebo.variable} ${frankRuhlLibre.variable}`}>
+    <html lang="he" dir="rtl" className={heebo.variable}>
       <body className="min-h-screen flex flex-col font-sans">
         <a href="#main-content" className="skip-link">
           דלג לתוכן

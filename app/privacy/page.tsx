@@ -25,7 +25,7 @@ export default function PrivacyPage() {
         <Container className="max-w-3xl">
           <div className="space-y-8 text-text-muted leading-relaxed">
             <div>
-              <h2 className="font-display font-extrabold text-xl text-text-primary mb-3">
+              <h2 className="font-extrabold text-xl text-text-primary mb-3">
                 כללי
               </h2>
               <p>
@@ -36,7 +36,7 @@ export default function PrivacyPage() {
             </div>
 
             <div>
-              <h2 className="font-display font-extrabold text-xl text-text-primary mb-3">
+              <h2 className="font-extrabold text-xl text-text-primary mb-3">
                 מידע שאנו אוספים
               </h2>
               <p>
@@ -52,7 +52,7 @@ export default function PrivacyPage() {
             </div>
 
             <div>
-              <h2 className="font-display font-extrabold text-xl text-text-primary mb-3">
+              <h2 className="font-extrabold text-xl text-text-primary mb-3">
                 שימוש במידע
               </h2>
               <p>
@@ -63,7 +63,7 @@ export default function PrivacyPage() {
             </div>
 
             <div>
-              <h2 className="font-display font-extrabold text-xl text-text-primary mb-3">
+              <h2 className="font-extrabold text-xl text-text-primary mb-3">
                 עוגיות (Cookies)
               </h2>
               <p>
@@ -75,7 +75,7 @@ export default function PrivacyPage() {
             </div>
 
             <div>
-              <h2 className="font-display font-extrabold text-xl text-text-primary mb-3">
+              <h2 className="font-extrabold text-xl text-text-primary mb-3">
                 שירותי צד שלישי
               </h2>
               <p>
@@ -86,7 +86,7 @@ export default function PrivacyPage() {
             </div>
 
             <div>
-              <h2 className="font-display font-extrabold text-xl text-text-primary mb-3">
+              <h2 className="font-extrabold text-xl text-text-primary mb-3">
                 אבטחת מידע
               </h2>
               <p>
@@ -97,7 +97,7 @@ export default function PrivacyPage() {
             </div>
 
             <div>
-              <h2 className="font-display font-extrabold text-xl text-text-primary mb-3">
+              <h2 className="font-extrabold text-xl text-text-primary mb-3">
                 זכויותיכם
               </h2>
               <p>
@@ -108,7 +108,7 @@ export default function PrivacyPage() {
             </div>
 
             <div>
-              <h2 className="font-display font-extrabold text-xl text-text-primary mb-3">
+              <h2 className="font-extrabold text-xl text-text-primary mb-3">
                 יצירת קשר
               </h2>
               <p>
@@ -138,7 +138,7 @@ export default function PrivacyPage() {
             </div>
 
             <div>
-              <h2 className="font-display font-extrabold text-xl text-text-primary mb-3">
+              <h2 className="font-extrabold text-xl text-text-primary mb-3">
                 עדכון המדיניות
               </h2>
               <p>

@@ -25,7 +25,7 @@ export default function AccessibilityPage() {
         <Container className="max-w-3xl">
           <div className="space-y-8 text-text-muted leading-relaxed">
             <div>
-              <h2 className="font-display font-extrabold text-xl text-text-primary mb-3">
+              <h2 className="font-extrabold text-xl text-text-primary mb-3">
                 מחויבות לנגישות
               </h2>
               <p>
@@ -38,7 +38,7 @@ export default function AccessibilityPage() {
             </div>
 
             <div>
-              <h2 className="font-display font-extrabold text-xl text-text-primary mb-3">
+              <h2 className="font-extrabold text-xl text-text-primary mb-3">
                 תוסף הנגישות
               </h2>
               <p>
@@ -61,7 +61,7 @@ export default function AccessibilityPage() {
             </div>
 
             <div>
-              <h2 className="font-display font-extrabold text-xl text-text-primary mb-3">
+              <h2 className="font-extrabold text-xl text-text-primary mb-3">
                 פנייה בנושא נגישות
               </h2>
               <p>
@@ -92,7 +92,7 @@ export default function AccessibilityPage() {
             </div>
 
             <div>
-              <h2 className="font-display font-extrabold text-xl text-text-primary mb-3">
+              <h2 className="font-extrabold text-xl text-text-primary mb-3">
                 עדכון אחרון
               </h2>
               <p>הצהרת נגישות זו עודכנה לאחרונה בתאריך מרץ 2026.</p>

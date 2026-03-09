@@ -89,7 +89,7 @@ export function InflationCalculator() {
 
   return (
     <Card className="max-w-lg mx-auto">
-      <h2 className="font-display text-2xl font-extrabold tracking-tight text-text-primary mb-6">
+      <h2 className="text-2xl font-extrabold tracking-tight text-text-primary mb-6">
         מחשבון אינפלציה
       </h2>
 

@@ -26,7 +26,7 @@ export function ExchangeRatesTable() {
 
   return (
     <Card className="max-w-2xl mx-auto overflow-hidden">
-      <h2 className="font-display text-2xl font-extrabold tracking-tight text-text-primary mb-6">
+      <h2 className="text-2xl font-extrabold tracking-tight text-text-primary mb-6">
         שערי חליפין
       </h2>
 

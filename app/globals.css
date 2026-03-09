@@ -2,7 +2,6 @@
 
 @theme {
   --font-sans: var(--font-heebo), system-ui, sans-serif;
-  --font-display: var(--font-frank-ruhl-libre), Georgia, serif;
 
   --color-primary: #089CDB;
   --color-primary-dark: #077DB8;
@@ -128,10 +127,10 @@
 
   /* Blog article rich content styles */
   .article-content h2 {
-    @apply font-display text-2xl font-extrabold tracking-tight text-text-primary mt-10 mb-4 leading-tight;
+    @apply text-2xl font-extrabold tracking-tight text-text-primary mt-10 mb-4 leading-tight;
   }
   .article-content h3 {
-    @apply font-display text-xl font-bold tracking-tight text-text-primary mt-8 mb-3 leading-snug;
+    @apply text-xl font-bold tracking-tight text-text-primary mt-8 mb-3 leading-snug;
   }
   .article-content p {
     @apply text-base leading-relaxed text-text-muted mb-5;

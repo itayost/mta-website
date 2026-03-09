@@ -28,7 +28,7 @@ export function PageHero({ title, subtitle, variant = 'default' }: PageHeroProps
       >
         <h1
           className={cn(
-            'font-display font-extrabold tracking-tight leading-tight text-text-primary',
+            'font-extrabold tracking-tight leading-tight text-text-primary',
             variant === 'minimal' && 'text-3xl sm:text-4xl font-bold',
             variant === 'editorial' && 'text-3xl sm:text-4xl',
             (variant === 'default' || variant === 'about') && 'text-3xl sm:text-5xl'

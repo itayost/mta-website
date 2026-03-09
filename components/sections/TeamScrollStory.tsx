@@ -178,7 +178,7 @@ export function TeamScrollStory() {
 
                           <h2
                             className={cn(
-                              'font-display text-3xl font-extrabold tracking-tight sm:text-4xl',
+                              'text-3xl font-extrabold tracking-tight sm:text-4xl',
                               dark ? 'text-white' : 'text-text-primary',
                             )}
                           >

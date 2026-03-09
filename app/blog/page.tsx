@@ -77,7 +77,7 @@ export default function BlogPage() {
                             <span>{featuredPost.author}</span>
                           </div>
                         </div>
-                        <h2 className="font-display text-2xl font-extrabold tracking-tight leading-tight text-text-primary mb-3">
+                        <h2 className="text-2xl font-extrabold tracking-tight leading-tight text-text-primary mb-3">
                           {featuredPost.title}
                         </h2>
                         <p className="text-text-muted leading-relaxed mb-4 max-w-2xl">
