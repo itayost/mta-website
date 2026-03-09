@@ -145,13 +145,14 @@ export function TeamScrollStory() {
                   </div>
 
                   {/* Text segments in this group */}
-                  <div className={group.segments.length === 1 ? 'lg:pb-[50svh]' : ''}>
+                  <div>
                     {group.segments.map((seg, si) => (
                       <div
                         key={si}
                         data-segment-key={`${gi}-${si}`}
                         className={cn(
-                          'py-12 first:pt-0 lg:min-h-[80svh] lg:flex lg:items-center',
+                          'py-12 first:pt-0 lg:flex lg:items-center',
+                          group.segments.length > 1 ? 'lg:min-h-[80svh]' : 'lg:min-h-[50svh]',
                           'transition-opacity duration-500',
                           !reducedMotion && activeKey !== null && activeKey !== `${gi}-${si}`
                             ? 'opacity-30'
