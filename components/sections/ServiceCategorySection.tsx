@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { Container } from '@/components/ui/Container'
 import { LogoMotif } from '@/components/ui/LogoMotif'
@@ -55,52 +56,56 @@ export function ServiceCategorySection({
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           {category.services.map((service, i) => (
-            <div
+            <Link
               key={service.id}
-              className={cn(
-                'relative overflow-hidden rounded-2xl p-8 h-full flex flex-col text-center sm:text-start items-center sm:items-start',
-                getBentoSpan(i),
-                dark ? 'bg-white/5' : 'bg-bg-card',
-              )}
+              href={`/services/${service.id}`}
+              className={cn('block h-full', getBentoSpan(i))}
             >
-              <LogoMotif
-                opacity={dark ? 0.1 : 0.15}
-                className="absolute top-0 end-0 w-16 h-20 -translate-y-2 translate-x-2"
-              />
-              <span
-                className={cn(
-                  'text-sm font-medium',
-                  dark ? 'text-white/30' : 'text-text-muted/50',
-                )}
-              >
-                {String(i + 1).padStart(2, '0')}
-              </span>
-
               <div
                 className={cn(
-                  'my-5 h-px',
-                  dark ? 'bg-white/10' : 'bg-text-muted/10',
-                )}
-              />
-
-              <h3
-                className={cn(
-                  'text-xl font-bold',
-                  dark ? 'text-white' : 'text-text-primary',
+                  'relative overflow-hidden rounded-2xl p-8 h-full flex flex-col text-center sm:text-start items-center sm:items-start transition-all duration-300',
+                  dark ? 'bg-white/5 hover:bg-white/10' : 'bg-bg-card hover:bg-bg-surface',
                 )}
               >
-                {service.title}
-              </h3>
+                <LogoMotif
+                  opacity={dark ? 0.1 : 0.15}
+                  className="absolute top-0 end-0 w-16 h-20 -translate-y-2 translate-x-2"
+                />
+                <span
+                  className={cn(
+                    'text-sm font-medium',
+                    dark ? 'text-white/30' : 'text-text-muted/50',
+                  )}
+                >
+                  {String(i + 1).padStart(2, '0')}
+                </span>
 
-              <p
-                className={cn(
-                  'mt-3 text-sm leading-relaxed',
-                  dark ? 'text-white/60' : 'text-text-muted',
-                )}
-              >
-                {service.description}
-              </p>
-            </div>
+                <div
+                  className={cn(
+                    'my-5 h-px',
+                    dark ? 'bg-white/10' : 'bg-text-muted/10',
+                  )}
+                />
+
+                <h3
+                  className={cn(
+                    'text-xl font-bold',
+                    dark ? 'text-white' : 'text-text-primary',
+                  )}
+                >
+                  {service.title}
+                </h3>
+
+                <p
+                  className={cn(
+                    'mt-3 text-sm leading-relaxed',
+                    dark ? 'text-white/60' : 'text-text-muted',
+                  )}
+                >
+                  {service.description}
+                </p>
+              </div>
+            </Link>
           ))}
         </div>
       </Container>

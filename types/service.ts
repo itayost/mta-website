@@ -9,6 +9,7 @@ export interface Service {
   featured: boolean
   problem: string
   benefits: string[]
+  longDescription?: string
 }
 
 export interface ServiceCategory {

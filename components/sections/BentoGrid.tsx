@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
 import { AnimateOnScroll } from '@/components/ui/motion'
 import { SectionHeading } from '@/components/ui/SectionHeading'
@@ -37,20 +38,22 @@ export function BentoGrid() {
               delay={i * 0.08}
               className={bentoSpans[i] ?? ''}
             >
-              <div className="relative overflow-hidden rounded-2xl p-4 sm:p-8 h-full flex flex-col items-center sm:items-start text-center sm:text-start bg-bg-card text-text-primary">
-                <LogoMotif opacity={0.15} className="hidden sm:block absolute top-0 end-0 w-16 h-20 -translate-y-2 translate-x-2" />
-                <span className="hidden sm:block text-sm font-medium text-text-muted/50">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
+              <Link href={`/services/${service.id}`} className="block h-full">
+                <div className="relative overflow-hidden rounded-2xl p-4 sm:p-8 h-full flex flex-col items-center sm:items-start text-center sm:text-start bg-bg-card text-text-primary hover:bg-bg-surface transition-all duration-300">
+                  <LogoMotif opacity={0.15} className="hidden sm:block absolute top-0 end-0 w-16 h-20 -translate-y-2 translate-x-2" />
+                  <span className="hidden sm:block text-sm font-medium text-text-muted/50">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
 
-                <div className="hidden sm:block my-5 h-px bg-text-muted/10" />
+                  <div className="hidden sm:block my-5 h-px bg-text-muted/10" />
 
-                <h3 className="text-base sm:text-xl font-bold">{service.title}</h3>
+                  <h3 className="text-base sm:text-xl font-bold">{service.title}</h3>
 
-                <p className="hidden sm:block mt-3 text-sm leading-relaxed text-text-muted">
-                  {service.description}
-                </p>
-              </div>
+                  <p className="hidden sm:block mt-3 text-sm leading-relaxed text-text-muted">
+                    {service.description}
+                  </p>
+                </div>
+              </Link>
             </AnimateOnScroll>
           ))}
         </div>
