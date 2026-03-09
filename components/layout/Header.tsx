@@ -41,7 +41,7 @@ export function Header() {
               priority
               className="h-8 sm:h-10 w-auto"
             />
-            <span className="text-xl sm:text-2xl font-bold text-text-primary">מזון ייעוץ מס</span>
+            <span className="text-2xl sm:text-3xl font-bold text-text-primary">מזון ייעוץ מס</span>
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1" aria-label="ניווט ראשי">
@@ -49,7 +49,7 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="px-4 py-2 text-sm font-medium text-text-muted rounded-full hover:text-primary hover:bg-primary/5 transition-colors"
+                className="px-4 py-2 text-base font-medium text-text-muted rounded-full hover:text-primary hover:bg-primary/5 transition-colors"
               >
                 {item.label}
               </Link>
