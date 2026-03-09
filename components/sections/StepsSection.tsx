@@ -22,7 +22,7 @@ export function StepsSection({
   title,
   subtitle,
   steps,
-  sectionClassName = 'py-16 sm:py-24 bg-bg-surface',
+  sectionClassName = 'pt-16 pb-10 sm:pt-24 sm:pb-16 bg-bg-surface',
 }: StepsSectionProps) {
   return (
     <section className={sectionClassName}>
