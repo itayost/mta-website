@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { ArrowLeft } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { AnimateOnScroll } from '@/components/ui/motion'
 import { SectionHeading } from '@/components/ui/SectionHeading'
@@ -56,6 +57,16 @@ export function BentoGrid() {
               </Link>
             </AnimateOnScroll>
           ))}
+        </div>
+
+        <div className="mt-8 text-center">
+          <Link
+            href="/services"
+            className="inline-flex items-center gap-2 text-primary hover:text-primary-dark font-semibold transition-colors"
+          >
+            <span>לכל השירותים</span>
+            <ArrowLeft className="size-5" />
+          </Link>
         </div>
       </Container>
     </section>

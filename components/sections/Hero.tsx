@@ -80,6 +80,13 @@ export function Hero() {
                 <span>{contactInfo.phone}</span>
               </a>
             </AnimateOnScroll>
+
+            <Link
+              href="/services"
+              className="mt-2 inline-block text-sm text-text-muted hover:text-primary transition-colors"
+            >
+              ראו את כל השירותים שלנו
+            </Link>
           </div>
 
           {/* Brand card (appears on the left in RTL) */}
