@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { SITE_NAME, SITE_URL } from '@/lib/seo'
 import { heebo, frankRuhlLibre } from '@/lib/fonts'
 import { Header } from '@/components/layout/Header'
@@ -51,6 +52,11 @@ export default function RootLayout({
         <main id="main-content" className="flex-1 pt-16 sm:pt-20">{children}</main>
         <Footer />
         <FormFab />
+        <Script
+          src="https://cdn.userway.org/widget.js"
+          data-account="7ek953Xjr7"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   )
