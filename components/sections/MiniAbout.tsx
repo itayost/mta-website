@@ -7,9 +7,8 @@ import { AnimatedCounter } from '@/components/ui/motion/AnimatedCounter'
 import { teamMembers } from '@/data/team'
 
 const stats = [
-  { target: 50, suffix: '+', label: 'שנות ניסיון' },
+  { target: 57, suffix: '+', label: 'שנות ניסיון' },
   { target: 1000, suffix: '+', label: 'לקוחות מרוצים' },
-  { target: 17, suffix: '', label: 'שירותים' },
   { target: 100, suffix: '%', label: 'מחויבות' },
 ]
 
@@ -28,7 +27,7 @@ export function MiniAbout() {
               </h2>
               <div className="space-y-4 mb-8">
                 <p className="text-lg font-light leading-relaxed text-text-muted">
-                  עם מעל 50 שנות פעילות, מזון ייעוץ מס הוא הרבה יותר ממשרד ייעוץ מס.
+                  עם מעל 57 שנות פעילות, מזון ייעוץ מס הוא הרבה יותר ממשרד ייעוץ מס.
                 </p>
                 <p className="text-lg font-light leading-relaxed text-text-muted">
                   בהובלת מר שמואל (סמי) מזון, נשיא ארצי של לשכות יועצי המס לשעבר, ומר יוסף מזון, חבר הנהלה מחוז הצפון לשכת יועצי המס – אנחנו מביאים את הסטנדרט המקצועי הגבוה ביותר בישראל ישירות לעסק שלך.
@@ -61,7 +60,7 @@ export function MiniAbout() {
           </AnimateOnScroll>
 
           {/* Stats column */}
-          <StaggerChildren staggerDelay={0.1} className="grid grid-cols-2 gap-3 sm:gap-6">
+          <StaggerChildren staggerDelay={0.1} className="grid grid-cols-3 gap-3 sm:gap-6">
             {stats.map(({ target, suffix, label }) => (
               <StaggerItem key={label}>
                 <div className="bg-bg-card rounded-2xl p-4 sm:p-8 text-center">

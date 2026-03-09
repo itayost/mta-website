@@ -27,7 +27,7 @@ export default function ServicesPage() {
 
       <PageHero
         title="השירותים שלנו"
-        subtitle="17 שירותים מקצועיים לעצמאים, שכירים וחברות"
+        subtitle="שירותים מקצועיים לעצמאים, שכירים וחברות"
       />
 
       <ServicesFilteredList categories={serviceCategories} />
