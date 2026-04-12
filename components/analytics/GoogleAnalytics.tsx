@@ -4,7 +4,9 @@ import { useState, useEffect } from 'react'
 import Script from 'next/script'
 import { getConsent } from '@/lib/consent'
 
-const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
+const GA_ID_PATTERN = /^G-[A-Z0-9]+$/
+const RAW_GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
+const GA_ID = RAW_GA_ID && GA_ID_PATTERN.test(RAW_GA_ID) ? RAW_GA_ID : null
 
 export function GoogleAnalytics() {
   const [allowed, setAllowed] = useState(false)

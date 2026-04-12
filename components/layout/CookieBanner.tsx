@@ -30,7 +30,17 @@ export function CookieBanner() {
   const handleDecline = () => {
     setConsent('declined')
     setVisible(false)
+    window.dispatchEvent(new Event('consent-updated'))
   }
+
+  useEffect(() => {
+    if (!visible) return
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') handleDecline()
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [visible])
 
   return (
     <AnimatePresence>
@@ -39,6 +49,7 @@ export function CookieBanner() {
           ref={bannerRef}
           role="dialog"
           aria-label="הודעת עוגיות"
+          aria-describedby="cookie-banner-description"
           tabIndex={-1}
           initial={{ y: '100%', opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -55,7 +66,7 @@ export function CookieBanner() {
               'flex flex-col sm:flex-row items-center gap-4'
             )}
           >
-            <p className="text-text-primary text-sm leading-relaxed text-center sm:text-start flex-1">
+            <p id="cookie-banner-description" className="text-text-primary text-sm leading-relaxed text-center sm:text-start flex-1">
               אתר זה משתמש בעוגיות לצורך ניתוח סטטיסטי ושיפור חווית הגלישה.
             </p>
             <div className="flex gap-3 shrink-0">

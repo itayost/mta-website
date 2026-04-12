@@ -5,6 +5,8 @@ import { heebo } from '@/lib/fonts'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { FormFab } from '@/components/layout/FormFab'
+import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics'
+import { CookieBanner } from '@/components/layout/CookieBanner'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -52,6 +54,8 @@ export default function RootLayout({
         <main id="main-content" className="flex-1 pt-16 sm:pt-20">{children}</main>
         <Footer />
         <FormFab />
+        <GoogleAnalytics />
+        <CookieBanner />
         <Script
           src="https://cdn.userway.org/widget.js"
           data-account="7ek953Xjr7"
