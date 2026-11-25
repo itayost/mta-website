@@ -94,6 +94,17 @@ export function Footer() {
             </Link>
           </div>
           <p>&copy; {new Date().getFullYear()} מזון ייעוץ מס – יועצי מס מוסמכים. כל הזכויות שמורות.</p>
+          <p className="mt-2 text-center text-xs text-text-muted/50">
+            עוצב ופותח על ידי{' '}
+            <a
+              href="https://www.itayost.com"
+              target="_blank"
+              rel="noopener"
+              className="hover:text-primary transition-colors"
+            >
+              ITAYOST
+            </a>
+          </p>
         </div>
       </Container>
     </footer>
